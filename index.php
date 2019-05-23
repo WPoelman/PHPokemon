@@ -68,7 +68,7 @@ elseif (new_route('/pokemon', 'get')) {
     $page_content = 'pokmon list';
 
     /* Choose Template */
-    include use_template('serie');
+    include use_template('main');
 
 }
 
@@ -76,4 +76,8 @@ elseif (new_route('/pokemon', 'get')) {
 elseif (new_route('/handler', 'post')) {
 
     /* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN */
+} 
+
+else {
+    http_response_code(404);
 }
