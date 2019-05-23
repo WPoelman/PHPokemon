@@ -70,6 +70,14 @@ elseif (new_route('/pokemon', 'get')) {
     /* Choose Template */
     include use_template('serie');
 
-} else {
+}
+
+/* Pokemon handler API */
+elseif (new_route('/handler', 'post')) {
+
+    /* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN */
+} 
+
+else {
     http_response_code(404);
 }
