@@ -8,7 +8,7 @@
 include 'model.php';
 
 /* Display the default cards on every page */
-$right_column = use_template('cards');
+/* $right_column = use_template('cards'); */
 
 /* Set the default routes for the navigation bar */
 $navigation_tpl = Array(
@@ -76,8 +76,4 @@ elseif (new_route('/pokemon', 'get')) {
 elseif (new_route('/handler', 'post')) {
 
     /* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN */
-} 
-
-else {
-    http_response_code(404);
 }

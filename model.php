@@ -27,6 +27,39 @@ function new_route($route_uri, $request_type)
 }
 
 /**
+ * Creates navigation HTML code using given array with active_id page
+ * @param array $template Array with as Key the page name and as Value the corresponding url
+ * @param integer $active_id the id of the active element in the navigation bar
+ * @return string html code that represents the navigation
+ */
+function get_navigation($template, $active_id){
+    $navigation_exp = '
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Series Overview</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">';
+    foreach ($template as $route_id => $array_info) {
+        if ($route_id == $active_id) {
+            $navigation_exp .= '<li class="nav-item active">';
+            $navigation_exp .= '<a class="nav-link" href="' . $array_info['url'] . '">' . $array_info['name'] . '</a>';
+        }
+        else{
+            $navigation_exp .= '<li class="nav-item">';
+            $navigation_exp .= '<a class="nav-link" href="'.$array_info['url'].'">'.$array_info['name'].'</a>';
+    }
+
+    }
+    $navigation_exp .= '
+    </ul>
+    </div>
+    </nav>';
+    return $navigation_exp;
+}
+
+/**
  * Creates a new navigation array item using url and active status
  * @param string $url The url of the navigation item
  * @param bool $active Set the navigation item to active or inactive
