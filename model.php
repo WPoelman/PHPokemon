@@ -19,10 +19,15 @@ error_reporting(E_ALL);
  */
 function new_route($route_uri, $request_type)
 {
+	$folder = rtrim($_SERVER['SCRIPT_NAME'], 'index.php');
     $route_uri_expl = array_filter(explode('/', $route_uri));
     $current_path_expl = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
     if (end($route_uri_expl) == end($current_path_expl) && $_SERVER['REQUEST_METHOD'] == strtoupper($request_type)) {
         return True;
+    }
+    if($route_uri == '/' and $folder == $_SERVER['REQUEST_URI']){
+    	// home
+    	return True;
     }
 }
 
@@ -77,8 +82,7 @@ function na($url, $active)
  */
 function use_template($template)
 {
-    $template_doc = sprintf("views/%s.php", $template);
-    return $template_doc;
+    return "views/$template.php";
 }
 
 /**
