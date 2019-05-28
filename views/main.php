@@ -34,9 +34,7 @@
 
                 <!-- Right column -->
                 <div class="col-md-4">
-
-                    <?php include $right_column ?>
-
+                Mooie sidebar hier
                 </div>
             </div>
         </div>
