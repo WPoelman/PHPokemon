@@ -14,20 +14,20 @@ include 'model.php';
 $navigation_tpl = Array(
     0 => Array(
         'name' => 'Home',
-        'url' => '/'
+        'url' => 'index'
     ),
     1 => Array(
         'name' => 'Instructions',
-        'url' => '/instructions'
+        'url' => 'instructions'
     ),
     2 => Array(
         'name' => 'Pokemon',
-        'url' => '/pokemon'
+        'url' => 'pokemon'
     )
 );
 
 /* Homepage */
-if (new_route('/', 'get')) {
+if (new_route('index', 'get')) {
 
     /* Page info */
     $page_title = 'Homepage';
