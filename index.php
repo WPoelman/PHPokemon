@@ -81,3 +81,20 @@ elseif (new_route('/handler', 'post')) {
 else {
     http_response_code(404);
 }
+
+include __DIR__ . '/tpl/head.php';
+include __DIR__ . '/tpl/body_start.php';
+?>
+    <script type="application/javascript" src="scripts/main.js">
+
+    </script>
+    <div class="pd-40">
+
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="pokemoncontainer">
+            <h1>Hallo</h1>
+        </div>
+    </div>
+
+<?php include __DIR__ . '/tpl/body_end.php'; ?>
