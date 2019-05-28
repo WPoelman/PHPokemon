@@ -1,18 +1,3 @@
-<?php
-// P_Print function
-function p_print($array)
-{
-    echo "<pre>";
-    print_r($array);
-    echo "</pre>";
-}
-
-/* Enable error reporting */
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
