@@ -11,47 +11,102 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-$navigation_tpl = [];
+// routes class
+class Routes {
+	var $navigation = [];
+	var $active_route = null;
 
-/**
- * Check if the route exist
- *
- * @param string $route_uri URI to be matched
- * @param string $request_type request method
- *
- * @return array
- *
- */
-function new_route($route_uri, $request_type, $menu_title = false) {
-	global $navigation_tpl;  // todo: think of way to make it non-global
-
-	$request_type = strtoupper($request_type);
-
-
-	$folder            = rtrim($_SERVER['SCRIPT_NAME'], 'index.php');
-	$route_uri_expl    = array_filter(explode('/', $route_uri));
-	$current_path_expl = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
-	$active            = false;
-	$url               = $route_uri;
-	if (end($route_uri_expl) == end($current_path_expl) && $_SERVER['REQUEST_METHOD'] == $request_type) {
-		$active = true;
+	function start() {
+		$this->active_route['function']($this->active_route, $this->navigation);
 	}
-	if ($route_uri == '/') {
-		// home
-		$url = $folder;
 
-		if ($folder == $_SERVER['REQUEST_URI']) {
-			// home active
+	function new_route($route_uri, $request_type, $menu_title = false, $function = false) {
+
+		if (!$function) {
+			$function = $route_uri;
+		}
+
+
+		$request_type = strtoupper($request_type);
+
+
+		$folder            = rtrim($_SERVER['SCRIPT_NAME'], 'index.php');
+		$route_uri_expl    = array_filter(explode('/', $route_uri));
+		$current_path_expl = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+		$active            = false;
+		$url               = $route_uri;
+		if (end($route_uri_expl) == end($current_path_expl)) {
 			$active = true;
 		}
+		if ($route_uri == '/') {
+			// home
+			$url = $folder;
+
+			if ($folder == $_SERVER['REQUEST_URI']) {
+				// home active
+				$active = true;
+			}
+		}
+
+		if ($request_type == 'GET' and $menu_title) {
+			$this->navigation[$url] = $menu_title;
+		}
+
+		$result = ['active' => $active, 'url' => $url, 'function' => $function];
+		if ($active) {
+
+			if ($_SERVER['REQUEST_METHOD'] != $request_type) {
+				// if everything is good but the request is wrong method, throw error
+				http_response_code(405);  // 405: method not allowed
+				echo 'wrong HTTP method for this request';
+				die();
+			}
+
+
+			$this->active_route = $result;
+		}
+
+		return $result;
 	}
 
-	if ($request_type == 'GET' and $menu_title) {
-		$navigation_tpl[$url] = $menu_title;
-	}
-
-	return ['active' => $active, 'url' => $url];
 }
+
+$routes = new Routes();
+
+
+//$navigation_tpl = [];
+//
+//
+//function new_route($route_uri, $request_type, $menu_title = false) {
+//	global $navigation_tpl;  // todo: think of way to make it non-global
+//
+//	$request_type = strtoupper($request_type);
+//
+//
+//	$folder            = rtrim($_SERVER['SCRIPT_NAME'], 'index.php');
+//	$route_uri_expl    = array_filter(explode('/', $route_uri));
+//	$current_path_expl = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+//	$active            = false;
+//	$url               = $route_uri;
+//	if (end($route_uri_expl) == end($current_path_expl) && $_SERVER['REQUEST_METHOD'] == $request_type) {
+//		$active = true;
+//	}
+//	if ($route_uri == '/') {
+//		// home
+//		$url = $folder;
+//
+//		if ($folder == $_SERVER['REQUEST_URI']) {
+//			// home active
+//			$active = true;
+//		}
+//	}
+//
+//	if ($request_type == 'GET' and $menu_title) {
+//		$navigation_tpl[$url] = $menu_title;
+//	}
+//
+//	return ['active' => $active, 'url' => $url];
+//}
 
 
 function get_navigation($template, $active_item) {

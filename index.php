@@ -6,46 +6,12 @@
  */
 
 include 'model.php';
-include ' pokemon_handler.php';
-
-/* Display the default cards on every page */
-/* $right_column = use_template('cards'); */
-
-/* Set the default routes for the navigation bar */
 
 
-//$navigation_tpl = Array(
-//	0 => Array(
-//		'name' => 'Home',
-//		'url'  => 'index'
-//	),
-//	1 => Array(
-//		'name' => 'Instructions',
-//		'url'  => 'instructions'
-//	),
-//	2 => Array(
-//		'name' => 'Pokemon',
-//		'url'  => 'pokemon'
-//	)
-//);
-
-$routes = [
-	"home"         => new_route('/', 'get', 'Home'),
-	"instructions" => new_route('instructions', 'get', 'Instructions'),
-	"pokemon"      => new_route('pokemon', 'get', 'Pokemon'),
-	"handler"      => new_route('handler', 'post'),
-];
-
-
-// todo: translate to functions in stead of if elif
-
-/* Homepage */
-if ($routes['home']['active']) {
-	$active = $routes['home'];
-
+function index($info, $nav) {
 	/* Page info */
 	$page_title = 'Homepage';
-	$navigation = get_navigation($navigation_tpl, $active['url']);
+	$navigation = get_navigation($nav, $info['url']);
 
 	/* Page content */
 	$page_subtitle = "subtitle";
@@ -53,13 +19,15 @@ if ($routes['home']['active']) {
 
 	/* Choose Template */
 	include use_template('main');
-} /* Instructions page */
-elseif ($routes['instructions']['active']) {
-	$active = $routes['instructions'];
+}
+
+$routes->new_route('/', 'get', 'Home', 'index');
+
+function instructions($info, $nav) {
 
 	/* Page info */
 	$page_title = 'Pokemon instructions page';
-	$navigation = get_navigation($navigation_tpl, 'instructions');
+	$navigation = get_navigation($nav, 'instructions');
 
 	/* Page content */
 	$page_subtitle = 'very cool subtitle';
@@ -67,13 +35,16 @@ elseif ($routes['instructions']['active']) {
 
 	/* Choose Template */
 	include use_template('main');
-} /* Pokemon list page */
-elseif ($routes['pokemon']['active']) {
-	$active = $routes['pokemon'];
+}
+
+$routes->new_route('instructions', 'get', 'Instructions');
+
+
+function pokemon($info, $nav) {
 
 	/* Page info */
 	$page_title = "Pokemon list page";
-	$navigation = get_navigation($navigation_tpl, 'pokemon');
+	$navigation = get_navigation($nav, 'pokemon');
 
 	/* Page content */
 	$page_subtitle = 'subtitle';
@@ -81,12 +52,18 @@ elseif ($routes['pokemon']['active']) {
 
 	/* Choose Template */
 	include use_template('main');
-
-} /* Pokemon handler API */
-elseif ($routes['handler']['active']) {
-
-	/* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN  UIT POKEMON HANDLER */
-} else {
-	http_response_code(404);
-	echo 'page not found';
 }
+
+$routes->new_route('pokemon', 'get', 'Pokemon');
+
+
+function post_handler($info){
+	// test handler
+	print_r($info);
+	echo 'POSTED';
+}
+$routes->new_route('post_handler', 'post');
+
+
+
+$routes->start();
