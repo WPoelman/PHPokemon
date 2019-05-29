@@ -6,6 +6,7 @@
  */
 
 include 'model.php';
+include ' pokemon_handler.php';
 
 /* Display the default cards on every page */
 /* $right_column = use_template('cards'); */
@@ -84,7 +85,7 @@ elseif ($routes['pokemon']['active']) {
 } /* Pokemon handler API */
 elseif ($routes['handler']['active']) {
 
-	/* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN */
+	/* HIER DE FUNCTIES DIE DE ACTIES AFHANDELEN  UIT POKEMON HANDLER */
 } else {
 	http_response_code(404);
 	echo 'page not found';
