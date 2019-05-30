@@ -1,0 +1,14 @@
+<!--
+// TODO: event source
+// https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+-->
+<div id="list"></div>
+
+
+<script>
+    let events = new EventSource("server.php");
+
+    events.addEventListener('myevent', function(e){
+        console.info(JSON.parse(e.data))
+    })
+</script>
