@@ -20,13 +20,15 @@ footer {
     }
 }
 
-#pika {
+.bouncing {
     animation: bounce 0.8s ease infinite;
+    height: 115px;
+    width: 125px;
 }
 
 
 
-#Pikachu {
+#Charmander, #Vulpix {
     border: 1px solid lavenderblush;
     border-radius: 25px;
     padding: 1%;
@@ -34,11 +36,43 @@ footer {
     font-family: 'Raleway', sans-serif;
 }
 
-#Pikachu2 {
+#Squirtle, #Staryu {
+    border: 1px solid lightcyan;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: lightcyan;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Bulbasaur, #Oddish {
+    border: 1px solid #C8F8CA;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: #C8F8CA;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Pikachu, #Magnemite {
     border: 1px solid lightyellow;
     border-radius: 25px;
     padding: 1%;
     background-color: #FBF8B2;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Rattata, #Eevee {
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: lightgray;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Geodude, #Omanyte {
+    border: 1px solid #D1B48D;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: #D1B48D;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -53,18 +87,6 @@ table {
     width: 100%;
 }
 
-.electric {
-    background-color: lightyellow;
-    border: 2px solid yellow;
-    border-radius: 5px;
-}
-
-.normal {
-    background-color: whitesmoke;
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
 #name {
     text-align: center;
     font-family: 'Raleway', sans-serif;
@@ -73,18 +95,33 @@ table {
 }
 
 #image {
-    padding-left: 30%;
+    padding-left: 27%;
 }
 
-.moveset {
+#sprite {
+    height: 105px;
+    width: 105px;
+}
+
+.moveset, .stats {
     margin-top: 5%;
 }
 
-.stats {
-    margin-top: 5%;
+.current {
+    font-size: 105%;
 }
 
-#pika_image {
-    background-image: url("../img/pokeball-icon-transparent-5.jpg");
-    background-size: cover;
+.intro {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.intro h1 {
+    font-size: 350%;
+}
+
+.intro p {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 150%;
 }
