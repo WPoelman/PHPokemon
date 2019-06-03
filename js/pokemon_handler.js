@@ -10,7 +10,7 @@ function readyButtonLaunch(selected_pokemon) {
     // send the post request with the username and selected pokemon
     let reactie = $.post("pokemon_handler.php/start_game", 
     {
-        "pokemon"   : selected_pokemon.toString(),
+        "pokemon"   : selected_pokemon,
         "username"  : $('#username').val()
     });
 
@@ -24,7 +24,6 @@ $(function() {
     // The user can select three pokemon
     let selected_pokemon = [];
     $('.pokemon_choice').click(function(){
-
         current_element = $(this);
         
         // if the pokemon is already selected, remove it -> toggle selection
