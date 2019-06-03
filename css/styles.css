@@ -1,8 +1,12 @@
 body {
     background-image:url('../media/Pokemon-background1.jpeg');
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position:center;
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 footer {
