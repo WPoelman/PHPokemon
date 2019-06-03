@@ -6,7 +6,7 @@
  */
 
 function load_pokemon(){
-	return json_decode(file_get_contents("pokemon.json"),true);
+	return json_decode(file_get_contents("data/pokemon.json"),true);
 }
 
 function reset_pokemon_variables($pokemon_array){
