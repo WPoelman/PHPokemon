@@ -1,5 +1,5 @@
-[
-  {
+{
+  "Charmander": {
     "Name": "Charmander",
     "HP": 39,
     "Attack": 52,
@@ -7,12 +7,30 @@
     "Speed": 66,
     "Element": "Fire",
     "Moveset": [
-      {"Name": "Scratch", "Power": 40, "Accuracy": 100, "PP": 35, "Type": "Normal"},
-      {"Name": "Ember", "Power": 50, "Accuracy": 95, "PP": 25, "Type": "Fire"},
-      {"Name": "Slash", "Power": 80, "Accuracy": 80, "PP": 10, "Type": "Normal"}
+      {
+        "Name": "Scratch",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 35,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Ember",
+        "Power": 50,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Fire"
+      },
+      {
+        "Name": "Slash",
+        "Power": 80,
+        "Accuracy": 80,
+        "PP": 10,
+        "Type": "Normal"
+      }
     ]
   },
-  {
+  "Vulpix": {
     "Name": "Vulpix",
     "HP": 43,
     "Attack": 48,
@@ -20,12 +38,30 @@
     "Speed": 65,
     "Element": "Fire",
     "Moveset": [
-      {"Name": "Quick attack", "Power": 40, "Accuracy": 100, "PP": 35, "Type": "Normal"},
-      {"Name": "Fire spin", "Power": 50, "Accuracy": 90, "PP": 15, "Type": "Fire"},
-      {"Name": "Flamethrower", "Power": 90, "Accuracy": 70, "PP": 5, "Type": "Fire"}
+      {
+        "Name": "Quick attack",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 35,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Fire spin",
+        "Power": 50,
+        "Accuracy": 90,
+        "PP": 15,
+        "Type": "Fire"
+      },
+      {
+        "Name": "Flamethrower",
+        "Power": 90,
+        "Accuracy": 70,
+        "PP": 5,
+        "Type": "Fire"
+      }
     ]
   },
-  {
+  "Squirtle": {
     "Name": "Squirtle",
     "HP": 44,
     "Attack": 48,
@@ -33,12 +69,30 @@
     "Speed": 43,
     "Element": "Water",
     "Moveset": [
-      {"Name": "Tackle", "Power": 40, "Accuracy": 100, "PP": 30, "Type": "Normal"},
-      {"Name": "Bubble", "Power": 40, "Accuracy": 100, "PP": 25, "Type": "Water"},
-      {"Name": "Water pulse", "Power": 75, "Accuracy": 90, "PP": 10, "Type": "Water"}
+      {
+        "Name": "Tackle",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 30,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Bubble",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 25,
+        "Type": "Water"
+      },
+      {
+        "Name": "Water pulse",
+        "Power": 75,
+        "Accuracy": 90,
+        "PP": 10,
+        "Type": "Water"
+      }
     ]
   },
-  {
+  "Staryu": {
     "Name": "Staryu",
     "HP": 35,
     "Attack": 44,
@@ -46,12 +100,30 @@
     "Speed": 85,
     "Element": "Water",
     "Moveset": [
-      {"Name": "Swift", "Power": 60, "Accuracy": 90, "PP": 25, "Type": "Normal"},
-      {"Name": "Bubble beam", "Power": 65, "Accuracy": 90, "PP": 10, "Type": "Water"},
-      {"Name": "Hydro pump", "Power": 100, "Accuracy": 60, "PP": 7, "Type": "Water"}
+      {
+        "Name": "Swift",
+        "Power": 60,
+        "Accuracy": 90,
+        "PP": 25,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Bubble beam",
+        "Power": 65,
+        "Accuracy": 90,
+        "PP": 10,
+        "Type": "Water"
+      },
+      {
+        "Name": "Hydro pump",
+        "Power": 100,
+        "Accuracy": 60,
+        "PP": 7,
+        "Type": "Water"
+      }
     ]
   },
-  {
+  "Bulbasaur": {
     "Name": "Bulbasaur",
     "HP": 45,
     "Attack": 49,
@@ -59,12 +131,30 @@
     "Speed": 45,
     "Element": "Grass",
     "Moveset": [
-      {"Name": "Tackle", "Power": 40, "Accuracy": 100, "PP": 30, "Type": "Normal"},
-      {"Name": "Vine whip", "Power": 45, "Accuracy": 100, "PP": 25, "Type": "Grass"},
-      {"Name": "Take down", "Power": 90, "Accuracy": 75, "PP": 5, "Type": "Normal"}
+      {
+        "Name": "Tackle",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 30,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Vine whip",
+        "Power": 45,
+        "Accuracy": 100,
+        "PP": 25,
+        "Type": "Grass"
+      },
+      {
+        "Name": "Take down",
+        "Power": 90,
+        "Accuracy": 75,
+        "PP": 5,
+        "Type": "Normal"
+      }
     ]
   },
-  {
+  "Oddish": {
     "Name": "Oddish",
     "HP": 45,
     "Attack": 50,
@@ -72,12 +162,30 @@
     "Speed": 30,
     "Element": "Grass",
     "Moveset": [
-      {"Name": "Headbutt", "Power": 50, "Accuracy": 100, "PP": 25, "Type": "Normal"},
-      {"Name": "Razor leaf", "Power": 65, "Accuracy": 85, "PP": 15, "Type": "Grass"},
-      {"Name": "Petal dance", "Power": 75, "Accuracy": 80, "PP": 15, "Type": "Grass"}
+      {
+        "Name": "Headbutt",
+        "Power": 50,
+        "Accuracy": 100,
+        "PP": 25,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Razor leaf",
+        "Power": 65,
+        "Accuracy": 85,
+        "PP": 15,
+        "Type": "Grass"
+      },
+      {
+        "Name": "Petal dance",
+        "Power": 75,
+        "Accuracy": 80,
+        "PP": 15,
+        "Type": "Grass"
+      }
     ]
   },
-  {
+  "Pikachu": {
     "Name": "Pikachu",
     "HP": 35,
     "Attack": 55,
@@ -85,12 +193,30 @@
     "Speed": 90,
     "Element": "Electric",
     "Moveset": [
-      {"Name": "Thunder shock", "Power": 45, "Accuracy": 100, "PP": 25, "Type": "Electric"},
-      {"Name": "Slam", "Power": 55, "Accuracy": 95, "PP": 20, "Type": "Normal"},
-      {"Name": "Thunderbolt", "Power": 85, "Accuracy": 70, "PP": 10, "Type": "Electric"}
+      {
+        "Name": "Thunder shock",
+        "Power": 45,
+        "Accuracy": 100,
+        "PP": 25,
+        "Type": "Electric"
+      },
+      {
+        "Name": "Slam",
+        "Power": 55,
+        "Accuracy": 95,
+        "PP": 20,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Thunderbolt",
+        "Power": 85,
+        "Accuracy": 70,
+        "PP": 10,
+        "Type": "Electric"
+      }
     ]
   },
-  {
+  "Magnemite": {
     "Name": "Magnemite",
     "HP": 25,
     "Attack": 60,
@@ -98,12 +224,30 @@
     "Speed": 44,
     "Element": "Electric",
     "Moveset": [
-      {"Name": "Sonic boom", "Power": 45, "Accuracy": 95, "PP": 25, "Type": "Normal"},
-      {"Name": "Thunder wave", "Power": 50, "Accuracy": 90, "PP": 25, "Type": "Electric"},
-      {"Name": "Flash canon", "Power": 100, "Accuracy": 50, "PP": 10, "Type": "Electric"}
+      {
+        "Name": "Sonic boom",
+        "Power": 45,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Thunder wave",
+        "Power": 50,
+        "Accuracy": 90,
+        "PP": 25,
+        "Type": "Electric"
+      },
+      {
+        "Name": "Flash canon",
+        "Power": 100,
+        "Accuracy": 50,
+        "PP": 10,
+        "Type": "Electric"
+      }
     ]
   },
-  {
+  "Rattata": {
     "Name": "Rattata",
     "HP": 30,
     "Attack": 56,
@@ -111,12 +255,30 @@
     "Speed": 72,
     "Element": "Normal",
     "Moveset": [
-      {"Name": "Tackle", "Power": 40, "Accuracy": 100, "PP": 30, "Type": "Normal"},
-      {"Name": "Crunch", "Power": 50, "Accuracy": 95, "PP": 25, "Type": "Normal"},
-      {"Name": "Double Edge", "Power": 85, "Accuracy": 65, "PP": 15, "Type": "Normal"}
+      {
+        "Name": "Tackle",
+        "Power": 40,
+        "Accuracy": 100,
+        "PP": 30,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Crunch",
+        "Power": 50,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Double Edge",
+        "Power": 85,
+        "Accuracy": 65,
+        "PP": 15,
+        "Type": "Normal"
+      }
     ]
   },
-  {
+  "Eevee": {
     "Name": "Eevee",
     "HP": 45,
     "Attack": 50,
@@ -124,12 +286,30 @@
     "Speed": 55,
     "Element": "Normal",
     "Moveset": [
-      {"Name": "Bite", "Power": 60, "Accuracy": 95, "PP": 25, "Type": "Normal"},
-      {"Name": "Water canon", "Power": 65, "Accuracy": 90, "PP": 20, "Type": "Water"},
-      {"Name": "Flare", "Power": 65, "Accuracy": 90, "PP": 20, "Type": "Fire"}
+      {
+        "Name": "Bite",
+        "Power": 60,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Normal"
+      },
+      {
+        "Name": "Water canon",
+        "Power": 65,
+        "Accuracy": 90,
+        "PP": 20,
+        "Type": "Water"
+      },
+      {
+        "Name": "Flare",
+        "Power": 65,
+        "Accuracy": 90,
+        "PP": 20,
+        "Type": "Fire"
+      }
     ]
   },
-  {
+  "Geodude": {
     "Name": "Geodude",
     "HP": 40,
     "Attack": 60,
@@ -137,12 +317,30 @@
     "Speed": 20,
     "Element": "Rock",
     "Moveset": [
-      {"Name": "Rock smash", "Power": 45, "Accuracy": 95, "PP": 25, "Type": "Rock"},
-      {"Name": "Brick break", "Power": 75, "Accuracy": 70, "PP": 25, "Type": "Rock"},
-      {"Name": "Rock slide", "Power": 85, "Accuracy": 60, "PP": 10, "Type": "Rock"}
+      {
+        "Name": "Rock smash",
+        "Power": 45,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Rock"
+      },
+      {
+        "Name": "Brick break",
+        "Power": 75,
+        "Accuracy": 70,
+        "PP": 25,
+        "Type": "Rock"
+      },
+      {
+        "Name": "Rock slide",
+        "Power": 85,
+        "Accuracy": 60,
+        "PP": 10,
+        "Type": "Rock"
+      }
     ]
   },
-  {
+  "Omanyte": {
     "Name": "Omanyte",
     "HP": 35,
     "Attack": 40,
@@ -150,9 +348,27 @@
     "Speed": 35,
     "Element": "Rock",
     "Moveset": [
-      {"Name": "Stealth rock", "Power": 50, "Accuracy": 95, "PP": 25, "Type": "Rock"},
-      {"Name": "Water beam", "Power": 50, "Accuracy": 90, "PP": 20, "Type": "Water"},
-      {"Name": "Earthquake", "Power": 70, "Accuracy": 90, "PP": 10, "Type": "Rock"}
+      {
+        "Name": "Stealth rock",
+        "Power": 50,
+        "Accuracy": 95,
+        "PP": 25,
+        "Type": "Rock"
+      },
+      {
+        "Name": "Water beam",
+        "Power": 50,
+        "Accuracy": 90,
+        "PP": 20,
+        "Type": "Water"
+      },
+      {
+        "Name": "Earthquake",
+        "Power": 70,
+        "Accuracy": 90,
+        "PP": 10,
+        "Type": "Rock"
+      }
     ]
   }
-]
+}
