@@ -15,23 +15,45 @@ function attack($info) {
 $routes->new_route('attack', 'post');
 
 function start_game($info) {
-	$username = $_POST['username'];
-	$pokemon  = explode(",", $_POST['pokemon']);
+	if (!(isset($_SESSION['username']))) {
+		$username = $_POST['username'];
+		$pokemon  = explode(",", $_POST['pokemon']);
 
-	// dit is om te testen!
-	save_game_info($username, $pokemon);
-
-	echo json_encode(get_game_info());
+		$added_player = add_player($username, $pokemon);
+		if(!$added_player){
+			// game is full
+			session_destroy();
+			unset($_SESSION);
+			echo json_encode(['error' => 'game is full']);
+			return false;
+		}
+		else {
+			echo json_encode(get_game_info());
+			return true;
+		}
+	}
+	echo json_encode(['error' => 'you are already in a game']);
+	return false;
 }
 
 $routes->new_route('start_game', 'post');
+
+
+function stop_game($info){
+	reset_round();
+	session_destroy();
+	unset($_SESSION);
+}
+// note: this should not be a public route on production, of course!
+$routes->new_route('stop_game', 'post');
+
+
 
 function get_profile($info) {
 	echo json_encode(get_game_info());
 }
 
 $routes->new_route('get_profile', 'get');
-
 
 
 $routes->start();
