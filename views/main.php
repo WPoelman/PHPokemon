@@ -14,7 +14,7 @@
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
     <title><?= $page_title ?></title>
 </head>
 <body>
@@ -44,17 +44,17 @@
         <span class="border border-dark"><div class="col-md-12 main-box">
 
 
-            <div class="row">
+            <div class="row justify-content-center">
                     <!-- Button for playing -->
-                <!-- todo: Styles in css zetten. Button mooier maken -->
-                    <div class="col-md-4 text-center button-div">
+                <!-- todo:Button mooier maken -->
+                    <div class="col-md-4 text-center button-div ">
                     <button type="button" class="btn btn-danger" id="PlayButton">
                         <h2 class="ButtonText">Play!</h2>
                     </button>
                     </div>
             </div>
                 <!-- Button for how to play -->
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-md-4 text-center button-div">
                         <button type="button" class="btn btn-info" id="HowToPlayButton">
                             <h2 class="ButtonText">How to <br>play</h2>
@@ -70,6 +70,7 @@
 
             </div>
 
+                <!-- Middle text -->
                 <div class="row">
                     <hr>
                     <br>
@@ -78,6 +79,7 @@
                     </div>
                   <hr>
                 </div>
+
                 </div></span>
 
         <!-- select pokemon page -->
@@ -85,6 +87,15 @@
 
             <span class="border border-dark">
             <div class="col-md-12 main-box">
+
+                <div class="row">
+                    <hr>
+                    <div class="col-md-12">
+                        <p>Choose 3 pokemon and press Ready!!</p>
+                    </div>
+                  <hr>
+                </div>
+
                 <!-- begin row of pokemon -->
                 <div class="row">
                     <!-- begin pokemon 1-->
@@ -92,14 +103,14 @@
                         <div id="Pikachu2">
                             <div id="extra-border">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 text-center">
                                         <p id="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 text-center">
                                         *insert type image*
                                     </div>
                                 </div>
@@ -111,14 +122,14 @@
                         <div id="Pikachu2">
                             <div id="extra-border">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 text-center">
                                         <p id="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 text-center">
                                         *insert type image*
                                     </div>
                                 </div>
@@ -130,15 +141,15 @@
                     <div class="col-md-4">
                         <div id="Pikachu2">
                             <div id="extra-border">
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row ">
+                                    <div class="col-md-9 text-center">
                                         <p id="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-9 text-center">
                                         *insert type image*
                                     </div>
                                 </div>
@@ -147,9 +158,30 @@
                     </div>
                     <!-- end row 1-->
                 </div>
+
                 <!-- begin row 2 -->
                 <div class="row">
 
+                </div>
+
+                <!-- begin row 3 -->
+                <div class="row">
+
+                </div>
+
+                <!-- begin row 4 -->
+                <div class="row">
+
+                </div>
+
+                <!-- Ready button -->
+
+                <div class="row justify-content-center">
+                    <div class="col-md-4 text-center button-div">
+                        <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                            <h2 class="ReadyButton">Ready</h2>
+                        </button>
+                    </div>
                 </div>
 
             </div>

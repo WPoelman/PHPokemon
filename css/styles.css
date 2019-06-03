@@ -45,6 +45,16 @@ Begin styling pokemon choose page
     margin: 30px 0 30px 0;
 }
 
+.ReadyButton{
+    font-style: italic;
+    font-size: 64px;
+    color: black;
+}
+
+.text-center {
+    text-align:center;
+    align-content: center;
+}
 @keyframes bounce {
     0%,100% {
         transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
