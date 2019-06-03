@@ -22,21 +22,56 @@ function session_get($key) {
 	}
 }
 
-/**
- * save username and pokemon info to SESSION
- *
- * @param $username : username of the player
- * @param $pokemons : pokemon (3) the player chose
- * */
-function save_game_info($username, $pokemons) {
-	$_SESSION['username'] = $username;
-	$_SESSION['pokemon']  = [];
-	// yes I know the plural of pokemon is pokemon but that makes these variables very difficult to name
-	foreach($pokemons as $pokemon){
-		$_SESSION['pokemon'][$pokemon] = reset_pokemon_variables(get_pokemon_info($pokemon));
-	}
-}
-
 function get_game_info() {
 	return ["username" => session_get('username'), "pokemon" => session_get("pokemon")];
 }
+
+// matching players
+
+function write_player_data($player, $data){
+	file_put_contents("data/round/$player.json", json_encode($data));
+}
+function read_player_data($player){
+return json_decode(file_get_contents("data/round/$player.json"), true);
+}
+
+function reset_round(){
+	// execute this function at end of game
+	write_player_data('player1', []);
+	write_player_data('player2', []);
+}
+
+// check if a player is ready
+function is_ready($player){
+	return isset(read_player_data($player)['username']);
+}
+
+function add_player($username, $pokemons){
+	$_SESSION['username'] = $username;
+	$_SESSION['pokemon']  = $pokemons;
+	$player_info['username'] = $username;
+	$player_info['pokemon'] = [];
+
+	// yes I know the plural of pokemon is pokemon but that makes these variables very difficult to name
+	foreach($pokemons as $pokemon){
+		$player_info['pokemon'][$pokemon] = reset_pokemon_variables(get_pokemon_info($pokemon));
+	}
+
+
+	if(!is_ready('player1')){
+		write_player_data('player1', $player_info);
+		return true;
+	} else {
+		// player 1 occupied, try player 2
+		if(!is_ready('player2')){
+			write_player_data('player2', $player_info);
+			return true;
+		}
+		else {
+			// all spaces occupied (for now)
+			return false;
+		}
+	}
+}
+
+// later: make playble for more than 2 players at the same time
