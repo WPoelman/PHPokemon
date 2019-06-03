@@ -130,7 +130,7 @@
                             <div id="extra-border">
                                 <div class="row">
                                     <div class="col-md-9 text-center">
-                                        <p class="name">Pikachu</p>
+                                        <p class="name">Staryu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
@@ -150,7 +150,7 @@
                             <div id="extra-border">
                                 <div class="row ">
                                     <div class="col-md-9 text-center">
-                                        <p class="name">Pikachu</p>
+                                        <p class="name">Bulbasaur</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
@@ -173,7 +173,7 @@
                             <div id="extra-border">
                                 <div class="row">
                                     <div class="col-md-9 text-center">
-                                        <p class="name">Pikachu</p>
+                                        <p class="name">Geodude</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
