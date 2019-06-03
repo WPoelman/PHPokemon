@@ -8,9 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="js/pokemon_handler.js" type="application/javascript"></script>
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -96,15 +96,22 @@
                   <hr>
                 </div>
 
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="username">Your username: </label>
+                    <input class="form-control" id="username" name="username" placeholder="Harrie">
+                </div>
+            </div>
+
                 <!-- begin row of pokemon -->
                 <div class="row">
                     <!-- begin pokemon 1-->
-                    <div class="col-md-4">
+                    <div class="col-md-4 pokemon_choice">
                         <div id="Pikachu2">
                             <div id="extra-border">
                                 <div class="row">
                                     <div class="col-md-9 text-center">
-                                        <p id="name">Pikachu</p>
+                                        <p class="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
@@ -118,12 +125,12 @@
                         </div>
                     </div>
                     <!-- begin pokemon2 -->
-                    <div class="col-md-4">
+                    <div class="col-md-4 pokemon_choice">
                         <div id="Pikachu2">
                             <div id="extra-border">
                                 <div class="row">
                                     <div class="col-md-9 text-center">
-                                        <p id="name">Pikachu</p>
+                                        <p class="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
@@ -138,12 +145,12 @@
                     </div>
 
                     <!-- begin pokemon 3 -->
-                    <div class="col-md-4">
+                    <div class="col-md-4 pokemon_choice">
                         <div id="Pikachu2">
                             <div id="extra-border">
                                 <div class="row ">
                                     <div class="col-md-9 text-center">
-                                        <p id="name">Pikachu</p>
+                                        <p class="name">Pikachu</p>
                                         <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
                                     </div>
 
@@ -161,6 +168,24 @@
 
                 <!-- begin row 2 -->
                 <div class="row">
+                <div class="col-md-4 pokemon_choice">
+                        <div id="Pikachu2">
+                            <div id="extra-border">
+                                <div class="row">
+                                    <div class="col-md-9 text-center">
+                                        <p class="name">Pikachu</p>
+                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 text-center">
+                                        *insert type image*
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

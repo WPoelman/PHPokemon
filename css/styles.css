@@ -113,11 +113,19 @@ table {
     border-radius: 5px;
 }
 
-#name {
+.name {
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-style: italic;
+}
+
+.selected_pokemon {
+    border: 5px solid green;
+}
+
+.pokemon_choice:hover {
+    background-color: lightblue;
 }
 
 #image {
