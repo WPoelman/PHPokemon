@@ -40,33 +40,30 @@
         <?php if (isset($left_content)) {
             echo $left_content;
         } ?>
-        <!-- Left column -->
-        <span class="border border-dark"><div class="col-md-12" style="width: 1000px">
+        Index pagina:
+        <span class="border border-dark"><div class="col-md-12 main-box">
 
 
             <div class="row">
                     <!-- Button for playing -->
                 <!-- todo: Styles in css zetten. Button mooier maken -->
-                    <div class="col-md-4 text-center" style="height:250px; width:250px; padding: 20px 20px 20px 20px">
-                    <button type="button" class="btn btn-danger"
-                            style="width: 100%; height: 100%;" id="PlayButton">
-                        <h2 style="color:black; font-size: 64px;">Play!</h2>
+                    <div class="col-md-4 text-center button-div">
+                    <button type="button" class="btn btn-danger" id="PlayButton">
+                        <h2 class="ButtonText">Play!</h2>
                     </button>
                     </div>
             </div>
                 <!-- Button for how to play -->
                 <div class="row">
-                    <div class="col-md-4 text-center" style="height:250px; width:250px; padding: 20px 20px 20px 20px">
-                        <button type="button" class="btn btn-info"
-                                style="width: 100%; height: 100%;" id="HowToPlayButton">
-                            <h2 style="color:black; font-size: 48px;">How to <br>play</h2>
+                    <div class="col-md-4 text-center button-div">
+                        <button type="button" class="btn btn-info" id="HowToPlayButton">
+                            <h2 class="ButtonText">How to <br>play</h2>
                         </button>
                     </div>
-                <!-- Button for more pokemon info -->
-                    <div class="col-md-4 text-center" style="height:250px; width:250px; padding: 20px 20px 20px 20px">
-                        <button type="button" class="btn btn-primary"
-                                style="width: 100%; height: 100%;" id="PokemonInfoButton">
-                            <h2 style="color:black; font-size: 48px;">Info</h2>
+                    <!-- Button for more pokemon info -->
+                    <div class="col-md-4 text-center button-div">
+                        <button type="button" class="btn btn-primary" id="PokemonInfoButton">
+                            <h2 class="ButtonText">Info</h2>
                         </button>
                     </div>
 
@@ -74,23 +71,95 @@
             </div>
 
                 <div class="row">
-                    <hr style="color:#00000">
+                    <hr>
+                    <br>
                     <div class="col-md-12">
                         <p>Welcome to our newest pokemon game!</p>
                     </div>
                   <hr>
                 </div>
-
-
-
                 </div></span>
-        <span class="border border-dark"><div class="col-md-12" style="width: 1000px">
+
+        <!-- select pokemon page -->
+        Select pokemon:
+
+            <span class="border border-dark">
+            <div class="col-md-12 main-box">
+                <!-- begin row of pokemon -->
+                <div class="row">
+                    <!-- begin pokemon 1-->
+                    <div class="col-md-4">
+                        <div id="Pikachu2">
+                            <div id="extra-border">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p id="name">Pikachu</p>
+                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        *insert type image*
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- begin pokemon2 -->
+                    <div class="col-md-4">
+                        <div id="Pikachu2">
+                            <div id="extra-border">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p id="name">Pikachu</p>
+                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        *insert type image*
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- begin pokemon 3 -->
+                    <div class="col-md-4">
+                        <div id="Pikachu2">
+                            <div id="extra-border">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p id="name">Pikachu</p>
+                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        *insert type image*
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row 1-->
+                </div>
+                <!-- begin row 2 -->
+                <div class="row">
+
+                </div>
+
+            </div>
+
+            </span>
+
+            <span class="border border-dark"><div class="col-md-12 main-box">
 
             </div></span>
 
-        <span class="border border-dark"><div class="col-md-12" style="width: 1000px">
-
-            </div></span>
 
     </div>
 </div>
