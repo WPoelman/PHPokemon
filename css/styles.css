@@ -136,3 +136,11 @@ table {
     background-image: url("../img/pokeball-icon-transparent-5.jpg");
     background-size: cover;
 }
+
+/*
+Styling attack page
+ */
+.pokeball{
+    height:25px;
+    width:25px;
+}

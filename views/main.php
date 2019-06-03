@@ -85,7 +85,7 @@
         <!-- select pokemon page -->
         Select pokemon:
 
-            <span class="border border-dark">
+        <span class="border border-dark">
             <div class="col-md-12 main-box">
 
                 <div class="row">
@@ -185,11 +185,105 @@
                 </div>
 
             </div>
-
             </span>
+        Attack screen;
+        <span class="border border-dark">
+                <div class="col-md-12 main-box">
 
-            <span class="border border-dark"><div class="col-md-12 main-box">
+                    <!-- enemy side -->
+                    <div class="row enemy flex-row-reverse">
+                        <div class="col-md-2">
+                            <!-- add img of the enemy pokemon
+                             todo: add images of the enemy-->
+                             <p id="image"><img src="media/PokemonImages/pikachu.png"></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>HP:</p>
+                            <div class="progress">
+                                <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                Groen: "progress-bar bg-success" (bij 50-100%)
+                                Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                Rood: "progress-bar bg-danger"  (bij 1-25%)
 
+                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                lijkt het erop dat hij langzaam minder wordt
+                                -->
+                              <div class="progress-bar bg-success" role="progressbar"
+                                   style="width: 100%"
+                                   aria-valuenow="100"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                            <p>Pokemon left:</p>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-1-enemy">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-enemy">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-3-enemy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- allied side -->
+                    <div class="row allied">
+                        <div class="col-md-2">
+                            <!-- add img of the enemy pokemon
+                             todo: add images of the enemy-->
+                             <p id="image"><img src="media/PokemonImages/pikachu.png"></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>HP:</p>
+                            <div class="progress">
+                              <div class="progress-bar bg-danger" role="progressbar"
+                                   style="width: 25%"
+                                   aria-valuenow="25"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                            <p>Pokemon left:</p>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-1-ally">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-ally">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-3-ally">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle text -->
+                <div class="row">
+                    <hr>
+                    <br>
+                    <div class="col-md-12">
+                        <p>Your turn! what do you want to do?</p>
+                    </div>
+                  <hr>
+                </div>
+                    <!-- attack button -->
+                <div class="row justify-content-center">
+                    <div class="col-md-3 text-center button-div">
+                        <button type="button" class="btn btn-primary" id="AttackButton">
+                            <h2 class="ButtonText">Attack</h2>
+                        </button>
+                    </div>
+                    <!-- switch button -->
+                    <div class="col-md-3 text-center button-div">
+                        <button type="button" class="btn btn-primary" id="SwitchButton">
+                            <h2 class="ButtonText">Switch</h2>
+                        </button>
+                    </div>
+                </div>
             </div></span>
 
 
