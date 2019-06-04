@@ -87,7 +87,7 @@ $routes = new Routes();
 function get_navigation($template, $active_item) {
 	$navigation_exp = '
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Series Overview</a>
+    <a class="navbar-brand">PHPokemon</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -108,42 +108,6 @@ function get_navigation($template, $active_item) {
 
 	return $navigation_exp;
 }
-
-
-/**
- * Creates navigation HTML code using given array with active_item page
- *
- * @param array $template Array with as Key the page name and as Value the corresponding url
- * @param integer $active_id the id of the active element in the navigation bar
- *
- * @return string html code that represents the navigation
- */
-//function get_navigation_old($template, $active_id) {
-//	$navigation_exp = '
-//    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-//    <a class="navbar-brand">Series Overview</a>
-//    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-//    <span class="navbar-toggler-icon"></span>
-//    </button>
-//    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-//    <ul class="navbar-nav mr-auto">';
-//	foreach($template as $route_id => $array_info) {
-//		if ($route_id == $active_id) {
-//			$navigation_exp .= '<li class="nav-item active">';
-//			$navigation_exp .= '<a class="nav-link" href="' . $array_info['url'] . '">' . $array_info['name'] . '</a>';
-//		} else {
-//			$navigation_exp .= '<li class="nav-item">';
-//			$navigation_exp .= '<a class="nav-link" href="' . $array_info['url'] . '">' . $array_info['name'] . '</a>';
-//		}
-//
-//	}
-//	$navigation_exp .= '
-//    </ul>
-//    </div>
-//    </nav>';
-//
-//	return $navigation_exp;
-//}
 
 /**
  * Creates a new navigation array item using url and active status
@@ -166,31 +130,6 @@ function na($url, $active) {
  */
 function use_template($template) {
 	return "views/$template.php";
-}
-
-/**
- * Creates breadcrumb HTML code using given array
- *
- * @param array $breadcrumbs Array with as Key the page name and as Value the corresponding url
- *
- * @return string html code that represents the breadcrumbs
- */
-function get_breadcrumbs($breadcrumbs) {
-	$breadcrumbs_exp = '
-    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">';
-	foreach($breadcrumbs as $name => $info) {
-		if ($info[1]) {
-			$breadcrumbs_exp .= '<li class="breadcrumb-item active" aria-current="page">' . $name . '</li>';
-		} else {
-			$breadcrumbs_exp .= '<li class="breadcrumb-item"><a href="' . $info[0] . '">' . $name . '</a></li>';
-		}
-	}
-	$breadcrumbs_exp .= '
-    </ol>
-    </nav>';
-
-	return $breadcrumbs_exp;
 }
 
 /**
