@@ -33,7 +33,12 @@ function get_gamestate(){
 }
 
 function read_player_data($player) {
-	return get_gamestate()[$player];
+	$gamestate = get_gamestate();
+	if(isset($gamestate[$player])){
+		return $gamestate[$player];
+	} else {
+		return [];
+	}
 }
 
 function write_player_data($player, $data) {
