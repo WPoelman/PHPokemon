@@ -60,7 +60,7 @@ button {
 	background-color: lightcyan;
 }
 
-#PokemonInfoButton, #PlayButton, #HowToPlayButton, #ReadyPokemonChoice {
+#PokemonInfoButton, #PlayButton, #HowToPlayButton {
 	border-radius: 25px;
 }
 
@@ -71,6 +71,11 @@ button {
 /*
 Begin styling pokemon choose page
  */
+
+#smallerinfo {
+	font-size: 100%;
+}
+
 .ReadyButton {
 	font-style: italic;
 	font-size: 40px;
@@ -81,6 +86,7 @@ Begin styling pokemon choose page
 	background-color: #FF91A4;
 	height: 80px;
 	width: 250px;
+	border-radius: 12px;
 }
 
 .text-center {
@@ -217,4 +223,22 @@ Styling attack page
 
 .selected_pokemon .pokemon {
 	border: 3px solid pink;
+}
+
+#AttackButton, #SwitchButton {
+	border-radius: 25px;
+	height: 135px;
+	border: 3px solid floralwhite;
+}
+
+#AttackButton {
+	background-color: rosybrown;
+}
+
+#SwitchButton {
+	background-color: bisque;
+}
+
+.attacktext, .switchtext {
+	font-size: 40px;
 }

@@ -107,6 +107,9 @@
             <div class="col-md-12 intro">
                 <h1>List of Pokémon</h1>
                 <p>Below is an overview of the 12 available Pokémon to choose from.</p>
+                <p id="smallerinfo">For the full information about every Pokémon's stats and movesets, please </br>
+                    see the information page.
+                </p>
             </div>
         </div>
                 <!-- Fire row -->
@@ -691,13 +694,13 @@
                 <div class="row justify-content-center">
                     <div class="col-md-3 text-center button-div">
                         <button type="button" class="btn btn-primary" id="AttackButton">
-                            <h2 class="ButtonText">Attack</h2>
+                            <h2 class="ButtonText attacktext">Attack</h2>
                         </button>
                     </div>
                     <!-- switch button -->
                     <div class="col-md-3 text-center button-div">
                         <button type="button" class="btn btn-primary" id="SwitchButton">
-                            <h2 class="ButtonText">Switch</h2>
+                            <h2 class="ButtonText switchtext">Switch</h2>
                         </button>
                     </div>
                 </div>
