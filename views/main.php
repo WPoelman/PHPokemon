@@ -75,7 +75,7 @@
                     <hr>
                     <br>
                     <div class="col-md-12">
-                        <p>Welcome to our newest pokemon game!</p>
+                        <p class="text-center Middle-Text">Welcome to our newest pokemon game!</p>
                     </div>
                   <hr>
                 </div>
@@ -91,7 +91,7 @@
                 <div class="row">
                     <hr>
                     <div class="col-md-12">
-                        <p>Choose 3 pokemon and press Ready!!</p>
+                        <p class="text-center Middle-Text">Choose 3 pokemon and an Username and then press Ready!!</p>
                     </div>
                   <hr>
                 </div>
@@ -683,7 +683,7 @@
                     <hr>
                     <br>
                     <div class="col-md-12">
-                        <p>Your turn! what do you want to do?</p>
+                        <p class="text-center Middle-Text">Your turn! what do you want to do?</p>
                     </div>
                   <hr>
                 </div>
