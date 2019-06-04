@@ -11,38 +11,55 @@ include 'model.php';
 function attack($info) {
 	echo 'attack stuff hier';  // = requests.post('http://localhost/eindproject/pokemon_handler.php/attack').text
 }
+
 $routes->new_route('attack', 'post');
 
 function start_game($info) {
-	// process the post data
-	$_SESSION['username'] = $_POST['username'];
-	$pokemon_names = $_POST['pokemon'];
+	if (!(isset($_SESSION['username']))) {
+		$username = $_POST['username'];
+		$pokemon  = $_POST['pokemon'];
 
-	// get the pokemon info for the selected pokemon based on their names
-	$pokemon_info = json_decode(file_get_contents("pokemon.json"), true);
-	$pokemon_selection = [];
-	for ($i = 0; $i < 3; ++$i) {
-		array_push($pokemon_selection, $pokemon_info[$pokemon_names[$i]]);
+		$added_player = add_player($username, $pokemon);
+
+		if(sizeof($pokemon) != 3){
+			echo json_encode(['error' => 'invalid amount of pokemon chosen']);
+			return false;
+		}
+
+		if(!$added_player){
+			// game is full
+			session_destroy();
+			unset($_SESSION);
+			echo json_encode(['error' => 'game is full']);
+			return false;
+		}
+		else {
+			echo json_encode(get_game_info());
+			return true;
+		}
 	}
-
-	// Initialize a game state json
-	$game_state = json_decode(file_get_contents("game_state.json"), true);
-	if (! isset($game_state['player1'])) {
-		$game_state['player1']['username'] = $_SESSION['username'];
-		$game_state['player1']['pokemon'] = $pokemon_selection;
-	} else {
-		$game_state['player2']['username'] = $_SESSION['username'];
-		$game_state['player2']['pokemon'] = $pokemon_selection;
-	}
-
-	// Save to external file
-	$game_state_json = fopen('game_state.json', 'w');
-	fwrite($game_state_json, json_encode($game_state));
-	fclose($game_state_json);
-
-	// dit is om te testen!
-	echo json_encode($game_state);
+	echo json_encode(['error' => 'you are already in a game']);
+	return false;
 }
+
 $routes->new_route('start_game', 'post');
+
+
+function stop_game($info){
+	reset_round();
+	session_destroy();
+	unset($_SESSION);
+}
+// note: this should not be a public route on production, of course!
+$routes->new_route('stop_game', 'post');
+
+
+
+function get_profile($info) {
+	echo json_encode(get_game_info());
+}
+
+$routes->new_route('get_profile', 'get');
+
 
 $routes->start();
