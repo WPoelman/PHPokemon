@@ -48,13 +48,39 @@ button {
 	padding: 20px 20px 20px 20px;
 }
 
+#PlayButton {
+	background-color: lightyellow;
+}
+
+#HowToPlayButton {
+	background-color: #C8F8CA;
+}
+
+#PokemonInfoButton {
+	background-color: lightcyan;
+}
+
+#PokemonInfoButton, #PlayButton, #HowToPlayButton, #ReadyPokemonChoice {
+	border-radius: 25px;
+}
+
+.smallertext {
+	font-size: 230%;
+}
+
 /*
 Begin styling pokemon choose page
  */
 .ReadyButton {
 	font-style: italic;
-	font-size: 64px;
+	font-size: 40px;
 	color: black;
+}
+
+#ReadyPokemonChoice {
+	background-color: #FF91A4;
+	height: 80px;
+	width: 250px;
 }
 
 .text-center {

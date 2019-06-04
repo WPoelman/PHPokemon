@@ -57,13 +57,13 @@
                 <div class="row justify-content-center">
                     <div class="col-md-4 text-center button-div">
                         <button type="button" class="btn btn-info" id="HowToPlayButton">
-                            <h2 class="ButtonText">How to <br>play</h2>
+                            <h2 class="ButtonText smallertext">How to <br>play</h2>
                         </button>
                     </div>
                     <!-- Button for more pokemon info -->
                     <div class="col-md-4 text-center button-div">
                         <button type="button" class="btn btn-primary" id="PokemonInfoButton">
-                            <h2 class="ButtonText">Info</h2>
+                            <h2 class="ButtonText smallertext">List of <br> available Pokémon</h2>
                         </button>
                     </div>
 
