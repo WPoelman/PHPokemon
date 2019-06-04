@@ -29,7 +29,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Charmander</p>
-                                <p id="image"><img src="img/charmander.png" class="sprite bouncing"></p>
+                                <p id="image"><img src="../media/PokemonImages/charmander.png" class="sprite bouncing"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -101,7 +101,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Vulpix</p>
-                                <p id="image"><img src="img/vulpix.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/vulpix.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -177,7 +177,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Squirtle</p>
-                                <p id="image"><img src="img/squirtle.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/squirtle.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -249,7 +249,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Staryu</p>
-                                <p id="image"><img src="img/staryu.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/staryu.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -325,7 +325,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Bulbasaur</p>
-                                <p id="image"><img src="img/bulbasaur.png" class="sprite" id="bulba"></p>
+                                <p id="image"><img src="../media/PokemonImages/bulbasaur.png" class="sprite" id="bulba"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -397,7 +397,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Oddish</p>
-                                <p id="image"><img src="img/oddish.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/oddish.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -473,7 +473,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Pikachu</p>
-                                <p id="image"><img src="img/pikachu.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/pikachu.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -545,7 +545,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Magnemite</p>
-                                <p id="image"><img src="img/magnemite.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/magnemite.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -622,7 +622,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Rattata</p>
-                                <p id="image"><img src="img/rattata.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/rattata.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -694,7 +694,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Eevee</p>
-                                <p id="image"><img src="img/eevee.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/eevee.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -771,7 +771,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Geodude</p>
-                                <p id="image"><img src="img/geodude.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/geodude.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -843,7 +843,7 @@ include __DIR__ . '/tpl/body-start.php';
                         <div class="row">
                             <div class="col-md-6">
                                 <p id="name">Omanyte</p>
-                                <p id="image"><img src="img/omanyte.png" class="sprite"></p>
+                                <p id="image"><img src="../media/PokemonImages/omanyte.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">

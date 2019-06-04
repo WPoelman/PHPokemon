@@ -7,6 +7,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Raleway', sans-serif;
 }
 
 footer {
@@ -45,10 +46,6 @@ button{
 /*
 Begin styling pokemon choose page
  */
-.wp-row {
-    margin: 30px 0 30px 0;
-}
-
 .ReadyButton{
     font-style: italic;
     font-size: 64px;
@@ -59,6 +56,15 @@ Begin styling pokemon choose page
     text-align:center;
     align-content: center;
 }
+/* hieronder is Frank zijn css*/
+.wp-row {
+    margin: 30px 0 30px 0;
+}
+
+.wp-row {
+    margin: 30px 0 30px 0;
+}
+
 @keyframes bounce {
     0%,100% {
         transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
@@ -68,13 +74,15 @@ Begin styling pokemon choose page
     }
 }
 
-#pika {
+.bouncing {
     animation: bounce 0.8s ease infinite;
+    height: 115px;
+    width: 125px;
 }
 
 
 
-#Pikachu {
+#Charmander, #Vulpix {
     border: 1px solid lavenderblush;
     border-radius: 25px;
     padding: 1%;
@@ -82,11 +90,43 @@ Begin styling pokemon choose page
     font-family: 'Raleway', sans-serif;
 }
 
-#Pikachu2 {
+#Squirtle, #Staryu {
+    border: 1px solid lightcyan;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: lightcyan;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Bulbasaur, #Oddish {
+    border: 1px solid #C8F8CA;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: #C8F8CA;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Pikachu, #Magnemite {
     border: 1px solid lightyellow;
     border-radius: 25px;
     padding: 1%;
     background-color: #FBF8B2;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Rattata, #Eevee {
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: lightgray;
+    font-family: 'Raleway', sans-serif;
+}
+
+#Geodude, #Omanyte {
+    border: 1px solid #D1B48D;
+    border-radius: 25px;
+    padding: 1%;
+    background-color: #D1B48D;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -101,48 +141,42 @@ table {
     width: 100%;
 }
 
-.electric {
-    background-color: lightyellow;
-    border: 2px solid yellow;
-    border-radius: 5px;
-}
-
-.normal {
-    background-color: whitesmoke;
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
-.name {
+#name {
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-style: italic;
 }
 
-.selected_pokemon {
-    border: 5px solid green;
-}
-
-.pokemon_choice:hover {
-    background-color: lightblue;
-}
-
 #image {
-    padding-left: 30%;
+    padding-left: 27%;
 }
 
-.moveset {
+#sprite {
+    height: 105px;
+    width: 105px;
+}
+
+.moveset, .stats {
     margin-top: 5%;
 }
 
-.stats {
-    margin-top: 5%;
+.current {
+    font-size: 105%;
 }
 
-#pika_image {
-    background-image: url("../img/pokeball-icon-transparent-5.jpg");
-    background-size: cover;
+.intro {
+    text-align: center;
+}
+
+.intro h1 {
+    font-size: 350%;
+}
+
+.intro p {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 150%;
 }
 
 /*
@@ -151,4 +185,9 @@ Styling attack page
 .pokeball{
     height:25px;
     width:25px;
+}
+
+#alliedPokemonImage{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }

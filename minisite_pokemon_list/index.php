@@ -20,7 +20,7 @@ include __DIR__ . '/tpl/body-start.php';
                 <h3>Here is a bouncing Pikachu:</h3>
                 <br />
                 <p id="pika_container">
-                    <img src="img/pikachu.png" id="pika">
+                    <img src="../media/PokemonImages/pikachu.png" id="pika">
                 </p>
 
             </div>
