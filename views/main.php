@@ -113,7 +113,7 @@
         <div class="row wp-row">
             <!-- Pokemon 1 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Charmander" class="pokemon current">
+                <div id="Charmander" class="pokemon fire-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -151,7 +151,7 @@
 
             <!-- Pokemon 2 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Vulpix" class="pokemon">
+                <div id="Vulpix" class="pokemon fire-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -193,7 +193,7 @@
         <div class="row wp-row">
             <!-- Pokemon 3 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Squirtle" class="pokemon">
+                <div id="Squirtle" class="pokemon water-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -230,7 +230,7 @@
             </div>
             <!-- Pokemon 4 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Staryu" class="pokemon">
+                <div id="Staryu" class="pokemon water-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -272,7 +272,7 @@
         <div class="row wp-row">
             <!-- Pokemon 5 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Bulbasaur" class="pokemon">
+                <div id="Bulbasaur" class="pokemon grass-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -310,7 +310,7 @@
 
             <!-- Pokemon 6 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Oddish" class="pokemon">
+                <div id="Oddish" class="pokemon water-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -352,7 +352,7 @@
         <div class="row wp-row">
             <!-- Pokemon 7 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Pikachu" class="pokemon">
+                <div id="Pikachu" class="pokemon electric-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -390,7 +390,7 @@
 
             <!-- Pokemon 8 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Magnemite" class="pokemon">
+                <div id="Magnemite" class="pokemon electric-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -433,7 +433,7 @@
         <div class="row wp-row">
             <!-- Pokemon 9 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Rattata" class="pokemon">
+                <div id="Rattata" class="pokemon normal-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -471,7 +471,7 @@
 
             <!-- Pokemon 10 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Eevee" class="pokemon">
+                <div id="Eevee" class="pokemon normal-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -514,7 +514,7 @@
         <div class="row wp-row">
             <!-- Pokemon 11 -->
             <div class="col-md-6">
-                <div id="Geodude" class="pokemon">
+                <div id="Geodude" class="pokemon rock-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
@@ -552,7 +552,7 @@
 
             <!-- Pokemon 12 -->
             <div class="col-md-6">
-                <div id="Omanyte" class="pokemon">
+                <div id="Omanyte" class="pokemon rock-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">

@@ -93,32 +93,32 @@ Begin styling pokemon choose page
 	border-style: solid
 }
 
-#Charmander, #Vulpix {
+.fire-type {
 	border-color: lavenderblush;
 	background-color: lavenderblush;
 }
 
-#Squirtle, #Staryu {
+.water-type {
 	border-color: lightcyan;
 	background-color: lightcyan;
 }
 
-#Bulbasaur, #Oddish {
+.grass-type {
 	border-color: #C8F8CA;
 	background-color: #C8F8CA;
 }
 
-#Pikachu, #Magnemite {
+.electric-type {
 	border-color: lightyellow;
 	background-color: #FBF8B2;
 }
 
-#Rattata, #Eevee {
+.normal-type {
 	border-color: lightgray;
 	background-color: lightgray;
 }
 
-#Geodude, #Omanyte {
+.rock-type {
 	border-color: #D1B48D;
 	background-color: #D1B48D;
 }
@@ -187,5 +187,5 @@ Styling attack page
 }
 
 .selected_pokemon .pokemon {
-	border: 2px solid pink !important;
+	border: 3px solid pink;
 }
