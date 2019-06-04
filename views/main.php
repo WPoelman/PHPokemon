@@ -310,7 +310,7 @@
 
             <!-- Pokemon 6 -->
             <div class="col-md-6 pokemon_choice">
-                <div id="Oddish" class="pokemon water-type">
+                <div id="Oddish" class="pokemon grass-type">
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
