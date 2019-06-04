@@ -47,7 +47,9 @@ button {
 	width: 250px;
 	padding: 20px 20px 20px 20px;
 }
-
+.attack-button{
+	height:150px;
+}
 #PlayButton {
 	background-color: lightyellow;
 }
