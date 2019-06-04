@@ -74,10 +74,10 @@ Begin styling pokemon choose page
     }
 }
 
-.bouncing {
+.pokemon:hover img {
     animation: bounce 0.8s ease infinite;
-    height: 115px;
-    width: 125px;
+    /*height: 115px;*/
+    /*width: 125px;*/
 }
 
 
