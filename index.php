@@ -34,7 +34,7 @@ function instructions($info, $nav) {
 	$page_content  = 'epic content';
 
 	/* Choose Template */
-	include use_template('main');
+	include use_template('instructions');
 }
 
 $routes->new_route('instructions', 'get', 'Instructions');
