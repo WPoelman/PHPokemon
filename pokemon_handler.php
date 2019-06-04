@@ -17,9 +17,15 @@ $routes->new_route('attack', 'post');
 function start_game($info) {
 	if (!(isset($_SESSION['username']))) {
 		$username = $_POST['username'];
-		$pokemon  = explode(",", $_POST['pokemon']);
+		$pokemon  = $_POST['pokemon'];
 
 		$added_player = add_player($username, $pokemon);
+
+		if(sizeof($pokemon) != 3){
+			echo json_encode(['error' => 'invalid amount of pokemon chosen']);
+			return false;
+		}
+
 		if(!$added_player){
 			// game is full
 			session_destroy();

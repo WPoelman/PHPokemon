@@ -28,46 +28,54 @@ function get_game_info() {
 
 // matching players
 
-function write_player_data($player, $data){
-	file_put_contents("data/round/$player.json", json_encode($data));
-}
-function read_player_data($player){
-return json_decode(file_get_contents("data/round/$player.json"), true);
+function get_gamestate(){
+	return json_decode(file_get_contents("data/gamestate.json"), true);
 }
 
-function reset_round(){
+function read_player_data($player) {
+	return get_gamestate()[$player];
+}
+
+function write_player_data($player, $data) {
+	$old_data = get_gamestate();
+	$old_data[$player] = $data;
+	file_put_contents("data/gamestate.json", json_encode($data));
+}
+
+function reset_round() {
 	// execute this function at end of game
 	write_player_data('player1', []);
 	write_player_data('player2', []);
 }
 
 // check if a player is ready
-function is_ready($player){
+function is_ready($player) {
 	return isset(read_player_data($player)['username']);
 }
 
-function add_player($username, $pokemons){
-	$_SESSION['username'] = $username;
-	$_SESSION['pokemon']  = $pokemons;
+function add_player($username, $pokemons) {
+	$_SESSION['username']    = $username;
+	$_SESSION['pokemon']     = $pokemons;
 	$player_info['username'] = $username;
-	$player_info['pokemon'] = [];
+	$player_info['pokemon']  = [];
 
 	// yes I know the plural of pokemon is pokemon but that makes these variables very difficult to name
-	foreach($pokemons as $pokemon){
+	foreach($pokemons as $pokemon) {
 		$player_info['pokemon'][$pokemon] = reset_pokemon_variables(get_pokemon_info($pokemon));
 	}
 
 
-	if(!is_ready('player1')){
+	if (!is_ready('player1')) {
 		write_player_data('player1', $player_info);
+
 		return true;
 	} else {
 		// player 1 occupied, try player 2
-		if(!is_ready('player2')){
+		if (!is_ready('player2')) {
 			write_player_data('player2', $player_info);
+
 			return true;
-		}
-		else {
+		} else {
 			// all spaces occupied (for now)
 			return false;
 		}

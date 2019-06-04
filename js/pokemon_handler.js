@@ -24,7 +24,7 @@ function readyButtonLaunch(selected_pokemon) {
     // send the post request with the username and selected pokemon
     let reactie = post("start_game",
         {
-            "pokemon": selected_pokemon.toString(),
+            "pokemon": selected_pokemon,
             "username": username_field.val()
         });
 
