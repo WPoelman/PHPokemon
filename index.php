@@ -51,7 +51,7 @@ function pokemon($info, $nav) {
 	$page_content  = 'pokmon list';
 
 	/* Choose Template */
-	include use_template('main');
+	include use_template('pokemon');
 }
 
 $routes->new_route('pokemon', 'get', 'Pokemon');
