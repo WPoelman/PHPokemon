@@ -651,8 +651,8 @@
                     </div>
 
                     <!-- allied side -->
-                    <div class="row allied">
-                        <div class="col-md-3">
+                    <div class="row allied top-buffer">
+                        <div class="col-md-3 ">
                             <p>HP:</p>
                             <div class="progress">
                               <div class="progress-bar bg-danger" role="progressbar"
@@ -751,7 +751,7 @@
                     </div>
 
                     <!-- allied side -->
-                    <div class="row allied">
+                    <div class="row allied top-buffer">
                         <div class="col-md-3">
                             <p>HP:</p>
                             <div class="progress">
@@ -793,7 +793,7 @@
                     <!-- attack number 1-->
                     <div class="row">
                         <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-basic electric-type">
+                        <button type="button" class="btn btn-basic electric-type attack-choice-button">
                             <h2 class="ButtonText attacktext">Thunder shock</h2>
                             <h5>PP:</h5>
                             <h5>5/10</h5>
@@ -801,7 +801,7 @@
                     </div>
                         <!-- attack number 2-->
                         <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-basic normal-type">
+                        <button type="button" class="btn btn-basic normal-type attack-choice-button">
                             <h2 class="ButtonText attacktext">Slam</h2>
                             <h5>PP:</h5>
                             <h5>5/10</h5>
@@ -809,16 +809,186 @@
                     </div>
                         <!-- attack number 3-->
                         <div class="col-md-4 text-center">
-                        <button type="button" class="btn btn-basic electric-type">
+                        <button type="button" class="btn btn-basic electric-type attack-choice-button">
                             <h2 class="ButtonText attacktext">Thunderwave</h2>
                             <h5>PP:</h5>
                             <h5>5/10</h5>
                         </button>
                     </div>
-
+                    </div>
+                        <!-- Go back to choosing-->
+                    <div class="row justify-content-center">
+                         <div class="col-md-3 text-center button-div return-button">
+                        <button type="button" class="btn btn-light">
+                            <img src="media/Go-back-arrow.png"
+                                 style=" height: 100%;
+                                    width: 100%">
+                        </button>
+                    </div>
+                        <!--Ready button
+                        todo: Id naar cass veranderen!-->
+                    <div class="col-md-6 text-center button-div">
+                        <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                            <h2 class="ReadyButton">Ready</h2>
+                        </button>
                     </div>
 
-            </div></span>
+                </div>
+                </div>
+        </span>
+
+        Switch choice:
+        <span class="border border-dark">
+                <div class="col-md-12 main-box">
+
+                    <!-- enemy side -->
+                    <div class="row enemy flex-row-reverse">
+                        <div class="col-md-3">
+                            <p>HP:</p>
+                            <div class="progress">
+                                <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                Groen: "progress-bar bg-success" (bij 50-100%)
+                                Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                Rood: "progress-bar bg-danger"  (bij 1-25%)
+
+                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                lijkt het erop dat hij langzaam minder wordt
+                                -->
+                              <div class="progress-bar bg-success" role="progressbar"
+                                   style="width: 100%"
+                                   aria-valuenow="100"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                            <p>Pokemon left:</p>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-1-enemy">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-enemy">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-3-enemy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- add img of the enemy pokemon
+                             todo: add images of the enemy-->
+                             <p class="image"><img src="media/PokemonImages/pikachu.png"></p>
+                        </div>
+                    </div>
+
+                    <!-- allied side -->
+                    <div class="row allied top-buffer">
+                        <div class="col-md-3">
+                            <p>HP:</p>
+                            <div class="progress">
+                              <div class="progress-bar bg-danger" role="progressbar"
+                                   style="width: 25%"
+                                   aria-valuenow="25"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                            <p>Pokemon left:</p>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-1-ally">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-ally">
+                                </div>
+                                <div class="col-md-1">
+                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-3-ally">
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-md-2">
+                             <p id="alliedPokemonImage"><img src="media/PokemonImages/eevee.png"></p>
+                        </div>
+                    </div>
+                    <!-- Middle text -->
+                <div class="row">
+                    <hr>
+                    <br>
+                    <div class="col-md-12">
+                        <p class="text-center Middle-Text">To which pokemon do you want to switch?</p>
+                    </div>
+                  <hr>
+                </div>
+                    <!-- Pokemon number 1-->
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                        <button type="button" class="btn btn-basic grass-type pokemon-switch-button">
+                            <h3>Bulbasaur</h3>
+                            <img src="media/PokemonImages/bulbasaur.png">
+                            <h5>HP:</h5>
+                            <div class="progress">
+                                <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                Groen: "progress-bar bg-success" (bij 50-100%)
+                                Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                Rood: "progress-bar bg-danger"  (bij 1-25%)
+
+                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                lijkt het erop dat hij langzaam minder wordt
+                                -->
+                              <div class="progress-bar bg-success" role="progressbar"
+                                   style="width: 100%"
+                                   aria-valuenow="100"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                        </button>
+                    </div>
+                        <!-- Pokemon number 2-->
+                        <div class="col-md-6 text-center">
+                        <button type="button" class="btn btn-basic fire-type pokemon-switch-button">
+                            <h3>Charmander</h3>
+                            <img src="media/PokemonImages/charmander.png">
+                            <h5>HP:</h5>
+                            <div class="progress">
+                                <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                Groen: "progress-bar bg-success" (bij 50-100%)
+                                Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                Rood: "progress-bar bg-danger"  (bij 1-25%)
+
+                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                lijkt het erop dat hij langzaam minder wordt
+                                -->
+                              <div class="progress-bar bg-success" role="progressbar"
+                                   style="width: 65%"
+                                   aria-valuenow="65"
+                                   aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                            </div>
+                        </button>
+                    </div>
+                    </div>
+                    <!-- Go back to choosing-->
+                    <div class="row justify-content-center">
+                         <div class="col-md-2 text-center button-div return-button">
+                        <button type="button" class="btn btn-light">
+                            <img src="media/Go-back-arrow.png"
+                                 style=" height: 100%;
+                                    width: 100%">
+                        </button>
+                    </div>
+                        <!--Ready button
+                        todo: Id naar class veranderen!-->
+                    <div class="col-md-6 text-center button-div">
+                        <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                            <h2 class="ReadyButton">Ready</h2>
+                        </button>
+                    </div>
+
+                </div>
+                </div>
+        </span>
     </div>
 </div>
 </body>
