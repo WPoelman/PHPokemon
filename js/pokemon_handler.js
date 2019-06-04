@@ -4,10 +4,12 @@ function get(action){
 }
 
 function post(action, data){
+    // shortcut for using api POST
     return $.post(`pokemon_handler.php/${action}`, data);
 }
 
 function getPlayerData() {
+    // get the current player data
     return get('get_profile');
 }
 
@@ -36,6 +38,14 @@ function readyButtonLaunch(selected_pokemon) {
         console.log('this data was saved at the server:');
         getPlayerData().then(data => console.log(data))
     });
+}
+
+function switchButtonLaunch () {
+
+}
+
+function attackButtonLaunch () {
+
 }
 
 $(function () {
