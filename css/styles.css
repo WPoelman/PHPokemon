@@ -23,6 +23,11 @@ footer {
 .Middle-Text{
 	font-size: 32px;
 }
+
+.component {
+	display: none;
+}
+
 hr {
 	border: 1px solid black;
 	width: 100%;

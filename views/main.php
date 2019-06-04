@@ -56,18 +56,25 @@
                         </div>
                     </div>
 
-                    <!-- Button for how to play -->
+                    <!-- How to play & pokemon buttons -->
                     <div class="row justify-content-center">
+
+                        <!-- Button for how to play -->
                         <div class="col-md-4 text-center button-div">
-                            <a type="button" class="btn btn-info" id="HowToPlayButton" href="instructions">
-                                <h2 class="ButtonText smallertext">How to <br>play</h2>
+                            <a href="instructions">
+                                <button type="button" class="btn btn-info" id="HowToPlayButton">
+                                    <h2 class="ButtonText smallertext">How to <br>play</h2>
+                                </button>
                             </a>
                         </div>
+
                         <!-- Button for more pokemon info -->
                         <div class="col-md-4 text-center button-div">
-                            <button type="button" class="btn btn-primary" id="PokemonInfoButton">
-                                <h2 class="ButtonText smallertext">List of <br> available Pokémon</h2>
-                            </button>
+                            <a href="pokemon">
+                                <button type="button" class="btn btn-primary" id="PokemonInfoButton">
+                                    <h2 class="ButtonText smallertext">List of <br> available Pokémon</h2>
+                                </button>
+                            </a>
                         </div>
                     </div>
 
@@ -87,7 +94,7 @@
         <!--                    -->
         <!-- Pre game selection -->
         <!--       screen       -->
-        <div class="row" id="pre_game_selection_screen">
+        <div class="row component" id="pre_game_selection_screen">
             <span class="border border-dark">
                 <div class="col-md-12 main-box">
 
@@ -633,7 +640,7 @@
         <!--                  -->
         <!-- Main game screen -->
         <!--                  -->
-        <div class="row" id="main_game_screen">
+        <div class="row component" id="main_game_screen">
             <span class="border border-dark">
                 <div class="col-md-12 main-box">
 
@@ -703,199 +710,185 @@
                         </div>
                     </div>
 
-                </div>
-            </span>
-        </div>
+                    <!--                -->
+                    <!-- Select attack  -->
+                    <!--   or switch    -->
+                    <div class="col-md-12 main-box component" id="select_action">
 
-        <!--                -->
-        <!-- Select attack  -->
-        <!--   or switch    -->
-        <div class="row" id="select_action">
-            <span class="border border-dark">
-                <div class="col-md-12 main-box">
-
-                    <!-- Middle text -->
-                    <div class="row">
-                        <hr>
-                        <br>
-                        <div class="col-md-12">
-                            <p class="text-center Middle-Text">Your turn! what do you want to do?</p>
-                        </div>
-                        <hr>
-                    </div>
-
-                    <!-- Buttons -->
-                    <div class="row justify-content-center">
-                        <!-- Attack button -->
-                        <div class="col-md-3 text-center button-div">
-                            <button type="button" class="btn btn-primary" id="AttackButton">
-                                <h2 class="ButtonText attacktext">Attack</h2>
-                            </button>
-                        </div>
-                        <!-- Switch button -->
-                        <div class="col-md-3 text-center button-div">
-                            <button type="button" class="btn btn-primary" id="SwitchButton">
-                                <h2 class="ButtonText switchtext">Switch</h2>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </span>
-        </div>
-
-        <!--                -->
-        <!-- Attack screen  -->
-        <!--                -->
-        <div class="row" id="attack">
-            <span class="border border-dark">
-                <div class="col-md-12 main-box">
-
-                    <!-- Middle text -->
-                    <div class="row">
-                        <hr>
-                        <br>
-                        <div class="col-md-12">
-                            <p class="text-center Middle-Text">Which attack do you want to use?</p>
-                        </div>
-                        <hr>
-                    </div>
-
-                    <!-- Attack buttons -->
-                    <div class="row">
-                        <!-- attack number 1-->
-                        <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-basic electric-type attack-choice-button">
-                                <h2 class="ButtonText attacktext">Thunder shock</h2>
-                                <h5>PP:</h5>
-                                <h5>5/10</h5>
-                            </button>
+                        <!-- Middle text -->
+                        <div class="row">
+                            <hr>
+                            <br>
+                            <div class="col-md-12">
+                                <p class="text-center Middle-Text">Your turn! what do you want to do?</p>
+                            </div>
+                            <hr>
                         </div>
 
-                        <!-- attack number 2-->
-                        <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-basic normal-type attack-choice-button">
-                                <h2 class="ButtonText attacktext">Slam</h2>
-                                <h5>PP:</h5>
-                                <h5>5/10</h5>
-                            </button>
-                        </div>
-
-                        <!-- attack number 3-->
-                        <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-basic electric-type attack-choice-button">
-                                <h2 class="ButtonText attacktext">Thunderwave</h2>
-                                <h5>PP:</h5>
-                                <h5>5/10</h5>
-                            </button>
+                        <!-- Buttons -->
+                        <div class="row justify-content-center">
+                            <!-- Attack button -->
+                            <div class="col-md-3 text-center button-div">
+                                <button type="button" class="btn btn-primary" id="AttackButton">
+                                    <h2 class="ButtonText attacktext">Attack</h2>
+                                </button>
+                            </div>
+                            <!-- Switch button -->
+                            <div class="col-md-3 text-center button-div">
+                                <button type="button" class="btn btn-primary" id="SwitchButton">
+                                    <h2 class="ButtonText switchtext">Switch</h2>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Back & Ready buttons -->
-                    <div class="row justify-content-center">
+                    <!--                -->
+                    <!-- Attack screen  -->
+                    <!--                -->
+                    <div class="col-md-12 main-box component" id="attack">
 
-                        <!-- Go back to select action screen button -->
-                        <div class="col-md-3 text-center button-div return-button">
-                            <button type="button" class="btn btn-light">
-                                <img src="media/Go-back-arrow.png" style=" height: 100%;
-                                    width: 100%">
-                            </button>
+                        <!-- Middle text -->
+                        <div class="row">
+                            <hr>
+                            <br>
+                            <div class="col-md-12">
+                                <p class="text-center Middle-Text">Which attack do you want to use?</p>
+                            </div>
+                            <hr>
                         </div>
 
-                        <!--Ready button todo: Id naar cass veranderen!-->
-                        <div class="col-md-6 text-center button-div">
-                            <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
-                                <h2 class="ReadyButton">Ready</h2>
-                            </button>
+                        <!-- Attack buttons -->
+                        <div class="row">
+                            <!-- attack number 1-->
+                            <div class="col-md-4 text-center">
+                                <button type="button" class="btn btn-basic electric-type attack-choice-button">
+                                    <h2 class="ButtonText attacktext">Thunder shock</h2>
+                                    <h5>PP:</h5>
+                                    <h5>5/10</h5>
+                                </button>
+                            </div>
+
+                            <!-- attack number 2-->
+                            <div class="col-md-4 text-center">
+                                <button type="button" class="btn btn-basic normal-type attack-choice-button">
+                                    <h2 class="ButtonText attacktext">Slam</h2>
+                                    <h5>PP:</h5>
+                                    <h5>5/10</h5>
+                                </button>
+                            </div>
+
+                            <!-- attack number 3-->
+                            <div class="col-md-4 text-center">
+                                <button type="button" class="btn btn-basic electric-type attack-choice-button">
+                                    <h2 class="ButtonText attacktext">Thunderwave</h2>
+                                    <h5>PP:</h5>
+                                    <h5>5/10</h5>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Back & Ready buttons -->
+                        <div class="row justify-content-center">
+
+                            <!-- Go back to select action screen button -->
+                            <div class="col-md-3 text-center button-div return-button">
+                                <button type="button" class="btn btn-light BackButton">
+                                    <img src="media/Go-back-arrow.png" style=" height: 100%; width: 100%">
+                                </button>
+                            </div>
+
+                            <!--Ready button todo: Id naar cass veranderen!-->
+                            <div class="col-md-6 text-center button-div">
+                                <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                                    <h2 class="ReadyButton">Ready</h2>
+                                </button>
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
-            </span>
-        </div>
+                    <!--                -->
+                    <!-- Switch Pokemon -->
+                    <!--                -->
+                    <div class="col-md-12 main-box component" id="switch_pokemon">
 
-        <!--                -->
-        <!-- Switch Pokemon -->
-        <!--                -->
-        <div class="row" id="switch_pokemon">
-            <span class="border border-dark">
-                <div class="col-md-12 main-box">
-
-                    <!-- Middle text -->
-                    <div class="row">
-                        <hr>
-                        <br>
-                        <div class="col-md-12">
-                            <p class="text-center Middle-Text">To which pokemon do you want to switch?</p>
-                        </div>
-                        <hr>
-                    </div>
-
-                    <!-- Pokemon choices -->
-                    <div class="row">
-
-                        <!-- Pokemon choice 1 -->
-                        <div class="col-md-6 text-center">
-                            <button type="button" class="btn btn-basic grass-type pokemon-switch-button">
-                                <h3>Bulbasaur</h3>
-                                <img src="media/PokemonImages/bulbasaur.png">
-                                <h5>HP:</h5>
-                                <div class="progress">
-                                    <!--Om de kleur aan te passen kan je de class veranderen naar:
-                                Groen: "progress-bar bg-success" (bij 50-100%)
-                                Oranje: "progress-bar bg-warning" (bij 25-50%)
-                                Rood: "progress-bar bg-danger"  (bij 1-25%)
-
-                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
-                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
-                                lijkt het erop dat hij langzaam minder wordt
-                                -->
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </button>
+                        <!-- Middle text -->
+                        <div class="row">
+                            <hr>
+                            <br>
+                            <div class="col-md-12">
+                                <p class="text-center Middle-Text">To which pokemon do you want to switch?</p>
+                            </div>
+                            <hr>
                         </div>
 
-                        <!-- Pokemon choice 2-->
-                        <div class="col-md-6 text-center">
-                            <button type="button" class="btn btn-basic fire-type pokemon-switch-button">
-                                <h3>Charmander</h3>
-                                <img src="media/PokemonImages/charmander.png">
-                                <h5>HP:</h5>
-                                <div class="progress">
-                                    <!--Om de kleur aan te passen kan je de class veranderen naar:
-                                Groen: "progress-bar bg-success" (bij 50-100%)
-                                Oranje: "progress-bar bg-warning" (bij 25-50%)
-                                Rood: "progress-bar bg-danger"  (bij 1-25%)
+                        <!-- Pokemon choices -->
+                        <div class="row">
 
-                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
-                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
-                                lijkt het erop dat hij langzaam minder wordt
-                                -->
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </button>
+                            <!-- Pokemon choice 1 -->
+                            <div class="col-md-6 text-center">
+                                <button type="button" class="btn btn-basic grass-type pokemon-switch-button">
+                                    <h3>Bulbasaur</h3>
+                                    <img src="media/PokemonImages/bulbasaur.png">
+                                    <h5>HP:</h5>
+                                    <div class="progress">
+                                        <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                        Groen: "progress-bar bg-success" (bij 50-100%)
+                                        Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                        Rood: "progress-bar bg-danger"  (bij 1-25%)
+
+                                        Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                        moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                        lijkt het erop dat hij langzaam minder wordt
+                                         -->
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Pokemon choice 2-->
+                            <div class="col-md-6 text-center">
+                                <button type="button" class="btn btn-basic fire-type pokemon-switch-button">
+                                    <h3>Charmander</h3>
+                                    <img src="media/PokemonImages/charmander.png">
+                                    <h5>HP:</h5>
+                                    <div class="progress">
+                                        <!--Om de kleur aan te passen kan je de class veranderen naar:
+                                        Groen: "progress-bar bg-success" (bij 50-100%)
+                                        Oranje: "progress-bar bg-warning" (bij 25-50%)
+                                        Rood: "progress-bar bg-danger"  (bij 1-25%)
+
+                                        Om de bar aan te passen kan je in style de width veranderen, volgens mij
+                                        moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
+                                        lijkt het erop dat hij langzaam minder wordt
+                                        -->
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
+                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </button>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <!-- Back & Ready buttons -->
+                        <div class="row justify-content-center">
 
-                    <!-- Back & Ready buttons -->
-                    <div class="row justify-content-center">
+                            <!-- Go back to select action screen button -->
+                            <div class="col-md-3 text-center button-div return-button">
+                                <button type="button" class="btn btn-light BackButton">
+                                    <img src="media/Go-back-arrow.png" style=" height: 100%; width: 100%">
+                                </button>
+                            </div>
 
-                        <!-- Go back to select action screen button -->
-                        <div class="col-md-3 text-center button-div return-button">
-                            <button type="button" class="btn btn-light">
-                                <img src="media/Go-back-arrow.png" style=" height: 100%;
-                                    width: 100%">
-                            </button>
-                        </div>
+                            <!--Ready button todo: Id naar cass veranderen!-->
+                            <div class="col-md-6 text-center button-div">
+                                <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                                    <h2 class="ReadyButton">Ready</h2>
+                                </button>
+                            </div>
 
-                        <!--Ready button todo: Id naar cass veranderen!-->
-                        <div class="col-md-6 text-center button-div">
-                            <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
-                                <h2 class="ReadyButton">Ready</h2>
-                            </button>
                         </div>
 
                     </div>
@@ -903,7 +896,6 @@
                 </div>
             </span>
         </div>
-
     </div>
 
 </body>
