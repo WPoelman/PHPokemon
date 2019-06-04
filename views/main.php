@@ -117,8 +117,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Charmander</p>
-                                <p id="image"><img src="media/PokemonImages/charmander.png" class="sprite bouncing"></p>
+                                <p class="name">Charmander</p>
+                                <p class="image"><img src="media/PokemonImages/charmander.png" class="sprite bouncing"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -155,8 +155,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Vulpix</p>
-                                <p id="image"><img src="media/PokemonImages/vulpix.png" class="sprite"></p>
+                                <p class="name">Vulpix</p>
+                                <p class="image"><img src="media/PokemonImages/vulpix.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -197,8 +197,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Squirtle</p>
-                                <p id="image"><img src="media/PokemonImages/squirtle.png" class="sprite"></p>
+                                <p class="name">Squirtle</p>
+                                <p class="image"><img src="media/PokemonImages/squirtle.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -234,8 +234,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Staryu</p>
-                                <p id="image"><img src="media/PokemonImages/staryu.png" class="sprite"></p>
+                                <p class="name">Staryu</p>
+                                <p class="image"><img src="media/PokemonImages/staryu.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -276,8 +276,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Bulbasaur</p>
-                                <p id="image"><img src="media/PokemonImages/bulbasaur.png" class="sprite" id="bulba"></p>
+                                <p class="name">Bulbasaur</p>
+                                <p class="image"><img src="media/PokemonImages/bulbasaur.png" class="sprite" id="bulba"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -314,8 +314,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Oddish</p>
-                                <p id="image"><img src="media/PokemonImages/oddish.png" class="sprite"></p>
+                                <p class="name">Oddish</p>
+                                <p class="image"><img src="media/PokemonImages/oddish.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -356,8 +356,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Pikachu</p>
-                                <p id="image"><img src="media/PokemonImages/pikachu.png" class="sprite"></p>
+                                <p class="name">Pikachu</p>
+                                <p class="image"><img src="media/PokemonImages/pikachu.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -394,8 +394,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Magnemite</p>
-                                <p id="image"><img src="media/PokemonImages/magnemite.png" class="sprite"></p>
+                                <p class="name">Magnemite</p>
+                                <p class="image"><img src="media/PokemonImages/magnemite.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -437,8 +437,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Rattata</p>
-                                <p id="image"><img src="media/PokemonImages/rattata.png" class="sprite"></p>
+                                <p class="name">Rattata</p>
+                                <p class="image"><img src="media/PokemonImages/rattata.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -475,8 +475,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Eevee</p>
-                                <p id="image"><img src="media/PokemonImages/eevee.png" class="sprite"></p>
+                                <p class="name">Eevee</p>
+                                <p class="image"><img src="media/PokemonImages/eevee.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -518,8 +518,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Geodude</p>
-                                <p id="image"><img src="media/PokemonImages/geodude.png" class="sprite"></p>
+                                <p class="name">Geodude</p>
+                                <p class="image"><img src="media/PokemonImages/geodude.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -556,8 +556,8 @@
                     <div id="extra-border">
                         <div class="row">
                             <div class="col-md-6">
-                                <p id="name">Omanyte</p>
-                                <p id="image"><img src="media/PokemonImages/omanyte.png" class="sprite"></p>
+                                <p class="name">Omanyte</p>
+                                <p class="image"><img src="media/PokemonImages/omanyte.png" class="sprite"></p>
                             </div>
                             <div class="col-md-6">
                                 <table class="stats">
@@ -609,11 +609,6 @@
 
                     <!-- enemy side -->
                     <div class="row enemy flex-row-reverse">
-                        <div class="col-md-2">
-                            <!-- add img of the enemy pokemon
-                             todo: add images of the enemy-->
-                             <p id="image"><img src="media/PokemonImages/pikachu.png"></p>
-                        </div>
                         <div class="col-md-3">
                             <p>HP:</p>
                             <div class="progress">
@@ -645,15 +640,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <!-- add img of the enemy pokemon
+                             todo: add images of the enemy-->
+                             <p class="image"><img src="media/PokemonImages/pikachu.png"></p>
+                        </div>
                     </div>
 
                     <!-- allied side -->
                     <div class="row allied">
-                        <div class="col-md-2">
-                            <!-- add img of the enemy pokemon
-                             todo: add images of the enemy-->
-                             <p id="alliedPokemonImage"><img src="media/PokemonImages/pikachu.png"></p>
-                        </div>
                         <div class="col-md-3">
                             <p>HP:</p>
                             <div class="progress">
@@ -676,8 +671,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    <div class="col-md-2">
+                            <!-- add img of the enemy pokemon
+                             todo: add images of the enemy-->
+                             <p id="alliedPokemonImage"><img src="media/PokemonImages/pikachu.png"></p>
+                        </div>
+                    </div>
                     <!-- Middle text -->
                 <div class="row">
                     <hr>
