@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700&display=swap" rel="stylesheet">
     <script src="js/pokemon_handler.js" type="application/javascript"></script>
 
     <!-- Own CSS -->
@@ -103,101 +103,493 @@
                 </div>
             </div>
 
-                <!-- begin row of pokemon -->
-                <div class="row">
-                    <!-- begin pokemon 1-->
-                    <div class="col-md-4 pokemon_choice">
-                        <div id="Pikachu2">
-                            <div id="extra-border">
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        <p class="name">Pikachu</p>
-                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        *insert type image*
-                                    </div>
-                                </div>
+                        <div class="row wp-row">
+            <div class="col-md-12 intro">
+                <h1>List of Pokémon</h1>
+                <p>Below is an overview of the 12 available Pokémon to choose from.</p>
+            </div>
+        </div>
+                <!-- Fire row -->
+        <div class="row wp-row">
+            <!-- Pokemon 1 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Charmander" class="pokemon current">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Charmander</p>
+                                <p id="image"><img src="media/PokemonImages/charmander.png" class="sprite bouncing"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Fire</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>39</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>52</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>43</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>66</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- begin pokemon2 -->
-                    <div class="col-md-4 pokemon_choice">
-                        <div id="Pikachu2">
-                            <div id="extra-border">
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        <p class="name">Staryu</p>
-                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
-                                    </div>
+                </div>
+            </div>
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        *insert type image*
-                                    </div>
-                                </div>
+            <!-- Pokemon 2 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Vulpix" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Vulpix</p>
+                                <p id="image"><img src="media/PokemonImages/vulpix.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Fire</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>43</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>48</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>38</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>65</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+                <!-- End of fire row -->
 
-                    <!-- begin pokemon 3 -->
-                    <div class="col-md-4 pokemon_choice">
-                        <div id="Pikachu2">
-                            <div id="extra-border">
-                                <div class="row ">
-                                    <div class="col-md-9 text-center">
-                                        <p class="name">Bulbasaur</p>
-                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        *insert type image*
-                                    </div>
-                                </div>
+                <!-- Water row -->
+        <div class="row wp-row">
+            <!-- Pokemon 3 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Squirtle" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Squirtle</p>
+                                <p id="image"><img src="media/PokemonImages/squirtle.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Water</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>44</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>38</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>65</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>43</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- end row 1-->
                 </div>
-
-                <!-- begin row 2 -->
-                <div class="row">
-                <div class="col-md-4 pokemon_choice">
-                        <div id="Pikachu2">
-                            <div id="extra-border">
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        <p class="name">Geodude</p>
-                                        <p id="image"><img src="media/PokemonImages/pikachu.png" id="pika"></p>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 text-center">
-                                        *insert type image*
-                                    </div>
-                                </div>
+            </div>
+            <!-- Pokemon 4 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Staryu" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Staryu</p>
+                                <p id="image"><img src="media/PokemonImages/staryu.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Water</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>35</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>44</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>85</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+        </div>
+                <!-- End of water row -->
 
-                <!-- begin row 3 -->
-                <div class="row">
-
+                <!-- Grass row -->
+        <div class="row wp-row">
+            <!-- Pokemon 5 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Bulbasaur" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Bulbasaur</p>
+                                <p id="image"><img src="media/PokemonImages/bulbasaur.png" class="sprite" id="bulba"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Grass</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>49</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>49</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <!-- begin row 4 -->
-                <div class="row">
-
+            <!-- Pokemon 6 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Oddish" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Oddish</p>
+                                <p id="image"><img src="media/PokemonImages/oddish.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Grass</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>55</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>30</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+                <!-- End of grass row -->
+
+                <!-- Electric row -->
+        <div class="row wp-row">
+            <!-- Pokemon 7 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Pikachu" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Pikachu</p>
+                                <p id="image"><img src="media/PokemonImages/pikachu.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Electric</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>55</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>90</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokemon 8 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Magnemite" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Magnemite</p>
+                                <p id="image"><img src="media/PokemonImages/magnemite.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Electric</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>60</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>70</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>44</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+                <!-- End of electric pokemon row -->
+
+                <!-- Normal row -->
+        <div class="row wp-row">
+            <!-- Pokemon 9 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Rattata" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Rattata</p>
+                                <p id="image"><img src="media/PokemonImages/rattata.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Normal</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>30</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>56</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>35</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>72</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokemon 10 -->
+            <div class="col-md-6 pokemon_choice">
+                <div id="Eevee" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Eevee</p>
+                                <p id="image"><img src="media/PokemonImages/eevee.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Normal</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>47</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>55</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+                <!-- End of normal pokemon row -->
+
+                <!-- Rock row -->
+        <div class="row wp-row">
+            <!-- Pokemon 11 -->
+            <div class="col-md-6">
+                <div id="Geodude" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Geodude</p>
+                                <p id="image"><img src="media/PokemonImages/geodude.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Rock</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>60</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>70</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>20</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokemon 12 -->
+            <div class="col-md-6">
+                <div id="Omanyte" class="pokemon">
+                    <div id="extra-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p id="name">Omanyte</p>
+                                <p id="image"><img src="media/PokemonImages/omanyte.png" class="sprite"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="stats">
+                                    <tr>
+                                        <td><b>Element</b></td>
+                                        <td>Rock</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>HP</b></td>
+                                        <td>35</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Attack</b></td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Defense</b></td>
+                                        <td>90</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Speed</b></td>
+                                        <td>35</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+                <!-- End of rock pokemon row -->
 
                 <!-- Ready button -->
 
@@ -260,7 +652,7 @@
                         <div class="col-md-2">
                             <!-- add img of the enemy pokemon
                              todo: add images of the enemy-->
-                             <p id="image"><img src="media/PokemonImages/pikachu.png"></p>
+                             <p id="alliedPokemonImage"><img src="media/PokemonImages/pikachu.png"></p>
                         </div>
                         <div class="col-md-3">
                             <p>HP:</p>
