@@ -78,8 +78,10 @@ function is_ready($player) {
 }
 
 function add_player($username, $pokemons) {
+	// $_SESSION['pokemon']  = $pokemons;
+
 	$_SESSION['username']    = $username;
-	$_SESSION['pokemon']     = $pokemons;
+	$_SESSION['round']       = 0;
 	$player_info['username'] = $username;
 	$player_info['pokemon']  = [];
 
@@ -91,18 +93,20 @@ function add_player($username, $pokemons) {
 
 	if (!is_ready('player1')) {
 		write_player_data('player1', $player_info);
+		$_SESSION['playernum'] = 'player1';
+
+		return true;
+	} elseif (!is_ready('player2')) {
+		write_player_data('player2', $player_info);
+		$_SESSION['playernum'] = 'player2';
+
+		// second player was added -> start game
+		update_gamestate(["round" => 1]);
 
 		return true;
 	} else {
-		// player 1 occupied, try player 2
-		if (!is_ready('player2')) {
-			write_player_data('player2', $player_info);
-
-			return true;
-		} else {
-			// all spaces occupied (for now)
-			return false;
-		}
+		// all spaces occupied (for now)
+		return false;
 	}
 }
 
