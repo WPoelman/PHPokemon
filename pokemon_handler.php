@@ -7,23 +7,28 @@
 
 include 'model.php';
 
-
-function attack($attack_name) {
+function attack($gamestate, $player, $round, $attack_name) {
 	// 'attack stuff hier'
-	$gamestate = get_gamestate();
-	$round     = $gamestate['round'];
-	if ($round < 1) {
-		return error('you cannot choose an action yet');
+
+	$active_pokemon = get_pokemon_info($gamestate[$player]['active_pokemon']);
+
+	$active_pokemon_attack = array_filter(
+		$active_pokemon['Moveset'],
+		function($attack) use ($attack_name) {
+			return $attack["Name"] == $attack_name;
+		}
+	);
+
+	if (sizeof($active_pokemon_attack) == 0) {
+		return error('invalid attack for this pokemon');
 	}
-	$player    = $_SESSION['playernum']; // player1 or player2
+
 	$roundinfo = [
-		// TODO: check if attack in active pokemon's abilities and get stats of it
-		"attack" => $attack_name,
+		"attack" => $active_pokemon_attack,
 	];
 
-	if (isset($gamestate["round-$round"][$player])) {
-		return error('you already played this round');
-	}
+	// TODO: pp aanpassen
+
 
 	return update_gamestate([
 		"round-$round" => [$player => $roundinfo],
@@ -31,8 +36,27 @@ function attack($attack_name) {
 
 }
 
-function switch_to($pokemon) {
+function switch_to($gamestate, $player, $round, $pokemon) {
 	// 'switching stuff hier'
+	if (isset($gamestate[$player]['pokemon'][$pokemon])) {
+		// the pokemon is in the chosen pokemon(s), so it's all good
+
+		if ($gamestate[$player]['active_pokemon'] == $pokemon) {
+			return error('this is the pokemon you already selected');
+		}
+
+		$gamestate[$player]['active_pokemon'] = $pokemon;
+	} else {
+		return error('You do not have this pokemon');
+	}
+
+	$roundinfo = [
+		"switch" => $pokemon,
+	];
+
+	$gamestate["round-$round"][$player] = $roundinfo;
+
+	return write_gamestate($gamestate);
 }
 
 function do_action($info) {
@@ -42,11 +66,22 @@ function do_action($info) {
 	} else {
 		$action    = $_POST['action'];
 		$parameter = $_POST['parameter'];
+		$gamestate = get_gamestate();
+		$round     = $gamestate['round'];
+		if ($round < 1) {
+			return error('you cannot choose an action yet');
+		}
+		$player = $_SESSION['playernum']; // player1 or player2
+
+		if (isset($gamestate["round-$round"][$player])) {
+			return error('you already played this round');
+		}
+
 		if ($action == 'attack') {
-			$newgamestate = attack($parameter);
+			$newgamestate = attack($gamestate, $player, $round, $parameter);
 			// continue
 		} elseif ($action == 'switch') {
-			$newgamestate = switch_to($parameter);
+			$newgamestate = switch_to($gamestate, $player, $round, $parameter);
 			// continue
 		} else {
 			return error("invalid action");
@@ -56,7 +91,20 @@ function do_action($info) {
 		// continued if no errors
 		if ($newgamestate) {
 			// if both players have filled in their action, calculate who goes first and how many damage the attacks do
+			if (sizeof($newgamestate["round-$round"]) == 2) {
+				// both players have played
+				// calculate order and damage stuff here
 
+				// example (stub):
+				$newgamestate["round-$round"]['player1']['damage'] = 0;
+				$newgamestate["round-$round"]['player1']['damage'] = 20;
+				$newgamestate["round-$round"]['first']             = 'player1';
+
+
+				// afterwards:
+				$newgamestate['round'] = $newgamestate['round'] + 1;
+				write_gamestate($newgamestate);
+			}
 		}
 
 	}
