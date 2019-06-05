@@ -262,3 +262,37 @@ Styling attack page
 .pokemon-switch-button{
 	border-radius: 12px;
 }
+
+/*
+Attack and being attacked animations
+ */
+
+@keyframes attack {
+	0%,100% {
+		transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
+	}
+	50% {
+		transform: translateY( -30% ) translateX( +290% ) scaleX( 0.98 ) scaleY( 1.03 ) rotate(30deg);
+	}
+}
+
+@keyframes attacked {
+	0%,100% {
+		transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
+	}
+	50% {
+		transform: translateY( 0% ) translateX( +30% ) scaleX( 0.98 ) scaleY( 1.03 ) rotate(10deg);
+	}
+}
+
+.attacking {
+	animation: attack 0.8s ease 1;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
+}
+
+.attacked {
+	animation: attacked 0.8s ease 1;
+	animation-duration: 1s;
+	animation-delay: 0.75s;
+}

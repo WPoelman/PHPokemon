@@ -102,7 +102,7 @@
                     <div class="row">
                         <hr>
                         <div class="col-md-12">
-                            <p class="text-center Middle-Text">Choose 3 pokemon and an Username and then press Ready!!
+                            <p class="text-center Middle-Text">Select a username, choose 3 pokemon and then press Ready!
                             </p>
                         </div>
                         <hr>
@@ -121,11 +121,11 @@
                     <!-- Instructions -->
                     <div class="row wp-row">
                         <div class="col-md-12 intro">
-                            <h1>List of Pokémon</h1>
+                            <h1>Choose your Pokémon</h1>
                             <p>Below is an overview of the 12 available Pokémon to choose from.</p>
                             <p id="smallerinfo">For the full information about every Pokémon's stats and movesets,
                                 please <br>
-                                see the information page.
+                                see the Pokemon page.
                             </p>
                         </div>
                     </div>
