@@ -62,49 +62,78 @@ function sendPreGameInfo(username, selected_pokemon) {
 // The ***ButtonLaunch functions trigger the different html components
 // of the game. 
 //
-function playButtonLaunch () {
+function playButtonLaunch() {
     // switched from the homescreen to the
     // pre game selection screen
-    $('#homescreen').toggle();
-    $('#pre_game_selection_screen').toggle();
+    $('#homescreen').hide();
+    $('#pre_game_selection_screen').show();
 }
 
-function readyButtonLaunch () {
+function readyButtonLaunch() {
     // change from the homescreen to the
     // pre game selection screen
-    $('#pre_game_selection_screen').toggle();
-    $('#main_game_screen').toggle();
-    $('#select_action').toggle();
+    $('#pre_game_selection_screen').hide();
+    $('#main_game_screen').show();
+    $('#select_action').show();
 }
 
-function switchButtonLaunch () {
+function switchButtonLaunch() {
     // change from the selection screen to the
     // switch pokemon screen
-    $('#select_action').toggle();
-    $('#switch_pokemon').toggle();
+    $('#select_action').hide();
+    $('#switch_pokemon').show();
 }
 
-function backButtonLaunch () {
+function backButtonLaunch() {
     // go back to the selection screen if the active screen is 'switch pokemon'
-    if ( $('#switch_pokemon').is(':visible') ) {
-        $('#switch_pokemon').toggle();
+    let switchscreen = $('#switch_pokemon');
+    let attackscreen = $('#attack');
+    if (switchscreen.is(':visible')) {
+        switchscreen.hide();
     }
     // go back to the selection screen if the active screen is 'attack'
-    else if ( $('#attack').is(':visible') ) {
-        $('#attack').toggle();
+    else if (attackscreen.is(':visible')) {
+        attackscreen.hide();
     }
 
     // show the selection screen again
-    $('#select_action').toggle();
+    $('#select_action').show();
 }
 
-function attackButtonLaunch () {
+function attackButtonLaunch() {
     // change from the selection screen to the
     // attack screen
-    $('#select_action').toggle();
-    $('#attack').toggle();
+    $('#select_action').hide();
+    $('#attack').show();
 }
 
+function gamestate_handle(data) {
+
+    if (data['function'] === 'roundchange') {
+        // next round
+        if (data['data']['round'] === 1) {
+            // first round -> show initial screen
+            readyButtonLaunch();
+        }
+    }
+    console.log(data);
+}
+
+function get_gamestate() {
+    get('game_info').then(data => {
+        if (data) {
+            data = JSON.parse(data);
+            gamestate_handle(data)
+        }
+    })
+}
+
+function start_event_listener() {
+    setInterval(
+        get_gamestate,
+        1000
+    )
+}
 
 //
 // Main
