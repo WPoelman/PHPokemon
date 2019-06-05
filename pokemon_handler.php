@@ -8,6 +8,68 @@
 include 'model.php';
 
 
+function damage() {
+    // returnt de damage die een aanval doet
+    $move_power = "pak hiervoor de Power van de gekozen move";
+    $own_attack = "pak hiervoor de Attack stat van de eigen huidige Pokemon";
+    $rival_defense = "pak hiervoor de Defense stat van de rival Pokemon";
+
+    $damage = ((5 * $move_power * ($own_attack / $rival_defense)) / 50) + 2;
+
+    return round(multiplied_damage($damage));
+}
+
+function multiplied_damage($damage) {
+    // kijkt of iets effective is of niet en berekent de damage inclusief multiplier
+    $move_element = "pak element van de gekozen move, bijv fire";
+    $rival_pokemon_element = "pak element van de rival Pokemon, bijv water";
+
+    if ($move_element == 'Fire') {
+        if ($rival_pokemon_element == 'Grass'){
+            // super effective
+            return 2 * $damage;
+        } elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock') {
+            // not very effective
+            return 0.5 * $damage;
+        }
+    } elseif ($move_element == 'Water') {
+        if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Rock'){
+            // super effective
+            return 2 * $damage;
+        } elseif ($rival_pokemon_element == 'Grass' or $rival_pokemon_element == 'Electric') {
+            // not very effective
+            return 0.5 * $damage;
+        }
+    } elseif ($move_element == 'Grass') {
+        if ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock'){
+            // super effective
+            return 2 * $damage;
+        } elseif ($rival_pokemon_element == 'Fire') {
+            // not very effective
+            return 0.5 * $damage;
+        }
+    } elseif ($move_element == 'Rock') {
+        if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Electric'){
+            // super effective
+            return 2 * $damage;
+        } elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Grass') {
+            // not very effective
+            return 0.5 * $damage;
+        }
+    } elseif ($move_element == 'Electric') {
+        if ($rival_pokemon_element == 'Water'){
+            // super effective
+            return 2 * $damage;
+        } elseif ($rival_pokemon_element == 'Rock') {
+            // not very effective
+            return 0.5 * $damage;
+        }
+    }
+
+    // Als het niet super effective of not very effective is, dan returnen zonder multiplier:
+    return $damage;
+}
+
 function attack($attack_name) {
 	// 'attack stuff hier'
 	$gamestate = get_gamestate();
