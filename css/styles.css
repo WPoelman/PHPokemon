@@ -89,7 +89,7 @@ Begin styling pokemon choose page
 
 }
 
-#ReadyPokemonChoice {
+#ReadyPokemonChoice, #ReadyAttackChoice, #ReadySwitchChoice{
 	background-color: #FF91A4;
 	height: 80px;
 	width: 250px;
