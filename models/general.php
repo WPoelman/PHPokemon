@@ -169,3 +169,16 @@ function redirect($location) {
 	header(sprintf('Location: %s', $location));
 	die();
 }
+
+function send($data) {
+	// return but different
+	echo json_encode($data);
+}
+
+function error($data, $code = 400) {
+	// return but different
+	http_response_code($code);
+	echo json_encode(["error" => $data]);
+	die();
+	return false;
+}
