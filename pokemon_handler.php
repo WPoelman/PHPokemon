@@ -8,11 +8,61 @@
 include 'model.php';
 
 
-function attack($info) {
-	echo 'attack stuff hier';  // = requests.post('http://localhost/eindproject/pokemon_handler.php/attack').text
+function attack($attack_name) {
+	// 'attack stuff hier'
+	$gamestate = get_gamestate();
+	$round     = $gamestate['round'];
+	if ($round < 1) {
+		return error('you cannot choose an action yet');
+	}
+	$player    = $_SESSION['playernum']; // player1 or player2
+	$roundinfo = [
+		// TODO: check if attack in active pokemon's abilities and get stats of it
+		"attack" => $attack_name,
+	];
+
+	if (isset($gamestate["round-$round"][$player])) {
+		return error('you already played this round');
+	}
+
+	return update_gamestate([
+		"round-$round" => [$player => $roundinfo],
+	]);
+
 }
 
-$routes->new_route('attack', 'post');
+function switch_to($pokemon) {
+	// 'switching stuff hier'
+}
+
+function do_action($info) {
+	$newgamestate = null;
+	if (!isset($_POST['action']) or !isset($_POST['parameter'])) {
+		return error("invalid action");
+	} else {
+		$action    = $_POST['action'];
+		$parameter = $_POST['parameter'];
+		if ($action == 'attack') {
+			$newgamestate = attack($parameter);
+			// continue
+		} elseif ($action == 'switch') {
+			$newgamestate = switch_to($parameter);
+			// continue
+		} else {
+			return error("invalid action");
+		}
+
+
+		// continued if no errors
+		if ($newgamestate) {
+			// if both players have filled in their action, calculate who goes first and how many damage the attacks do
+
+		}
+
+	}
+}
+
+$routes->new_route('do_action', 'post');
 
 function start_game($info) {
 	if (!(isset($_SESSION['username']))) {
