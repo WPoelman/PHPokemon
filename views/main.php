@@ -8,7 +8,7 @@
 
     <!-- Bootstrap / Google Fonts -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
@@ -24,30 +24,29 @@
 
 <body>
 
-    <!-- Menu -->
-    <?= $navigation ?>
+<!-- Menu -->
+<?= $navigation ?>
 
-    <!-- Container -->
-    <div class="container">
+<!-- Container -->
+<div class="container">
 
-        <!-- Logo -->
-        <div class="row">
-            <div class="col-md-12">
-                <figure>
-                    <img src="media/PHPokemon.png" alt="" width="900" height="124">
-                </figure>
-            </div>
+    <!-- Logo -->
+    <div class="row">
+        <div class="col-md-12">
+            <figure>
+                <img src="media/PHPokemon.png" alt="" width="900" height="124">
+            </figure>
         </div>
+    </div>
 
-        <!--            -->
-        <!-- Homescreen -->
-        <!--            -->
-        <div class="row" id="homescreen">
+    <!--            -->
+    <!-- Homescreen -->
+    <!--            -->
+    <div class="row" id="homescreen">
             <span class="border border-dark">
                 <div class="col-md-12 main-box">
 
                     <!-- Button for playing -->
-                    <!-- todo:Button mooier maken -->
                     <div class="row justify-content-center">
                         <div class="col-md-4 text-center button-div ">
                             <button type="button" class="btn btn-danger" id="PlayButton">
@@ -89,12 +88,12 @@
 
                 </div>
             </span>
-        </div>
+    </div>
 
-        <!--                    -->
-        <!-- Pre game selection -->
-        <!--       screen       -->
-        <div class="row component" id="pre_game_selection_screen">
+    <!--                    -->
+    <!-- Pre game selection -->
+    <!--       screen       -->
+    <div class="row component" id="pre_game_selection_screen">
             <span class="border border-dark">
                 <div class="col-md-12 main-box">
 
@@ -125,7 +124,7 @@
                             <p>Below is an overview of the 12 available Pokémon to choose from.</p>
                             <p id="smallerinfo">For the full information about every Pokémon's stats and movesets,
                                 please <br>
-                                see the Pokemon page.
+                                see the Pokémon page.
                             </p>
                         </div>
                     </div>
@@ -140,7 +139,7 @@
                                         <div class="col-md-6">
                                             <p class="name">Charmander</p>
                                             <p class="image"><img src="media/PokemonImages/charmander.png"
-                                                    class="sprite bouncing"></p>
+                                                                  class="sprite bouncing"></p>
                                         </div>
                                         <div class="col-md-6">
                                             <table class="stats">
@@ -303,7 +302,7 @@
                                         <div class="col-md-6">
                                             <p class="name">Bulbasaur</p>
                                             <p class="image"><img src="media/PokemonImages/bulbasaur.png" class="sprite"
-                                                    id="bulba"></p>
+                                                                  id="bulba"></p>
                                         </div>
                                         <div class="col-md-6">
                                             <table class="stats">
@@ -424,7 +423,7 @@
                                         <div class="col-md-6">
                                             <p class="name">Magnemite</p>
                                             <p class="image"><img src="media/PokemonImages/magnemite.png"
-                                                    class="sprite"></p>
+                                                                  class="sprite"></p>
                                         </div>
                                         <div class="col-md-6">
                                             <table class="stats">
@@ -635,12 +634,12 @@
 
                 </div>
             </span>
-        </div>
+    </div>
 
-        <!--                  -->
-        <!-- Main game screen -->
-        <!--                  -->
-        <div class="row component" id="main_game_screen">
+    <!--                  -->
+    <!-- Main game screen -->
+    <!--                  -->
+    <div class="row component" id="main_game_screen">
             <span class="border border-dark">
                 <div class="col-md-12 main-box">
 
@@ -659,7 +658,7 @@
                                 lijkt het erop dat hij langzaam minder wordt
                                 -->
                                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <p>Pokemon left:</p>
                             <div class="row">
@@ -675,8 +674,6 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <!-- add img of the enemy pokemon
-                             todo: add images of the enemy-->
                             <p class="image"><img src="media/PokemonImages/pikachu.png"></p>
                         </div>
                     </div>
@@ -687,7 +684,7 @@
                             <p>HP:</p>
                             <div class="progress">
                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 25%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <p>Pokemon left:</p>
                             <div class="row">
@@ -704,8 +701,6 @@
                         </div>
 
                         <div class="col-md-2">
-                            <!-- add img of the enemy pokemon
-                             todo: add images of the enemy-->
                             <p id="alliedPokemonImage"><img src="media/PokemonImages/pikachu.png"></p>
                         </div>
                     </div>
@@ -797,7 +792,7 @@
                                 </button>
                             </div>
 
-                            <!--Ready button todo: Id naar cass veranderen!-->
+                            <!--Ready button todo: Id naar class veranderen!-->
                             <div class="col-md-6 text-center button-div">
                                 <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
                                     <h2 class="ReadyButton">Ready</h2>
@@ -843,7 +838,7 @@
                                         lijkt het erop dat hij langzaam minder wordt
                                          -->
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </button>
                             </div>
@@ -865,7 +860,7 @@
                                         lijkt het erop dat hij langzaam minder wordt
                                         -->
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 65%"
-                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                             aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </button>
                             </div>
@@ -882,7 +877,7 @@
                                 </button>
                             </div>
 
-                            <!--Ready button todo: Id naar cass veranderen!-->
+                            <!--Ready button todo: Id naar class veranderen!-->
                             <div class="col-md-6 text-center button-div">
                                 <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
                                     <h2 class="ReadyButton">Ready</h2>
@@ -895,8 +890,86 @@
 
                 </div>
             </span>
-        </div>
     </div>
+
+    <!--                -->
+    <!-- Waiting screen -->
+    <!--                -->
+    <div class="row component" id="waiting__screen">
+            <span class="border border-dark">
+                <div class="col-md-12 main-box">
+
+                    <!-- Message -->
+                    <div class="row">
+                        <hr>
+                        <div class="col-md-12">
+                            <p class="text-center Middle-Text">Wait for your opponent to ready up...
+                            </p>
+                        </div>
+                        <hr>
+                    </div>
+
+
+                    <!-- Info message -->
+                    <div class="row wp-row">
+                        <div class="col-md-12 intro">
+                            <h1>This is your Pokémon team!</h1>
+                        </div>
+                    </div>
+
+                    <!-- Pokémon choice -->
+                    <!-- Only basic HTML to later add the specific
+                    classes, names and id's -->
+                    <div class="row wp-row">
+                        <!-- Pokemon 1 -->
+                        <div class="col-md-4" id="pokemon-choice-1">
+                            <div class="pokemon">
+                                <div class="extra-border">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="name"></p>
+                                            <p class="image"><img class="sprite always-bouncing"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pokemon 2 -->
+                        <div class="col-md-4" id="pokemon-choice-2">
+                            <div class="pokemon">
+                                <div class="extra-border">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="name"></p>
+                                            <p class="image"><img class="sprite always-bouncing">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Pokemon 3 -->
+                        <div class="col-md-4" id="pokemon-choice-3">
+                            <div class="pokemon">
+                                <div class="extra-border">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="name"></p>
+                                            <p class="image"><img class="sprite always-bouncing">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    <!-- End of pokémon choice row -->
+            </div>
+         </span>
+    </div>
+</div>
 
 </body>
 

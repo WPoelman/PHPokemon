@@ -102,9 +102,6 @@ Begin styling pokemon choose page
 }
 
 /* hieronder is Frank zijn css*/
-.wp-row {
-	margin: 30px 0 30px 0;
-}
 
 .wp-row {
 	margin: 30px 0 30px 0;
@@ -124,6 +121,7 @@ Begin styling pokemon choose page
 	/*height: 115px;*/
 	/*width: 125px;*/
 }
+
 
 /* on select */
 
@@ -191,6 +189,10 @@ table {
 #sprite {
 	height: 105px;
 	width: 105px;
+}
+
+.always-bouncing{
+	animation: bounce 0.8s ease infinite;
 }
 
 .moveset, .stats {
@@ -296,3 +298,4 @@ Attack and being attacked animations
 	animation-duration: 1s;
 	animation-delay: 0.75s;
 }
+

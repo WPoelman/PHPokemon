@@ -77,6 +77,34 @@ function readyButtonLaunch() {
     $('#select_action').show();
 }
 
+function waiting_screen_launch() {
+    // change from the selection screen to the
+    // waiting screen
+    $('#pre_game_selection_screen').hide();
+    get("get_profile").then(function(data){
+
+    });
+    //Select the third choice and then add all the
+    //necessary classes and id's for representation
+
+    //First selected pokemon
+    $('#pokemon-choice-1').children().attr('id', 'Bulbasaur').addClass("fire-type");
+    $('#pokemon-choice-1 p:nth-child(1)').text("Charmander");
+    $('#pokemon-choice-1 img').attr('src' , 'media/PokemonImages/charmander.png');
+
+    //Second selected Pokémon
+    $('#pokemon-choice-2').children().attr('id', 'Charmander').addClass("fire-type");
+    $('#pokemon-choice-2 p:nth-child(1)').text("Charmander");
+    $('#pokemon-choice-2 img').attr('src' , 'media/PokemonImages/charmander.png');
+
+    //Third selected Pokémon
+    $('#pokemon-choice-3').children().attr('id', 'Charmander').addClass("fire-type");
+    $('#pokemon-choice-3 p:nth-child(1)').text("Charmander");
+    $('#pokemon-choice-3 img').attr('src' , 'media/PokemonImages/charmander.png');
+
+    $('#waiting__screen').show();
+}
+
 function switchButtonLaunch() {
     // change from the selection screen to the
     // switch pokemon screen
@@ -172,6 +200,7 @@ $(function () {
     $('#ReadyPokemonChoice').click(function () {
         let username = $('#username').val();
         sendPreGameInfo(username, selected_pokemon);
+        waiting_screen_launch();
     });
 
     // play game button is clicked
