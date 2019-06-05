@@ -188,8 +188,38 @@ $(function () {
     $('.BackButton').click(backButtonLaunch);
 
     // attack button is clicked
-    $('#AttackButton').click(function () {
-        attackButtonLaunch();
+    $('#AttackButton').click(attackButtonLaunch);
+
+    $('.attack-choice-button').click(function () {
+        $('.attack-choice-button').removeClass('attack-choice');
+        $(this).addClass('attack-choice');
+    });
+
+    $('.pokemon-switch-button').click(function () {
+        $('.pokemon-switch-button').removeClass('switch-choice');
+        $(this).addClass('switch-choice');
+    });
+
+    $('#ReadyAttackChoice').click(function () {
+        let attack_name = $('.attack-choice').first().data('name');
+        if (!attack_name) {
+            alert('please choose an attack');
+        } else {
+            sendRoundAction('attack', attack_name);
+            backButtonLaunch();
+            start_event_listener()
+        }
+    });
+
+    $('#ReadySwitchChoice').click(function () {
+        let pokemon_name = $('.switch-choice').first().data('name');
+        if (!pokemon_name) {
+            alert('please choose a new pokemon');
+        } else {
+            sendRoundAction('switch', pokemon_name).then(console.info);
+            backButtonLaunch();
+            start_event_listener()
+        }
     });
 
 });
