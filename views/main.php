@@ -544,7 +544,7 @@
                     <!-- Rock row -->
                     <div class="row wp-row">
                         <!-- Pokemon 11 -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 pokemon_choice">
                             <div id="Geodude" class="pokemon rock-type">
                                 <div class="extra-border">
                                     <div class="row">
@@ -583,7 +583,7 @@
                         </div>
 
                         <!-- Pokemon 12 -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 pokemon_choice">
                             <div id="Omanyte" class="pokemon rock-type">
                                 <div class="extra-border">
                                     <div class="row">
