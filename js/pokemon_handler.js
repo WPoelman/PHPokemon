@@ -24,7 +24,7 @@ function sendRoundAction(action, parameter) {
     // e.g.
     // sendRoundAction('attack', 'Thunder shock')
     // sendRoundAction('switch', 'Pikachu')
-    post('do_action', {"action": action, "parameter": parameter}).then(console.log);
+    return post('do_action', {"action": action, "parameter": parameter});
 }
 
 function sendPreGameInfo(username, selected_pokemon) {
@@ -50,6 +50,9 @@ function sendPreGameInfo(username, selected_pokemon) {
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             start_event_listener();
+
+            // for dummy
+            readyButtonLaunch()
         }
         else {
             alert(data['error'])
@@ -119,9 +122,11 @@ function gamestate_handle(data) {
     console.log(data);
 }
 
-function get_gamestate() {
+function get_gamestate(interval_id) {
     get('game_info').then(data => {
+        console.log('++')
         if (data) {
+            clearInterval(interval_id);  // stop checking after getting data
             data = JSON.parse(data);
             gamestate_handle(data)
         }
@@ -129,8 +134,8 @@ function get_gamestate() {
 }
 
 function start_event_listener() {
-    setInterval(
-        get_gamestate,
+    let gamestate_checker = setInterval(
+        () => get_gamestate(gamestate_checker),
         1000
     )
 }
