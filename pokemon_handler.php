@@ -71,42 +71,64 @@ function start_game($info) {
 
 		$added_player = add_player($username, $pokemon);
 
-		if(sizeof($pokemon) != 3){
-			echo json_encode(['error' => 'invalid amount of pokemon chosen']);
-			return false;
+		if (sizeof($pokemon) != 3) {
+			return error('invalid amount of pokemon chosen');
 		}
 
-		if(!$added_player){
+		if (!$added_player) {
 			// game is full
 			session_destroy();
 			unset($_SESSION);
-			echo json_encode(['error' => 'game is full']);
-			return false;
-		}
-		else {
+
+			return error('game is full');
+		} else {
 			echo json_encode(get_game_info());
+
 			return true;
 		}
 	}
-	echo json_encode(['error' => 'you are already in a game']);
-	return false;
+
+	return error('you are already in a game');
 }
 
 $routes->new_route('start_game', 'post');
 
+function reset_player() {
+	session_destroy();
+	unset($_SESSION);
+}
 
-function stop_game($info){
+$routes->new_route('reset_player', 'post');
+
+function stop_game($info) {
 	reset_round();
 	session_destroy();
 	unset($_SESSION);
 }
-// note: this should not be a public route on production, of course!
-$routes->new_route('stop_game', 'post');
 
+// note: this should not be a public route on production, of course!
+$routes->new_route('stop_game', 'get');
+
+
+function game_info($info) {
+	$gamestate = get_gamestate();
+
+	$prevround = $_SESSION['round'];
+	$round     = $_SESSION['round'] = $gamestate['round'];
+
+	if ($round > $prevround) {
+		send([
+			'function' => 'roundchange',
+			'data'     => $gamestate
+		]);
+	}
+}
+
+$routes->new_route('game_info', 'get');
 
 
 function get_profile($info) {
-	echo json_encode(get_game_info());
+	send(get_game_info());
 }
 
 $routes->new_route('get_profile', 'get');
