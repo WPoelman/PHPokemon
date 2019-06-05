@@ -170,22 +170,17 @@ $(function () {
 
     // ready game button is clicked
     $('#ReadyPokemonChoice').click(function () {
-        sendPreGameInfo(selected_pokemon);
+        let username = $('#username').val();
+        sendPreGameInfo(username, selected_pokemon);
     });
 
     // play game button is clicked
-    $('#PlayButton').click(function () {
-        playButtonLaunch();
-    });
+    $('#PlayButton').click(playButtonLaunch);
 
     // switch pokemon button is clicked
-    $('#SwitchButton').click(function () {
-        switchButtonLaunch();
-    });
+    $('#SwitchButton').click(switchButtonLaunch);
 
-    $('.BackButton').click(function () {
-        backButtonLaunch();
-    })
+    $('.BackButton').click(backButtonLaunch);
 
     // attack button is clicked
     $('#AttackButton').click(function () {
