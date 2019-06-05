@@ -23,18 +23,34 @@ function session_get($key) {
 }
 
 function get_game_info() {
-	return ["username" => session_get('username'), "pokemon" => session_get("pokemon")];
+	return [
+		"username"  => session_get('username'),
+		"pokemon"   => session_get("pokemon"),
+		"playernum" => session_get("playernum"),
+	];
 }
 
 // matching players
 
-function get_gamestate(){
+function get_gamestate() {
 	return json_decode(file_get_contents("data/gamestate.json"), true);
+}
+
+function write_gamestate($newdata) {
+	file_put_contents("data/gamestate.json", json_encode($newdata));
+}
+
+function update_gamestate($changed) {
+	$old_data = get_gamestate();
+//	$new_data = array_merge($old_data, $changed);
+	$new_data = array_replace_recursive($old_data, $changed);
+	write_gamestate($new_data);
+	return $new_data;
 }
 
 function read_player_data($player) {
 	$gamestate = get_gamestate();
-	if(isset($gamestate[$player])){
+	if (isset($gamestate[$player])) {
 		return $gamestate[$player];
 	} else {
 		return [];
