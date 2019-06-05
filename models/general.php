@@ -172,6 +172,7 @@ function redirect($location) {
 
 function send($data) {
 	// return but different
+	http_response_code(200);
 	echo json_encode($data);
 }
 
