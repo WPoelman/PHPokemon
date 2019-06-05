@@ -40,19 +40,20 @@ function sendPreGameInfo(username, selected_pokemon) {
     let reactie = post("start_game",
         {
             "pokemon": selected_pokemon,
-            "username": username_field.val()
+            "username": username
         });
 
     // dit is om te testen !! de reactie komt van pokemon_handler.php/game_start
     reactie.done(function (data) {
-        console.log('this data was sent to the server:');
-        console.log(data);
-        // test if it is actually saved to SESSION
-        console.log('this data was saved at the server:');
-        getPlayerData().then(data => console.log(data))
-
+        data = JSON.parse(data);
         // if the request was good, go to the next screen
-        readyButtonLaunch();
+        if (!data['error']) {
+            // once the 1st round has started, the attack screen will show
+            start_event_listener();
+        }
+        else {
+            alert(data['error'])
+        }
     });
 }
 
