@@ -1,31 +1,37 @@
 //
 // Helper functions
 //
-function get(action){
+function showError(data) {
+    console.error('REQUEST FAILED:', JSON.parse(data['responseText'])['error'])
+}
+
+function get(action) {
     // shortcut for using api GET
-    return $.get(`pokemon_handler.php/${action}`);
+    return $.get(`pokemon_handler.php/${action}`).fail(showError);
 }
 
-function post(action, data){
+function post(action, data) {
     // shortcut for using api POST
-    return $.post(`pokemon_handler.php/${action}`, data);
-}
-
-function getPlayerData() {
-    // get the current player data
-    return get('get_profile');
+    return $.post(`pokemon_handler.php/${action}`, data).fail(showError);
 }
 
 
 //
 // The send*** functions interact with the server 
 //
-function sendPreGameInfo (selected_pokemon) {
+function sendRoundAction(action, parameter) {
+    // let the user send their action for this round
+    // e.g.
+    // sendRoundAction('attack', 'Thunder shock')
+    // sendRoundAction('switch', 'Pikachu')
+    post('do_action', {"action": action, "parameter": parameter}).then(console.log);
+}
 
-    let username_field = $('#username');
+function sendPreGameInfo(username, selected_pokemon) {
+
     // Check if the user has selected three pokemon and
     // has entered his username
-    if ((selected_pokemon.length !== 3) || (!username_field.val())) {
+    if ((selected_pokemon.length !== 3) || (!username)) {
         alert("Please select three pokemon and enter your username!");
         return;
     }
