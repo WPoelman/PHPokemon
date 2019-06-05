@@ -58,15 +58,18 @@ function read_player_data($player) {
 }
 
 function write_player_data($player, $data) {
-	$old_data = get_gamestate();
+	$old_data          = get_gamestate();
 	$old_data[$player] = $data;
-	file_put_contents("data/gamestate.json", json_encode($data));
+	write_gamestate($old_data);
 }
 
 function reset_round() {
 	// execute this function at end of game
-	write_player_data('player1', []);
-	write_player_data('player2', []);
+	write_gamestate([
+		"player1" => [],
+		"player2" => [],
+		"round"   => 0,
+	]);
 }
 
 // check if a player is ready
