@@ -164,6 +164,8 @@ function do_action($info) {
 				$newgamestate["round-$round"]['player2']['damage'] = 20;
 				$newgamestate["round-$round"]['first']             = 'player1';
 
+				// todo: die + auto no 2 if death
+
 
 				// afterwards:
 				$newgamestate['round'] = $newgamestate['round'] + 1;
