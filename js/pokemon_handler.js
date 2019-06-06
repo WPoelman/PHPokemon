@@ -1,8 +1,17 @@
 //
 // Helper functions
 //
+
+
+function error(msg) {
+    let err_modal = $('#errormodal');
+    err_modal.find('.modal-body').text(msg);
+    err_modal.modal()
+}
+
 function showError(data) {
-    console.error('REQUEST FAILED:', JSON.parse(data['responseText'])['error'])
+    let msg = JSON.parse(data['responseText'])['error'];
+    error(msg);
 }
 
 function get(action) {
@@ -32,7 +41,7 @@ function sendPreGameInfo(username, selected_pokemon) {
     // Check if the user has selected three pokemon and
     // has entered his username
     if ((selected_pokemon.length !== 3) || (!username)) {
-        alert("Please select three pokemon and enter your username!");
+        error("Please select three pokemon and enter your username!");
         return;
     }
 
@@ -49,14 +58,14 @@ function sendPreGameInfo(username, selected_pokemon) {
         // if the request was good, go to the next screen
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
-            start_event_listener();
-            waiting_screen_launch();
+            startEventListener();
+            waitingScreenLaunch();
 
             // for dummy
             // readyButtonLaunch()
         }
         else {
-            alert(data['error'])
+            error(data['error'])
         }
     });
 }
@@ -82,11 +91,11 @@ function readyButtonLaunch() {
     $('#select_action').show();
 }
 
-function waiting_screen_launch() {
+function waitingScreenLaunch() {
     // change from the selection screen to the
     // waiting screen
     $('#pre_game_selection_screen').hide();
-    get("get_profile").then(function(data){
+    get("get_profile").then(function (data) {
 
     });
     //Select the third choice and then add all the
@@ -95,17 +104,17 @@ function waiting_screen_launch() {
     //First selected pokemon
     $('#pokemon-choice-1').children().attr('id', 'Bulbasaur').addClass("fire-type");
     $('#pokemon-choice-1 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-1 img').attr('src' , 'media/PokemonImages/charmander.png');
+    $('#pokemon-choice-1 img').attr('src', 'media/PokemonImages/charmander.png');
 
     //Second selected Pokémon
     $('#pokemon-choice-2').children().attr('id', 'Charmander').addClass("fire-type");
     $('#pokemon-choice-2 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-2 img').attr('src' , 'media/PokemonImages/charmander.png');
+    $('#pokemon-choice-2 img').attr('src', 'media/PokemonImages/charmander.png');
 
     //Third selected Pokémon
     $('#pokemon-choice-3').children().attr('id', 'Charmander').addClass("fire-type");
     $('#pokemon-choice-3 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-3 img').attr('src' , 'media/PokemonImages/charmander.png');
+    $('#pokemon-choice-3 img').attr('src', 'media/PokemonImages/charmander.png');
 
     $('#waiting_screen').show();
 }
@@ -140,11 +149,12 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function gamestate_handle(data) {
+// to be filled in, use new data about the round in the user interface
+function gamestateHandler(data) {
 
     if (data['function'] === 'roundchange') {
         // next round
-        console.log('data', data['data'])
+        console.log('data', data['data']);
         if (data['data']['round'] === 1) {
             // first round -> show initial screen
             readyButtonLaunch();
@@ -153,24 +163,28 @@ function gamestate_handle(data) {
     console.log(data);
 }
 
-function get_gamestate(interval_id) {
+// every second, the getGameState function is called (to see if the other player has played yet)
+function startEventListener() {
+    let gamestate_checker = setInterval(
+        () => getGameState(gamestate_checker),
+        1000
+    )
+}
+
+// the get gamestate function checks with the server if the other player has done something this round.
+// if this is the case, the client stops checking this and gamestateHandler is called to do something with the new data
+function getGameState(interval_id) {
     get('game_info').then(data => {
         console.log('++');
         // todo: stop in het geval van error
         if (data) {
             clearInterval(interval_id);  // stop checking after getting data
             data = JSON.parse(data);
-            gamestate_handle(data)
+            gamestateHandler(data)
         }
     })
 }
 
-function start_event_listener() {
-    let gamestate_checker = setInterval(
-        () => get_gamestate(gamestate_checker),
-        1000
-    )
-}
 
 //
 // Main
@@ -200,7 +214,7 @@ $(function () {
             if (selected_pokemon.length > 3) {
                 selected_pokemon.pop();
                 current_element.removeClass("selected_pokemon");
-                alert("Please select only three pokemon!");
+                error("Please select only three pokemon!");
             }
         }
     });
@@ -222,37 +236,48 @@ $(function () {
     // attack button is clicked
     $('#AttackButton').click(attackButtonLaunch);
 
+    // the attack a user clicks on during choosing gets a special class, so we can remember it
     $('.attack-choice-button').click(function () {
         $('.attack-choice-button').removeClass('attack-choice');
         $(this).addClass('attack-choice');
     });
 
+    // the pokemon a user clicks on during switching gets a special class, so we can remember it
     $('.pokemon-switch-button').click(function () {
         $('.pokemon-switch-button').removeClass('switch-choice');
         $(this).addClass('switch-choice');
     });
 
+    // if the user has picked an attack to use (during battle) and clicked the ready button, the data is checked,
+    // sent to the server and the screen is closed
     $('#ReadyAttackChoice').click(function () {
         let attack_name = $('.attack-choice').first().data('name');
         if (!attack_name) {
-            alert('please choose an attack');
+            error('please choose an attack');
         } else {
-            sendRoundAction('attack', attack_name);
-            backButtonLaunch();
-            start_event_listener()
+            sendRoundAction('attack', attack_name).then(() => {
+                backButtonLaunch();
+                startEventListener()
+            })
         }
     });
 
+    // if the user has picked a pokemon to switch to (during battle) and clicked the ready button, the data is checked,
+    // sent to the server and the screen is closed
     $('#ReadySwitchChoice').click(function () {
         let pokemon_name = $('.switch-choice').first().data('name');
         if (!pokemon_name) {
-            alert('please choose a new pokemon');
+            error('please choose a new pokemon');
         } else {
-            sendRoundAction('switch', pokemon_name).then(console.info);
-            backButtonLaunch();
-            start_event_listener()
+            sendRoundAction('switch', pokemon_name).then(() => {
+                backButtonLaunch();
+                startEventListener()
+            });
         }
     });
+
+    // close modal when the button is pressed
+    $('#errormodal .modal-close').click(() => $('#errormodal').modal('hide'));
 
 });
 
@@ -260,6 +285,8 @@ function dummy(username) {
     // so I don't have to click each time I need to test
     // TODO: remove for prod
     post('reset_player');
+    username = username || 'p1';
+    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']);
     playButtonLaunch();
-    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude'])
+    waitingScreenLaunch();
 }

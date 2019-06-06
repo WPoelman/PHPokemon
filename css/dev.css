@@ -5,3 +5,13 @@
 .attack-choice, .switch-choice {
 	border-color: lightblue;
 }
+
+#dev-screen {
+	position: fixed;
+	background-color: white;
+	width: 200px;
+	/*height: 200px;*/
+	top: 25px;
+	right: 25px;
+	padding: 10px;
+}
