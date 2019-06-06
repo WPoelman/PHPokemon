@@ -143,6 +143,7 @@ function gamestate_handle(data) {
 
     if (data['function'] === 'roundchange') {
         // next round
+        console.log('data', data['data'])
         if (data['data']['round'] === 1) {
             // first round -> show initial screen
             readyButtonLaunch();
@@ -153,7 +154,8 @@ function gamestate_handle(data) {
 
 function get_gamestate(interval_id) {
     get('game_info').then(data => {
-        console.log('++')
+        console.log('++');
+        // todo: stop in het geval van error
         if (data) {
             clearInterval(interval_id);  // stop checking after getting data
             data = JSON.parse(data);
