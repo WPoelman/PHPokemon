@@ -23,10 +23,13 @@ function session_get($key) {
 }
 
 function get_game_info() {
+	$playernum = session_get("playernum");
+	$playerdata = get_gamestate()[$playernum];
 	return [
 		"username"  => session_get('username'),
 		"pokemon"   => session_get("pokemon"),
-		"playernum" => session_get("playernum"),
+		"playernum" => $playernum,
+		"playerdata" => $playerdata,
 	];
 }
 
@@ -38,6 +41,7 @@ function get_gamestate() {
 
 function write_gamestate($newdata) {
 	file_put_contents("data/gamestate.json", json_encode($newdata));
+	return $newdata;
 }
 
 function update_gamestate($changed) {
@@ -89,6 +93,7 @@ function add_player($username, $pokemons) {
 	foreach($pokemons as $pokemon) {
 		$player_info['pokemon'][$pokemon] = reset_pokemon_variables(get_pokemon_info($pokemon));
 	}
+	$player_info['active_pokemon'] = $pokemons[0];
 
 
 	if (!is_ready('player1')) {

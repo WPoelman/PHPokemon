@@ -756,7 +756,7 @@
                         <div class="row">
                             <!-- attack number 1-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic electric-type attack-choice-button">
+                                <button type="button" class="btn btn-basic electric-type attack-choice-button" data-name="Thunder shock">
                                     <h2 class="ButtonText attacktext">Thunder shock</h2>
                                     <h5>PP:</h5>
                                     <h5>5/10</h5>
@@ -765,7 +765,7 @@
 
                             <!-- attack number 2-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic normal-type attack-choice-button">
+                                <button type="button" class="btn btn-basic normal-type attack-choice-button" data-name="Slam">
                                     <h2 class="ButtonText attacktext">Slam</h2>
                                     <h5>PP:</h5>
                                     <h5>5/10</h5>
@@ -774,7 +774,7 @@
 
                             <!-- attack number 3-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic electric-type attack-choice-button">
+                                <button type="button" class="btn btn-basic electric-type attack-choice-button" data-name="Thunderwave">
                                     <h2 class="ButtonText attacktext">Thunderwave</h2>
                                     <h5>PP:</h5>
                                     <h5>5/10</h5>
@@ -794,7 +794,7 @@
 
                             <!--Ready button todo: Id naar class veranderen!-->
                             <div class="col-md-6 text-center button-div">
-                                <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                                <button type="button" class="btn btn-danger" id="ReadyAttackChoice">
                                     <h2 class="ReadyButton">Ready</h2>
                                 </button>
                             </div>
@@ -823,7 +823,7 @@
 
                             <!-- Pokemon choice 1 -->
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn btn-basic grass-type pokemon-switch-button">
+                                <button type="button" class="btn btn-basic grass-type pokemon-switch-button" data-name="Bulbasaur">
                                     <h3>Bulbasaur</h3>
                                     <img src="media/PokemonImages/bulbasaur.png">
                                     <h5>HP:</h5>
@@ -845,7 +845,7 @@
 
                             <!-- Pokemon choice 2-->
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn btn-basic fire-type pokemon-switch-button">
+                                <button type="button" class="btn btn-basic fire-type pokemon-switch-button" data-name="Charmander">
                                     <h3>Charmander</h3>
                                     <img src="media/PokemonImages/charmander.png">
                                     <h5>HP:</h5>
@@ -879,7 +879,7 @@
 
                             <!--Ready button todo: Id naar class veranderen!-->
                             <div class="col-md-6 text-center button-div">
-                                <button type="button" class="btn btn-danger" id="ReadyPokemonChoice">
+                                <button type="button" class="btn btn-danger" id="ReadySwitchChoice">
                                     <h2 class="ReadyButton">Ready</h2>
                                 </button>
                             </div>
