@@ -50,6 +50,7 @@ function sendPreGameInfo(username, selected_pokemon) {
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             start_event_listener();
+            waiting_screen_launch();
 
             // for dummy
             // readyButtonLaunch()
@@ -208,7 +209,6 @@ $(function () {
     $('#ReadyPokemonChoice').click(function () {
         let username = $('#username').val();
         sendPreGameInfo(username, selected_pokemon);
-        waiting_screen_launch();
     });
 
     // play game button is clicked
