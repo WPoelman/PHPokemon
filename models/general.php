@@ -60,8 +60,7 @@ class Routes {
 			if ($_SERVER['REQUEST_METHOD'] != $request_type) {
 				// if everything is good but the request is wrong method, throw error
 				http_response_code(405);  // 405: method not allowed
-				echo 'wrong HTTP method for this request';
-				die();
+				return error('wrong HTTP method for this request');
 			}
 
 
