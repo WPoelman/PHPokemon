@@ -5,12 +5,13 @@
  * Date: 23-05-2019
  */
 
+// get all pokemon info from json file
 function loadPokemon() {
 	return json_decode(file_get_contents("data/pokemon.json"), true);
 }
 
+// reset variable info such as HP and PP
 function resetPokemonVariables($pokemon_array) {
-	// reset variable info such as HP and PP
 	$pokemon_array['Current HP'] = $pokemon_array['HP'];
 	foreach($pokemon_array['Moveset'] as $index => $values) {
 		$values['Current PP']             = $values['PP'];
@@ -20,6 +21,7 @@ function resetPokemonVariables($pokemon_array) {
 	return $pokemon_array;
 }
 
+// get info for a specific pokemon
 function getPokemonInfo($name) {
 	$all = loadPokemon();
 
@@ -27,8 +29,8 @@ function getPokemonInfo($name) {
 }
 
 
-function damage() {
-	// returnt de damage die een aanval doet
+// returns the damage of an attack
+function damage($gamestate) {
 	$move_power    = "pak hiervoor de Power van de gekozen move";
 	$own_attack    = "pak hiervoor de Attack stat van de eigen huidige Pokemon";
 	$rival_defense = "pak hiervoor de Defense stat van de rival Pokemon";
@@ -38,8 +40,8 @@ function damage() {
 	return round(multipliedDamage($damage));
 }
 
+// check if an attack is effective or not and calculates the real damage
 function multipliedDamage($damage) {
-	// kijkt of iets effective is of niet en berekent de damage inclusief multiplier
 	$move_element          = "pak element van de gekozen move, bijv fire";
 	$rival_pokemon_element = "pak element van de rival Pokemon, bijv water";
 
@@ -85,7 +87,7 @@ function multipliedDamage($damage) {
 		}
 	}
 
-	// Als het niet super effective of not very effective is, dan returnen zonder multiplier:
+	// if it is not 'super effective' or 'not very effective', just return the default damage
 	return $damage;
 }
 
@@ -109,7 +111,7 @@ function attack($gamestate, $player, $round, $attack_name) {
 		"attack" => $active_pokemon_attack,
 	];
 
-	// TODO: pp aanpassen
+	// TODO: change PP of attack
 
 
 	return updateGamestate([
@@ -120,7 +122,6 @@ function attack($gamestate, $player, $round, $attack_name) {
 
 // handle when a user switches pokemon
 function switchTo($gamestate, $player, $round, $pokemon) {
-	// 'switching stuff hier'
 	if (isset($gamestate[$player]['pokemon'][$pokemon])) {
 		// the pokemon is in the chosen pokemon(s), so it's all good
 

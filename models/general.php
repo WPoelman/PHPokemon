@@ -130,13 +130,13 @@ function redirect($location) {
 }
 
 function send($data) {
-	// return but different
+	// send data to the client
 	http_response_code(200);
 	echo json_encode($data);
 }
 
 function error($data, $code = 400) {
-	// return but different
+	// send an error to the client
 	http_response_code($code);
 	echo json_encode(["error" => $data]);
 	die();
