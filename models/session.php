@@ -12,9 +12,9 @@ session_start();
  *
  * @param $key : data entry you are looking for
  *
- * @return object : (any type) of the wanted data or null
+ * @return string or other object : (any type) of the wanted data or null
  */
-function session_get($key) {
+function getSessionVar($key) {
 	if (isset($_SESSION[$key])) {
 		return $_SESSION[$key];
 	} else {
@@ -22,38 +22,42 @@ function session_get($key) {
 	}
 }
 
-function get_game_info() {
-	$playernum = session_get("playernum");
-	$playerdata = get_gamestate()[$playernum];
+// get all info about the current client
+function getGameInfo() {
+	$playernum = getSessionVar("playernum");
+	$playerdata = getGamestate()[$playernum];
 	return [
-		"username"  => session_get('username'),
-		"pokemon"   => session_get("pokemon"),
+		"username"  => getSessionVar('username'),
+		"pokemon"   => getSessionVar("pokemon"),
 		"playernum" => $playernum,
 		"playerdata" => $playerdata,
 	];
 }
 
-// matching players
-
-function get_gamestate() {
+// read the full current gamestate
+function getGamestate() {
 	return json_decode(file_get_contents("data/gamestate.json"), true);
 }
 
-function write_gamestate($newdata) {
+// overwrite the full gamestate
+function writeGamestate($newdata) {
 	file_put_contents("data/gamestate.json", json_encode($newdata));
 	return $newdata;
 }
 
-function update_gamestate($changed) {
-	$old_data = get_gamestate();
-//	$new_data = array_merge($old_data, $changed);
+// partly overwrite gamestate with difference
+function updateGamestate($changed) {
+	$old_data = getGamestate();
+
+	// array replace recursive instead of array merge, because this is better in correctly mergin nested arrays
 	$new_data = array_replace_recursive($old_data, $changed);
-	write_gamestate($new_data);
+	writeGamestate($new_data);
 	return $new_data;
 }
 
-function read_player_data($player) {
-	$gamestate = get_gamestate();
+// get the info about a specific $player from the gamestate
+function readPlayerData($player) {
+	$gamestate = getGamestate();
 	if (isset($gamestate[$player])) {
 		return $gamestate[$player];
 	} else {
@@ -61,15 +65,17 @@ function read_player_data($player) {
 	}
 }
 
-function write_player_data($player, $data) {
-	$old_data          = get_gamestate();
+// overwrite the data for a specific player in the gamestate
+function writePlayerData($player, $data) {
+	$old_data          = getGamestate();
 	$old_data[$player] = $data;
-	write_gamestate($old_data);
+	writeGamestate($old_data);
 }
 
-function reset_round() {
+// empty all variables in the game state
+function resetRound() {
 	// execute this function at end of game
-	write_gamestate([
+	writeGamestate([
 		"player1" => [],
 		"player2" => [],
 		"round"   => 0,
@@ -77,11 +83,13 @@ function reset_round() {
 }
 
 // check if a player is ready
-function is_ready($player) {
-	return isset(read_player_data($player)['username']);
+function isReady($player) {
+	// check if the player exists and has a username in the gamestate
+	return isset(readPlayerData($player)['username']);
 }
 
-function add_player($username, $pokemons) {
+// save the information of a new player to session and gamestate, including data about their pokemon
+function addPlayer($username, $pokemons) {
 	// $_SESSION['pokemon']  = $pokemons;
 
 	$_SESSION['username']    = $username;
@@ -91,22 +99,22 @@ function add_player($username, $pokemons) {
 
 	// yes I know the plural of pokemon is pokemon but that makes these variables very difficult to name
 	foreach($pokemons as $pokemon) {
-		$player_info['pokemon'][$pokemon] = reset_pokemon_variables(get_pokemon_info($pokemon));
+		$player_info['pokemon'][$pokemon] = resetPokemonVariables(getPokemonInfo($pokemon));
 	}
 	$player_info['active_pokemon'] = $pokemons[0];
 
 
-	if (!is_ready('player1')) {
-		write_player_data('player1', $player_info);
+	if (!isReady('player1')) {
+		writePlayerData('player1', $player_info);
 		$_SESSION['playernum'] = 'player1';
 
 		return true;
-	} elseif (!is_ready('player2')) {
-		write_player_data('player2', $player_info);
+	} elseif (!isReady('player2')) {
+		writePlayerData('player2', $player_info);
 		$_SESSION['playernum'] = 'player2';
 
 		// second player was added -> start game
-		update_gamestate(["round" => 1]);
+		updateGamestate(["round" => 1]);
 
 		return true;
 	} else {
@@ -115,4 +123,4 @@ function add_player($username, $pokemons) {
 	}
 }
 
-// later: make playble for more than 2 players at the same time
+// todo later: make playble for more than 2 players at the same time

@@ -22,7 +22,7 @@ class Routes {
 	}
 
 	// add a possible route
-	function new_route($route_uri, $request_type, $menu_title = false, $function = false) {
+	function newRoute($route_uri, $request_type, $menu_title = false, $function = false) {
 
 		if (!$function) {
 			$function = $route_uri;
@@ -83,7 +83,7 @@ $routes = new Routes();
  *
  * @return string html code that represents the navigation
  */
-function get_navigation($template, $active_item) {
+function getNavigation($template, $active_item) {
 	$navigation_exp = '
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">PHPokemon</a>
@@ -109,54 +109,14 @@ function get_navigation($template, $active_item) {
 }
 
 /**
- * Creates a new navigation array item using url and active status
- *
- * @param string $url The url of the navigation item
- * @param bool $active Set the navigation item to active or inactive
- *
- * @return array
- */
-function na($url, $active) {
-	return [$url, $active];
-}
-
-/**
  * Creates filename to the template
  *
  * @param string $template filename of the template without extension
  *
  * @return string
  */
-function use_template($template) {
+function useTemplate($template) {
 	return "views/$template.php";
-}
-
-/**
- * Pritty Print Array
- *
- * @param $input
- */
-function p_print($input) {
-	echo '<pre>';
-	print_r($input);
-	echo '</pre>';
-}
-
-/**
- * Creats HTML alert code with information about the success or failure
- *
- * @param string $feedback Error/Success message
- *
- * @return string
- */
-function get_error($feedback) {
-	$feedback  = json_decode($feedback, true);
-	$error_exp = '
-        <div class="alert alert-' . $feedback['type'] . '" role="alert">
-            ' . $feedback['message'] . '
-        </div>';
-
-	return $error_exp;
 }
 
 /**

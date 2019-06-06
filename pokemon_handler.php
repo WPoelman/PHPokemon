@@ -7,121 +7,7 @@
 
 include 'model.php';
 
-
-function damage() {
-	// returnt de damage die een aanval doet
-	$move_power = "pak hiervoor de Power van de gekozen move";
-	$own_attack = "pak hiervoor de Attack stat van de eigen huidige Pokemon";
-	$rival_defense = "pak hiervoor de Defense stat van de rival Pokemon";
-
-	$damage = ((5 * $move_power * ($own_attack / $rival_defense)) / 50) + 2;
-
-	return round(multiplied_damage($damage));
-}
-
-function multiplied_damage($damage) {
-	// kijkt of iets effective is of niet en berekent de damage inclusief multiplier
-	$move_element          = "pak element van de gekozen move, bijv fire";
-	$rival_pokemon_element = "pak element van de rival Pokemon, bijv water";
-
-	if ($move_element == 'Fire') {
-		if ($rival_pokemon_element == 'Grass') {
-			// super effective
-			return 2 * $damage;
-		} elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock') {
-			// not very effective
-			return 0.5 * $damage;
-		}
-	} elseif ($move_element == 'Water') {
-		if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Rock') {
-			// super effective
-			return 2 * $damage;
-		} elseif ($rival_pokemon_element == 'Grass' or $rival_pokemon_element == 'Electric') {
-			// not very effective
-			return 0.5 * $damage;
-		}
-	} elseif ($move_element == 'Grass') {
-		if ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock') {
-			// super effective
-			return 2 * $damage;
-		} elseif ($rival_pokemon_element == 'Fire') {
-			// not very effective
-			return 0.5 * $damage;
-		}
-	} elseif ($move_element == 'Rock') {
-		if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Electric') {
-			// super effective
-			return 2 * $damage;
-		} elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Grass') {
-			// not very effective
-			return 0.5 * $damage;
-		}
-	} elseif ($move_element == 'Electric') {
-		if ($rival_pokemon_element == 'Water') {
-			// super effective
-			return 2 * $damage;
-		} elseif ($rival_pokemon_element == 'Rock') {
-			// not very effective
-			return 0.5 * $damage;
-		}
-	}
-
-	// Als het niet super effective of not very effective is, dan returnen zonder multiplier:
-	return $damage;
-}
-
-
-function attack($gamestate, $player, $round, $attack_name) {
-	// 'attack stuff hier'
-
-	$active_pokemon = get_pokemon_info($gamestate[$player]['active_pokemon']);
-
-	$active_pokemon_attack = array_filter(
-		$active_pokemon['Moveset'],
-		function($attack) use ($attack_name) {
-			return $attack["Name"] == $attack_name;
-		}
-	);
-
-	if (sizeof($active_pokemon_attack) == 0) {
-		return error('invalid attack for this pokemon');
-	}
-
-	$roundinfo = [
-		"attack" => $active_pokemon_attack,
-	];
-
-	// TODO: pp aanpassen
-
-
-	return update_gamestate([
-		"round-$round" => [$player => $roundinfo],
-	]);
-
-}
-
-function switch_to($gamestate, $player, $round, $pokemon) {
-	// 'switching stuff hier'
-	if (isset($gamestate[$player]['pokemon'][$pokemon])) {
-		// the pokemon is in the chosen pokemon(s), so it's all good
-
-		if ($gamestate[$player]['active_pokemon'] == $pokemon) {
-			return error('this is the pokemon you already selected');
-		}
-
-		$gamestate[$player]['active_pokemon'] = $pokemon;
-	} else {
-		return error('You do not have this pokemon');
-	}
-
-	$roundinfo = [
-		"switch" => $pokemon,
-	];
-
-	$gamestate["round-$round"][$player] = $roundinfo;
-
-	return write_gamestate($gamestate);
-}
+// routes should be with _ instead of camelCase, because they are transformed to URL's
 
 function do_action($info) {
 	$newgamestate = null;
@@ -130,7 +16,7 @@ function do_action($info) {
 	} else {
 		$action    = $_POST['action'];
 		$parameter = $_POST['parameter'];
-		$gamestate = get_gamestate();
+		$gamestate = getGamestate();
 		$round     = $gamestate['round'];
 		if ($round < 1) {
 			return error('you cannot choose an action yet');
@@ -145,7 +31,7 @@ function do_action($info) {
 			$newgamestate = attack($gamestate, $player, $round, $parameter);
 			// continue
 		} elseif ($action == 'switch') {
-			$newgamestate = switch_to($gamestate, $player, $round, $parameter);
+			$newgamestate = switchTo($gamestate, $player, $round, $parameter);
 			// continue
 		} else {
 			return error("invalid action");
@@ -167,21 +53,21 @@ function do_action($info) {
 
 				// afterwards:
 				$newgamestate['round'] = $newgamestate['round'] + 1;
-				write_gamestate($newgamestate);
+				writeGamestate($newgamestate);
 			}
 		}
 
 	}
 }
 
-$routes->new_route('do_action', 'post');
+$routes->newRoute('do_action', 'post');
 
 function start_game($info) {
 	if (!(isset($_SESSION['username']))) {
 		$username = $_POST['username'];
 		$pokemon  = $_POST['pokemon'];
 
-		$added_player = add_player($username, $pokemon);
+		$added_player = addPlayer($username, $pokemon);
 
 		if (sizeof($pokemon) != 3) {
 			return error('invalid amount of pokemon chosen');
@@ -194,7 +80,7 @@ function start_game($info) {
 
 			return error('game is full');
 		} else {
-			echo json_encode(get_game_info());
+			echo json_encode(getGameInfo());
 
 			return true;
 		}
@@ -203,27 +89,27 @@ function start_game($info) {
 	return error('you are already in a game');
 }
 
-$routes->new_route('start_game', 'post');
+$routes->newRoute('start_game', 'post');
 
 function reset_player() {
 	session_destroy();
 	unset($_SESSION);
 }
 
-$routes->new_route('reset_player', 'post');
+$routes->newRoute('reset_player', 'post');
 
 function stop_game($info) {
-	reset_round();
+	resetRound();
 	session_destroy();
 	unset($_SESSION);
 }
 
 // note: this should not be a public route on production, of course!
-$routes->new_route('stop_game', 'get');
+$routes->newRoute('stop_game', 'post');
 
 
 function game_info($info) {
-	$gamestate = get_gamestate();
+	$gamestate = getGamestate();
 
 	$prevround = $_SESSION['round'];
 	$round     = $_SESSION['round'] = $gamestate['round'];
@@ -236,14 +122,14 @@ function game_info($info) {
 	}
 }
 
-$routes->new_route('game_info', 'get');
+$routes->newRoute('game_info', 'get');
 
 
 function get_profile($info) {
-	send(get_game_info());
+	send(getGameInfo());
 }
 
-$routes->new_route('get_profile', 'get');
+$routes->newRoute('get_profile', 'get');
 
 
 $routes->start();

@@ -11,50 +11,50 @@ include 'model.php';
 function index($info, $nav) {
 	/* Page info */
 	$page_title = 'Homepage';
-	$navigation = get_navigation($nav, $info['url']);
+	$navigation = getNavigation($nav, $info['url']);
 
 	/* Page content */
 	$page_subtitle = "subtitle";
 	$page_content  = "content";
 
 	/* Choose Template */
-	include use_template('main');
+	include useTemplate('main');
 }
 
-$routes->new_route('/', 'get', 'Home', 'index');
+$routes->newRoute('/', 'get', 'Home', 'index');
 
 function instructions($info, $nav) {
 
 	/* Page info */
 	$page_title = 'Pokemon instructions page';
-	$navigation = get_navigation($nav, 'instructions');
+	$navigation = getNavigation($nav, 'instructions');
 
 	/* Page content */
 	$page_subtitle = 'very cool subtitle';
 	$page_content  = 'epic content';
 
 	/* Choose Template */
-	include use_template('instructions');
+	include useTemplate('instructions');
 }
 
-$routes->new_route('instructions', 'get', 'Instructions');
+$routes->newRoute('instructions', 'get', 'Instructions');
 
 
 function pokemon($info, $nav) {
 
 	/* Page info */
 	$page_title = "Pokemon list page";
-	$navigation = get_navigation($nav, 'pokemon');
+	$navigation = getNavigation($nav, 'pokemon');
 
 	/* Page content */
 	$page_subtitle = 'subtitle';
 	$page_content  = 'pokmon list';
 
 	/* Choose Template */
-	include use_template('pokemon');
+	include useTemplate('pokemon');
 }
 
-$routes->new_route('pokemon', 'get', 'Pokemon');
+$routes->newRoute('pokemon', 'get', 'Pokemon');
 
 
 function post_handler($info){
@@ -62,7 +62,7 @@ function post_handler($info){
 	print_r($info);
 	send('POSTED');
 }
-$routes->new_route('post_handler', 'post');
+$routes->newRoute('post_handler', 'post');
 
 
 
