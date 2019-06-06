@@ -20,7 +20,7 @@ footer {
 	background-color: white;
 }
 
-.Middle-Text{
+.Middle-Text {
 	font-size: 32px;
 }
 
@@ -51,9 +51,11 @@ button {
 	width: 250px;
 	padding: 20px 20px 20px 20px;
 }
-.attack-button{
-	height:150px;
+
+.attack-button {
+	height: 150px;
 }
+
 #PlayButton {
 	background-color: lightyellow;
 }
@@ -66,7 +68,7 @@ button {
 	background-color: lightcyan;
 }
 
-#return-home{
+#return-home {
 	background-color: #ffffad;
 }
 
@@ -93,7 +95,7 @@ Begin styling pokemon choose page
 
 }
 
-#ReadyPokemonChoice, #ReadyAttackChoice, #ReadySwitchChoice{
+#ReadyPokemonChoice, #ReadyAttackChoice, #ReadySwitchChoice {
 	background-color: #FF91A4;
 	height: 80px;
 	width: 250px;
@@ -126,15 +128,13 @@ Begin styling pokemon choose page
 	/*width: 125px;*/
 }
 
-
 /* on select */
 
 .pokemon {
 	padding: 1%;
 	border-radius: 25px;
 	font-family: 'Raleway', sans-serif;
-	border-width: 1px;
-	border-style: solid
+	border: 1px solid;
 }
 
 .fire-type {
@@ -174,7 +174,6 @@ Begin styling pokemon choose page
 	border-radius: 25px;
 }
 
-
 table {
 	width: 100%;
 }
@@ -195,7 +194,7 @@ table {
 	width: 105px;
 }
 
-.always-bouncing{
+.always-bouncing {
 	animation: bounce 0.8s ease infinite;
 }
 
@@ -238,7 +237,7 @@ Styling attack page
 	border: 3px solid pink;
 }
 
-#AttackButton, #SwitchButton, .attack-choice-button{
+#AttackButton, #SwitchButton, .attack-choice-button {
 	border-radius: 25px;
 	height: 135px;
 	border: 3px solid floralwhite;
@@ -255,17 +254,19 @@ Styling attack page
 .attacktext, .switchtext {
 	font-size: 40px;
 }
-.return-button{
+
+.return-button {
 	height: 160px;
 	width: 250px;
 	border-radius: 12px;
 	background-color: white;
 }
+
 .top-buffer {
-	margin-top:100px;
+	margin-top: 100px;
 }
 
-.pokemon-switch-button{
+.pokemon-switch-button {
 	border-radius: 12px;
 }
 
@@ -274,20 +275,20 @@ Attack and being attacked animations
  */
 
 @keyframes attack {
-	0%,100% {
-		transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
+	0%, 100% {
+		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
 	50% {
-		transform: translateY( -30% ) translateX( +290% ) scaleX( 0.98 ) scaleY( 1.03 ) rotate(30deg);
+		transform: translateY(-30%) translateX(+290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
 	}
 }
 
 @keyframes attacked {
-	0%,100% {
-		transform: translateY( -0% ) translateX( -0% ) scaleX( 1 ) scaleY( 1 );
+	0%, 100% {
+		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
 	50% {
-		transform: translateY( 0% ) translateX( +30% ) scaleX( 0.98 ) scaleY( 1.03 ) rotate(10deg);
+		transform: translateY(0%) translateX(+30%) scaleX(0.98) scaleY(1.03) rotate(10deg);
 	}
 }
 
@@ -303,3 +304,6 @@ Attack and being attacked animations
 	animation-delay: 0.75s;
 }
 
+.dev {
+	display: none;
+}

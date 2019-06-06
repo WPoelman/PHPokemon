@@ -1017,6 +1017,12 @@
     </div>
 </div>
 
+
+<div id="dev-screen" class="dev"><p>
+    Hier zie je alle tools die handig zijn voor developers
+    </p>
+    <div><button>test</button></div>
+</div>
 </body>
 
 </html>

@@ -1,0 +1,7 @@
+.dev {
+	display: initial;
+}
+
+.attack-choice, .switch-choice {
+	border-color: lightblue;
+}
