@@ -33,7 +33,7 @@ function sendPreGameInfo(username, selected_pokemon) {
     // has entered his username
     if ((selected_pokemon.length !== 3) || (!username)) {
         alert("Please select three pokemon and enter your username!");
-        return;
+        return false;
     }
 
     // send the post request with the username and selected pokemon
@@ -50,6 +50,7 @@ function sendPreGameInfo(username, selected_pokemon) {
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             start_event_listener();
+            waiting_screen_launch();
 
             // for dummy
             // readyButtonLaunch()
@@ -208,7 +209,6 @@ $(function () {
     $('#ReadyPokemonChoice').click(function () {
         let username = $('#username').val();
         sendPreGameInfo(username, selected_pokemon);
-        waiting_screen_launch();
     });
 
     // play game button is clicked
