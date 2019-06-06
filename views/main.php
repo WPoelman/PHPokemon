@@ -7,16 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap / Google Fonts -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
     <script src="js/pokemon_handler.js" type="application/javascript"></script>
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dev.css">
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 
     <title><?=$page_title?></title>
@@ -1017,12 +1022,53 @@
     </div>
 </div>
 
-
+<!--                                   -->
+<!-- developer screen, remove for prod -->
+<!--                                   -->
 <div id="dev-screen" class="dev"><p>
-    Hier zie je alle tools die handig zijn voor developers
+        Hier zie je alle tools die handig zijn voor developers
     </p>
-    <div><button>test</button></div>
+    <div>
+        <button class="btn" onclick="post('stop_game').then(()=>{console.log('game clear'); window.location.reload()})">
+            reset game
+        </button>
+    </div>
+    <br/>
+    <div>
+        <button class="btn"
+                onclick="post('reset_player').then(()=>{console.log('player clear'); window.location.reload()})">
+            reset sessie
+        </button>
+    </div>
+    <br/>
+    <div>
+        <button class="btn"
+                onclick="dummy()">
+            dummy player
+        </button>
+    </div>
+    <br/>
+
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="errormodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Something went wrong!</h5>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger modal-close">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 
 </html>
