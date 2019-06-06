@@ -24,7 +24,7 @@ function sendRoundAction(action, parameter) {
     // e.g.
     // sendRoundAction('attack', 'Thunder shock')
     // sendRoundAction('switch', 'Pikachu')
-    post('do_action', {"action": action, "parameter": parameter}).then(console.log);
+    return post('do_action', {"action": action, "parameter": parameter});
 }
 
 function sendPreGameInfo(username, selected_pokemon) {
@@ -50,6 +50,9 @@ function sendPreGameInfo(username, selected_pokemon) {
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             start_event_listener();
+
+            // for dummy
+            // readyButtonLaunch()
         }
         else {
             alert(data['error'])
@@ -73,6 +76,7 @@ function readyButtonLaunch() {
     // change from the homescreen to the
     // pre game selection screen
     $('#pre_game_selection_screen').hide();
+    $('#waiting_screen').hide();
     $('#main_game_screen').show();
     $('#select_action').show();
 }
@@ -102,7 +106,7 @@ function waiting_screen_launch() {
     $('#pokemon-choice-3 p:nth-child(1)').text("Charmander");
     $('#pokemon-choice-3 img').attr('src' , 'media/PokemonImages/charmander.png');
 
-    $('#waiting__screen').show();
+    $('#waiting_screen').show();
 }
 
 function switchButtonLaunch() {
@@ -147,9 +151,11 @@ function gamestate_handle(data) {
     console.log(data);
 }
 
-function get_gamestate() {
+function get_gamestate(interval_id) {
     get('game_info').then(data => {
+        console.log('++')
         if (data) {
+            clearInterval(interval_id);  // stop checking after getting data
             data = JSON.parse(data);
             gamestate_handle(data)
         }
@@ -157,8 +163,8 @@ function get_gamestate() {
 }
 
 function start_event_listener() {
-    setInterval(
-        get_gamestate,
+    let gamestate_checker = setInterval(
+        () => get_gamestate(gamestate_checker),
         1000
     )
 }
@@ -212,8 +218,38 @@ $(function () {
     $('.BackButton').click(backButtonLaunch);
 
     // attack button is clicked
-    $('#AttackButton').click(function () {
-        attackButtonLaunch();
+    $('#AttackButton').click(attackButtonLaunch);
+
+    $('.attack-choice-button').click(function () {
+        $('.attack-choice-button').removeClass('attack-choice');
+        $(this).addClass('attack-choice');
+    });
+
+    $('.pokemon-switch-button').click(function () {
+        $('.pokemon-switch-button').removeClass('switch-choice');
+        $(this).addClass('switch-choice');
+    });
+
+    $('#ReadyAttackChoice').click(function () {
+        let attack_name = $('.attack-choice').first().data('name');
+        if (!attack_name) {
+            alert('please choose an attack');
+        } else {
+            sendRoundAction('attack', attack_name);
+            backButtonLaunch();
+            start_event_listener()
+        }
+    });
+
+    $('#ReadySwitchChoice').click(function () {
+        let pokemon_name = $('.switch-choice').first().data('name');
+        if (!pokemon_name) {
+            alert('please choose a new pokemon');
+        } else {
+            sendRoundAction('switch', pokemon_name).then(console.info);
+            backButtonLaunch();
+            start_event_listener()
+        }
     });
 
 });
