@@ -60,7 +60,7 @@ $routes->new_route('pokemon', 'get', 'Pokemon');
 function post_handler($info){
 	// test handler
 	print_r($info);
-	echo 'POSTED';
+	send('POSTED');
 }
 $routes->new_route('post_handler', 'post');
 
