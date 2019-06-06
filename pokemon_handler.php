@@ -161,7 +161,7 @@ function do_action($info) {
 
 				// example (stub):
 				$newgamestate["round-$round"]['player1']['damage'] = 0;
-				$newgamestate["round-$round"]['player1']['damage'] = 20;
+				$newgamestate["round-$round"]['player2']['damage'] = 20;
 				$newgamestate["round-$round"]['first']             = 'player1';
 
 
