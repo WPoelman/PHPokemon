@@ -23,13 +23,20 @@ function getSessionVar($key) {
 }
 
 // get all info about the current client
-function getGameInfo() {
+function getGameInfo($otherplayer = false) {
 	$playernum = getSessionVar("playernum");
+
+	if ($otherplayer) {
+		// if you want the info of the other player, switch playernum
+		$playernum = 'player1' ? 'player2' : 'player1';
+	}
+
 	$playerdata = getGamestate()[$playernum];
+
 	return [
-		"username"  => getSessionVar('username'),
-		"pokemon"   => getSessionVar("pokemon"),
-		"playernum" => $playernum,
+		"username"   => getSessionVar('username'),
+		"pokemon"    => getSessionVar("pokemon"),
+		"playernum"  => $playernum,
 		"playerdata" => $playerdata,
 	];
 }
@@ -42,6 +49,7 @@ function getGamestate() {
 // overwrite the full gamestate
 function writeGamestate($newdata) {
 	file_put_contents("data/gamestate.json", json_encode($newdata));
+
 	return $newdata;
 }
 
@@ -52,6 +60,7 @@ function updateGamestate($changed) {
 	// array replace recursive instead of array merge, because this is better in correctly mergin nested arrays
 	$new_data = array_replace_recursive($old_data, $changed);
 	writeGamestate($new_data);
+
 	return $new_data;
 }
 
@@ -105,11 +114,13 @@ function addPlayer($username, $pokemons) {
 
 
 	if (!isReady('player1')) {
+		$player_info['playernum'] = 'player1';
 		writePlayerData('player1', $player_info);
 		$_SESSION['playernum'] = 'player1';
 
 		return true;
 	} elseif (!isReady('player2')) {
+		$player_info['playernum'] = 'player2';
 		writePlayerData('player2', $player_info);
 		$_SESSION['playernum'] = 'player2';
 
