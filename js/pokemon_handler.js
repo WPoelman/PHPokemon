@@ -296,7 +296,7 @@ function dummy(username) {
     // TODO: remove for prod
     post('reset_player');
     username = username || 'p1';
-    return sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']).then((data) => {
+    return sendPreGameInfo(username, ['Bulbasaur', 'Pikachu', 'Charmander']).then((data) => {
         playButtonLaunch();
         waitingScreenLaunch();
         return data;
