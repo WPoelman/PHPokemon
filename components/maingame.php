@@ -188,10 +188,10 @@
 
                             <!-- Pokemon choice 1 -->
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn btn-basic Grass-type pokemon-switch-button"
-                                        data-name="Bulbasaur">
-                                    <h3>Bulbasaur</h3>
-                                    <img src="media/PokemonImages/bulbasaur.png">
+                                <button type="button" class="btn btn-basic pokemon-switch-button"
+                                        id="choice_1">
+                                    <h3 id="choice_1_name"></h3>
+                                    <img id="choice_1_img">
                                     <h5>HP:</h5>
                                     <div class="progress">
                                         <!--Om de kleur aan te passen kan je de class veranderen naar:
@@ -211,10 +211,10 @@
 
 	                        <!-- Pokemon choice 2-->
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn btn-basic Fire-type pokemon-switch-button"
-                                        data-name="Charmander">
-                                    <h3>Charmander</h3>
-                                    <img src="media/PokemonImages/charmander.png">
+                                <button type="button" class="btn btn-basic pokemon-switch-button"
+                                        id="choice_2">
+                                    <h3 id="choice_2_name"></h3>
+                                    <img id="choice_2_img">
                                     <h5>HP:</h5>
                                     <div class="progress">
                                         <!--Om de kleur aan te passen kan je de class veranderen naar:
@@ -244,7 +244,7 @@
                                 </button>
                             </div>
 
-	                        <!--Ready button todo: Id naar class veranderen!-->
+	                        <!--Ready button -->
                             <div class="col-md-6 text-center button-div">
                                 <button type="button" class="btn btn-danger" id="ReadySwitchChoice">
                                     <h2 class="ReadyButton">Ready</h2>

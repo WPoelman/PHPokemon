@@ -91,7 +91,7 @@ function readyButtonLaunch() {
     $('#waiting_screen').hide();
 
     // get the attacks for the current pokemon
-    updateAttackScreen();
+    updateAttackSwitchScreen();
 
     $('#main_game_screen').show();
     $('#select_action').show();
@@ -151,21 +151,49 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function updateAttackScreen() {
+// update the attack screen to the currently active pokemon attacks
+function updateAttackSwitchScreen() {
     // get the user info
     get("get_profile").then(function (data) {
-        // for each move in the moveset, show the corresponding info
         let pokemon_data = JSON.parse(data);
         let active_pokemon = pokemon_data["playerdata"]["active_pokemon"];
         let i = 1;
+
+        // Attack screen update
+        // for each move in the moveset, show the corresponding info
         pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
-            let current_element = $('#attack_' + i);
-            current_element.addClass(move["Type"] + '-type');
-            current_element.attr('data-name', move["Name"])
+            let attack_element = $('#attack_' + i);
+            attack_element.addClass(move["Type"] + '-type');
+            attack_element.attr('data-name', move["Name"])
             $('#name_' + i).text(move["Name"]);
             $('#pp_' + i).text(move["Current PP"]);
             i++;
         });
+
+        // Switch screen update
+        // for each remaining pokemon, show the corresponding info
+        i = 1;
+        all_pokemon = pokemon_data["playerdata"]["pokemon"];
+        for (let pokemon in all_pokemon) {
+
+            // show all choosable pokemon (not currently active)
+            if (pokemon !== active_pokemon) {
+                let choice_element = $('#choice_' + i);
+                choice_element.addClass(all_pokemon[pokemon]["Element"] + "-type");
+                choice_element.attr('data-name', all_pokemon[pokemon]["Name"])
+                $('#choice_' + i + '_img').attr('src', 'media/PokemonImages/' + all_pokemon[pokemon]['Name'] + '.png');
+                $('#choice_' + i + '_name').text(all_pokemon[pokemon]["Name"]);
+                i++;
+            }
+
+            // if the pokemon is dead, the button is not clickable
+            if (all_pokemon[pokemon]["Current HP"] <= 0 ) {
+                choice_element.prop("disabled", true);
+            }
+
+            // HIER NOG HEALTH BAR INFO TOEVOEGEN
+
+        };
     });
 }
 
@@ -193,6 +221,8 @@ function updateGameScreen (round_data) {
         enemy = "player2";
     }
 
+    // HIER NOG HEALTH BAR INFO TOEVOEGEN
+
     // player side updates
     updateGameScreenElements(round_data, player, "ally");
     $('#alliedPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][player]["active_pokemon"] + '.png');
@@ -200,7 +230,7 @@ function updateGameScreen (round_data) {
     // enemy side updates
     updateGameScreenElements(round_data, enemy, "enemy");
     $('#enemyPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][enemy]["active_pokemon"] + '.png');
-}   
+}
 
 // to be filled in, use new data about the round in the user interface
 function gamestateHandler(data) {
@@ -213,10 +243,10 @@ function gamestateHandler(data) {
             readyButtonLaunch();
         }
         updateGameScreen(data);
-        updateAttackScreen();
+        updateAttackSwitchScreen();
     }
 
-    // hier updateAttackScreen() & updateGameScreen() gebruiken na ronde
+    // hier updateAttackSwitchScreen() & updateGameScreen() gebruiken na ronde
     console.log(data);
 }
 
