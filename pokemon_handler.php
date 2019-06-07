@@ -112,7 +112,8 @@ function game_info($info) {
 	if ($round > $prevround) {
 		send([
 			'function' => 'roundchange',
-			'data'     => $gamestate
+			'data'     => $gamestate,
+			'me'       => getSessionVar("playernum"),
 		]);
 	}
 }
