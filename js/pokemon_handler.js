@@ -55,7 +55,7 @@ function sendPreGameInfo(username, selected_pokemon) {
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             startEventListener();
-            waitingScreenLaunch();
+            waitingScreenLaunch(data);
             return data;
 
             // for dummy
@@ -86,27 +86,25 @@ function readyButtonLaunch() {
     $('#waiting_screen').hide();
 
     // get the attacks for the current pokemon
-    updateAttackScreen();
+    // updateAttackScreen();
 
     $('#main_game_screen').show();
     $('#select_action').show();
 }
 
-function waitingScreenLaunch() {
+function waitingScreenLaunch(pokemon_data) {
     // change from the selection screen to the
     // waiting screen
     $('#pre_game_selection_screen').hide();
-    get("get_profile").then(function (data) {
-        let pokemon_data = JSON.parse(data);
-        let i = 1;
-        for (let pokemon in pokemon_data["playerdata"]["pokemon"]) {
-            let current_element = $('#pokemon-choice-' + i);
-            current_element.children().attr('id', pokemon).addClass(pokemon_data["playerdata"]["pokemon"][pokemon]["Element"] + '-type');
-            $('#pokemon-choice-' + i + ' p:nth-child(1)').text(pokemon);
-            $('#pokemon-choice-' + i + ' img').attr('src', 'media/PokemonImages/' + pokemon + '.png');
-            i++;
-        }
-    });
+    let i = 1;
+    let pokemons = pokemon_data["playerdata"]["pokemon"];
+    for (let pokemon in pokemons) {
+        let current_element = $('#pokemon-choice-' + i);
+        current_element.children().attr('id', pokemon).addClass(pokemons[pokemon]["Element"] + '-type');
+        $(`#pokemon-choice-${i} p:nth-child(1)`).text(pokemon);
+        $(`#pokemon-choice-${i} img`).attr('src', `media/PokemonImages/${pokemon}.png`);
+        i++;
+    }
     // Select the third choice and then add all the
     // necessary classes and id's for representation
 
@@ -146,56 +144,58 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function updateAttackScreen() {
+function updateAttackScreen(data) {
     // get the user info
-    get("get_profile").then(function (data) {
-        // for each move in the moveset, show the corresponding info
-        let pokemon_data = JSON.parse(data);
-        let active_pokemon = pokemon_data["playerdata"]["active_pokemon"];
-        let i = 1;
-        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
-            let current_element = $('#attack_' + i);
-            current_element.addClass(move["Type"] + '-type');
-            current_element.attr('data-name', move["Name"])
-            $('#name_' + i).text(move["Name"]);
-            $('#pp_' + i).text(move["Current PP"]);
-            i++;
-        });
+    let player_data = data['data'][data['me']];
+    let active_pokemon = player_data["active_pokemon"];
+    let i = 1;
+    player_data["pokemon"][active_pokemon]['Moveset'].forEach(move => {
+        let current_element = $('#attack_' + i);
+        current_element.addClass(move["Type"] + '-type');
+        current_element.attr('data-name', move["Name"]);
+        $('#name_' + i).text(move["Name"]);
+        $('#pp_' + i).text(move["Current PP"]);
+        i++;
     });
 }
 
 // change the sprites based on the user (enemy <> player)
 function updateGameScreenElements(round_data, player_option, status) {
+    let state;
     let i = 1;
     for (let pokemon in round_data["data"][player_option]["pokemon"]) {
         if (pokemon['Current HP'] <= 0) {
-            $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-dead.png");
+            state = 'dead';
         } else {
-            $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-alive.png");
+            state = 'alive';
         }
+        $(`#pokemon-${i}-${status}`).attr("src", `media/Pokeball-${state}.png`);
         i++;
-    };
+    }
 }
 
 // update the game screen based on new round data
-function updateGameScreen (round_data) {
-    let username = $('#username').val();
-    let player = "player2";
-    let enemy = "player1";
+function updateGameScreen(round_data) {
+    let player, enemy;
 
-    if (round_data['data']['player1']['username'] === username) {
-        player = "player1";
+    player = round_data['me'];
+    ;
+    if (player === 'player1') {
         enemy = "player2";
+    } else {
+        enemy = "player1";
     }
 
     // player side updates
     updateGameScreenElements(round_data, player, "ally");
-    $('#alliedPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][player]["active_pokemon"] + '.png');
+    let mypoke = round_data["data"][player]["active_pokemon"];
+    $('#alliedPokemonImage').attr('src', `media/PokemonImages/${mypoke}.png`);
 
     // enemy side updates
     updateGameScreenElements(round_data, enemy, "enemy");
-    $('#enemyPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][enemy]["active_pokemon"] + '.png');
-}   
+    let theirpoke = round_data["data"][enemy]["active_pokemon"];
+    $('#enemyPokemonImage').attr('src', `media/PokemonImages/${theirpoke}.png`);
+}
 
 // to be filled in, use new data about the round in the user interface
 function gamestateHandler(data) {
@@ -208,7 +208,7 @@ function gamestateHandler(data) {
             readyButtonLaunch();
         }
         updateGameScreen(data);
-        updateAttackScreen();
+        updateAttackScreen(data);
     }
 
     // hier updateAttackScreen() & updateGameScreen() gebruiken na ronde
@@ -336,7 +336,7 @@ function dummy(username) {
     username = username || 'p1';
     return sendPreGameInfo(username, ['Bulbasaur', 'Pikachu', 'Charmander']).then((data) => {
         playButtonLaunch();
-        waitingScreenLaunch();
+        waitingScreenLaunch(data);
         return data;
     })
 }
