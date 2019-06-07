@@ -85,23 +85,8 @@ function readyButtonLaunch() {
     $('#pre_game_selection_screen').hide();
     $('#waiting_screen').hide();
 
-    // get the user info
-    get("get_profile").then(function (data) {
-
-
-        // for each move in the moveset, show the corresponding info
-        let pokemon_data = JSON.parse(data);
-        let active_pokemon = pokemon_data["playerdata"]["active_pokemon"];
-        let i = 1;
-        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
-            let current_element = $('#attack_' + i);
-            current_element.addClass(move["Type"] + '-type');
-            current_element.attr('data-name', move["Name"])
-            $('#name_' + i).text(move["Name"]);
-            $('#pp_' + i).text(move["Current PP"]);
-            i++;
-        });
-    });
+    // get the attacks for the current pokemon
+    updateAttackScreen();
 
     $('#main_game_screen').show();
     $('#select_action').show();
@@ -161,6 +146,57 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
+function updateAttackScreen() {
+    // get the user info
+    get("get_profile").then(function (data) {
+        // for each move in the moveset, show the corresponding info
+        let pokemon_data = JSON.parse(data);
+        let active_pokemon = pokemon_data["playerdata"]["active_pokemon"];
+        let i = 1;
+        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
+            let current_element = $('#attack_' + i);
+            current_element.addClass(move["Type"] + '-type');
+            current_element.attr('data-name', move["Name"])
+            $('#name_' + i).text(move["Name"]);
+            $('#pp_' + i).text(move["Current PP"]);
+            i++;
+        });
+    });
+}
+
+// change the sprites based on the user (enemy <> player)
+function updateGameScreenElements(round_data, player_option, status) {
+    let i = 1;
+    for (let pokemon in round_data["data"][player_option]["pokemon"]) {
+        if (pokemon['Current HP'] <= 0) {
+            $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-dead.png");
+        } else {
+            $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-alive.png");
+        }
+        i++;
+    };
+}
+
+// update the game screen based on new round data
+function updateGameScreen (round_data) {
+    let username = $('#username').val();
+    let player = "player2";
+    let enemy = "player1";
+
+    if (round_data['data']['player1']['username'] === username) {
+        player = "player1";
+        enemy = "player2";
+    }
+
+    // player side updates
+    updateGameScreenElements(round_data, player, "ally");
+    $('#alliedPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][player]["active_pokemon"] + '.png');
+
+    // enemy side updates
+    updateGameScreenElements(round_data, enemy, "enemy");
+    $('#enemyPokemonImage').attr('src', 'media/PokemonImages/' + round_data["data"][enemy]["active_pokemon"] + '.png');
+}   
+
 // to be filled in, use new data about the round in the user interface
 function gamestateHandler(data) {
 
@@ -171,7 +207,11 @@ function gamestateHandler(data) {
             // first round -> show initial screen
             readyButtonLaunch();
         }
+        updateGameScreen(data);
+        updateAttackScreen();
     }
+
+    // hier updateAttackScreen() & updateGameScreen() gebruiken na ronde
     console.log(data);
 }
 

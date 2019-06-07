@@ -25,18 +25,18 @@
                             <p>Pokemon left:</p>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-1-enemy">
+                                    <img class="pokeball" id="pokemon-1-enemy">
                                 </div>
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-enemy">
+                                    <img class="pokeball" id="pokemon-2-enemy">
                                 </div>
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-3-enemy">
+                                    <img class="pokeball" id="pokemon-3-enemy">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <p class="image"><img src="media/PokemonImages/pikachu.png"></p>
+                            <p class="image"><img id="enemyPokemonImage"></p>
                         </div>
                     </div>
 
@@ -51,19 +51,19 @@
                             <p>Pokemon left:</p>
                             <div class="row">
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-dead.png" id="pokemon-1-ally">
+                                    <img class="pokeball" id="pokemon-1-ally">
                                 </div>
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-2-ally">
+                                    <img class="pokeball" id="pokemon-2-ally">
                                 </div>
                                 <div class="col-md-1">
-                                    <img class="pokeball" src="media/Pokeball-alive.png" id="pokemon-3-ally">
+                                    <img class="pokeball" id="pokemon-3-ally">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-2">
-                            <p id="alliedPokemonImage"><img src="media/PokemonImages/pikachu.png"></p>
+                            <p class="image"><img id="alliedPokemonImage"></p>
                         </div>
                     </div>
 
