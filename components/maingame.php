@@ -118,31 +118,31 @@
                         <div class="row">
                             <!-- attack number 1-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic Electric-type attack-choice-button"
-                                        data-name="Thunder shock">
-                                    <h2 class="ButtonText attacktext">Thunder shock</h2>
+                                <button type="button" class="btn btn-basic attack-choice-button"
+                                        id="attack_1">
+                                    <h2 class="ButtonText attacktext" id="name_1"></h2>
                                     <h5>PP:</h5>
-                                    <h5>5/10</h5>
+                                    <h5 id="pp_1"></h5>
                                 </button>
                             </div>
 
 	                        <!-- attack number 2-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic Normal-type attack-choice-button"
-                                        data-name="Slam">
-                                    <h2 class="ButtonText attacktext">Slam</h2>
+                                <button type="button" class="btn btn-basic attack-choice-button"
+                                        id="attack_2">
+                                    <h2 class="ButtonText attacktext" id="name_2"></h2>
                                     <h5>PP:</h5>
-                                    <h5>5/10</h5>
+                                    <h5 id="pp_2"></h5>
                                 </button>
                             </div>
 
 	                        <!-- attack number 3-->
                             <div class="col-md-4 text-center">
-                                <button type="button" class="btn btn-basic Electric-type attack-choice-button"
-                                        data-name="Thunderwave">
-                                    <h2 class="ButtonText attacktext">Thunderwave</h2>
+                                <button type="button" class="btn btn-basic attack-choice-button"
+                                        id="attack_3">
+                                    <h2 class="ButtonText attacktext" id="name_3"></h2>
                                     <h5>PP:</h5>
-                                    <h5>5/10</h5>
+                                    <h5 id="pp_3"></h5>
                                 </button>
                             </div>
                         </div>
