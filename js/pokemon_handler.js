@@ -145,7 +145,7 @@ function attackButtonLaunch() {
 }
 
 // update the attack screen to the currently active pokemon attacks
-function updateAttackSwitchScreen() {
+function updateAttackSwitchScreen(data) {
     // get the user info
     let player_data = data['data'][data['me']];
     let active_pokemon = player_data["active_pokemon"];
