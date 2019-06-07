@@ -108,11 +108,26 @@ function attack($playerinfo, $round, $attack_name) {
 		return error('invalid attack for this pokemon');
 	}
 
+	// its always one attack, so this makes sure it's not a list
+	$attack_index          = array_keys($active_pokemon_attack)[0];
+	$active_pokemon_attack = $active_pokemon_attack[$attack_index];
+
+	if ($active_pokemon_attack['Current PP'] < 1) {
+		return error('this move is out of PP');
+	}
+
+	$active_pokemon_attack['Current PP']--;
+
+	// save to player info
+	$playerinfo['pokemon'][$playerinfo['active_pokemon']]['Moveset'][$attack_index] = $active_pokemon_attack;
+
+
 	$roundinfo = [
 		"attack" => $active_pokemon_attack,
 	];
 
-	// TODO: change PP of attack
+
+	writePlayerData($player, $playerinfo);
 
 
 	return updateGamestate([
