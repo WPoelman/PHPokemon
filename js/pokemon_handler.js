@@ -68,6 +68,8 @@ function sendPreGameInfo(username, selected_pokemon) {
             error(data['error'])
         }
     });
+
+    return reactie;
 }
 
 
@@ -282,7 +284,8 @@ function dummy(username) {
     // TODO: remove for prod
     post('reset_player');
     username = username || 'p1';
-    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']);
-    playButtonLaunch();
-    waitingScreenLaunch();
+    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']).then(() => {
+        playButtonLaunch();
+        waitingScreenLaunch();
+    })
 }
