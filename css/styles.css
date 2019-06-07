@@ -15,8 +15,8 @@ footer {
 	background-color: #ECEDEE;
 }
 
-.main-box {
-	width: 1200px;
+.main-box, .border {
+	width: 100%;
 	background-color: white;
 }
 
