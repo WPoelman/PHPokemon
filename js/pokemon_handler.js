@@ -80,10 +80,29 @@ function playButtonLaunch() {
 }
 
 function readyButtonLaunch() {
-    // change from the homescreen to the
-    // pre game selection screen
+    // change from the pre game selection screen to the
+    // waiting screen
     $('#pre_game_selection_screen').hide();
     $('#waiting_screen').hide();
+
+    // get the user info
+    get("get_profile").then(function (data) {
+
+
+        // for each move in the moveset, show the corresponding info
+        let pokemon_data = JSON.parse(data);
+        let active_pokemon = pokemon_data["playerdata"]["active_pokemon"];
+        let i = 1;
+        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
+            let current_element = $('#attack_' + i);
+            current_element.addClass(move["Type"] + '-type');
+            current_element.attr('data-name', move["Name"])
+            $('#name_' + i).text(move["Name"]);
+            $('#pp_' + i).text(move["Current PP"]);
+            i++;
+        });
+    });
+
     $('#main_game_screen').show();
     $('#select_action').show();
 }
@@ -96,7 +115,8 @@ function waitingScreenLaunch() {
         let pokemon_data = JSON.parse(data);
         let i = 1;
         for (let pokemon in pokemon_data["playerdata"]["pokemon"]) {
-            $('#pokemon-choice-' + i).children().attr('id', pokemon).addClass(pokemon_data["playerdata"]["pokemon"][pokemon]["Element"] + '-type');
+            let current_element = $('#pokemon-choice-' + i);
+            current_element.children().attr('id', pokemon).addClass(pokemon_data["playerdata"]["pokemon"][pokemon]["Element"] + '-type');
             $('#pokemon-choice-' + i + ' p:nth-child(1)').text(pokemon);
             $('#pokemon-choice-' + i + ' img').attr('src', 'media/PokemonImages/' + pokemon + '.png');
             i++;
