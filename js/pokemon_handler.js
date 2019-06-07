@@ -169,6 +169,7 @@ function updateAttackScreen() {
     });
 }
 
+// change the sprites based on the user (enemy <> player)
 function updateGameScreenElements(round_data, player_option, status) {
     let i = 1;
     for (let pokemon in round_data["data"][player_option]["pokemon"]) {
@@ -181,6 +182,7 @@ function updateGameScreenElements(round_data, player_option, status) {
     };
 }
 
+// update the game screen based on new round data
 function updateGameScreen (round_data) {
     let username = $('#username').val();
     let player = "player2";
