@@ -307,3 +307,17 @@ Attack and being attacked animations
 .dev {
 	display: none;
 }
+
+/*
+Dying animation
+ */
+.dying {
+	position:relative;
+	animation:mymove 3s ease-out forwards;
+	animation-iteration-count:3;
+}
+
+@keyframes mymove
+{ from {top:0px; opacity: 1;}
+	to {top:200px; opacity: 0}
+}
