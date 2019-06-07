@@ -158,3 +158,59 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 
 	return writeGamestate($gamestate);
 }
+
+// calculate the results of a rond ,like damage (multiplied) and order
+function calculateRoundResults($gamestate, $round_no) {
+	$p1poke = $gamestate['player1']['pokemon'][$gamestate['player1']['active_pokemon']];
+	$p2poke = $gamestate['player2']['pokemon'][$gamestate['player2']['active_pokemon']];
+
+
+	$round       = $gamestate["round-$round_no"];
+	$first       = null;
+	$damage1     = 0;
+	$damage2     = 0;
+	$multiplier1 = 1;
+	$multiplier2 = 1;
+
+	if (isset($round['player2']['attack'])) {
+		// this is the damage player2 gives player1
+		$p2attack    = $round['player2']['attack'];
+		$damage1     = damage($p2attack['Power'], $p2poke['Attack'], $p1poke['Defense']);
+		$multiplier1 = multipliedDamage($p2attack['Type'], $p1poke['Element'], $p2attack['Accuracy']);
+		$damage1     = round($damage1 * $multiplier1);
+	} else {
+		$first = 'player2';
+	}
+
+	if (isset($round['player1']['attack'])) {
+		// this is the damage player1 gives player2
+		$p1attack    = $round['player1']['attack'];
+		$damage2     = damage($p1attack['Power'], $p1poke['Attack'], $p2poke['Defense']);
+		$multiplier2 = multipliedDamage($p1attack['Type'], $p2poke['Element'], $p1attack['Accuracy']);
+		$damage2     = round($damage2 * $multiplier2);
+	} else {
+		$first = 'player1';
+	}
+
+	// calculate who goes first
+	if (!$first) {
+		$p1speed = $p1poke['Speed'];
+		$p2speed = $p2poke['Speed'];
+		if ($p1speed == $p2speed) {
+			$first = array_rand(['player1' => 1, 'player2' => 2]);
+		} elseif ($p1speed > $p2speed) {
+			$first = 'player1';
+		} else {
+			$first = 'player2';
+		}
+	}
+	// player1->damage means damage taken for this attack
+	$round['player1']['damage']        = $damage1;
+	$round['player1']['effectiveness'] = $multiplier1;
+	$round['player2']['damage']        = $damage2;
+	$round['player2']['effectiveness'] = $multiplier2;
+	$round['first']                    = $first;
+	updateGamestate(["round-$round_no" => $round, "round" => $round_no + 1]);
+
+	return $round;
+}
