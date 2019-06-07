@@ -54,7 +54,10 @@ function do_action($info) {
 $routes->newRoute('do_action', 'post');
 
 function start_game($info) {
-	if (!(isset($_SESSION['username']))) {
+	// todo: er is een super rare bug waardoor als je twee keer sendPreGameInfo() uitvoert, de game begint en je ineens
+	// player 2 bent. Voor eindgebruikers niet erg als ze de UI gebruiken maar wel heel raar dat het kan, ondanks deze check.
+	// blijkbaar wordt de session af en toe willekeurig weggegooid oid...
+	if (!getSessionVar('gameid')) {
 		$username     = $_POST['username'];
 		$pokemon      = $_POST['pokemon'];
 		$added_player = addPlayer($username, $pokemon);
@@ -70,7 +73,7 @@ function start_game($info) {
 
 			return error('game is full');
 		} else {
-			echo json_encode(getGameInfo());
+			send(getGameInfo());
 
 			return true;
 		}
@@ -81,6 +84,7 @@ function start_game($info) {
 
 $routes->newRoute('start_game', 'post');
 
+
 function reset_player() {
 	session_destroy();
 	unset($_SESSION);
@@ -89,7 +93,8 @@ function reset_player() {
 $routes->newRoute('reset_player', 'post');
 
 function stop_game($info) {
-	resetRound();
+//	resetRound();
+	clearGames();
 	session_destroy();
 	unset($_SESSION);
 }
@@ -101,8 +106,8 @@ $routes->newRoute('stop_game', 'post');
 function game_info($info) {
 	$gamestate = getGamestate();
 
-	$prevround = $_SESSION['round'];
-	$round     = $_SESSION['round'] = $gamestate['round'];
+	$prevround = getSessionVar('round') or 0;
+	$round = $_SESSION['round'] = $gamestate['round'];
 
 	if ($round > $prevround) {
 		send([
