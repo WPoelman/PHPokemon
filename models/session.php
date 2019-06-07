@@ -35,7 +35,6 @@ function getGameInfo($otherplayer = false) {
 
 	return [
 		"username"   => getSessionVar('username'),
-		"pokemon"    => getSessionVar("pokemon"),
 		"playernum"  => $playernum,
 		"playerdata" => $playerdata,
 	];
