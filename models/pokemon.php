@@ -97,6 +97,10 @@ function attack($playerinfo, $round, $attack_name) {
 
 	$active_pokemon = $playerinfo['pokemon'][($playerinfo['active_pokemon'])];
 
+	if ($active_pokemon['Current HP'] < 1) {
+		return error('this pokemon has no HP left');
+	}
+
 	$active_pokemon_attack = array_filter(
 		$active_pokemon['Moveset'],
 		function($attack) use ($attack_name) {
@@ -140,6 +144,9 @@ function attack($playerinfo, $round, $attack_name) {
 function switchTo($gamestate, $player, $round, $pokemon) {
 	if (isset($gamestate[$player]['pokemon'][$pokemon])) {
 		// the pokemon is in the chosen pokemon(s), so it's all good
+		if ($gamestate[$player]['pokemon'][$pokemon]['Current HP'] < 1) {
+			return error('this pokemon has no HP left');
+		}
 
 		if ($gamestate[$player]['active_pokemon'] == $pokemon) {
 			return error('this is the pokemon you already selected');
@@ -157,6 +164,19 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 	$gamestate["round-$round"][$player] = $roundinfo;
 
 	return writeGamestate($gamestate);
+}
+
+function getNextLivingPokemon($gamestate, $player) {
+	$options = array_filter($gamestate[$player]['pokemon'], function($pokemon) {
+		return $pokemon['Current HP'] > 0;
+	});
+	if (!$options) {
+		// todo: all pokemon for this player are dead -> someone should win
+		throw new OutOfRangeException('Out of pokemon');
+	} else {
+		// give back the first pokemon
+		return reset($options)['Name'];
+	}
 }
 
 // calculate the results of a rond ,like damage (multiplied) and order
@@ -204,13 +224,78 @@ function calculateRoundResults($gamestate, $round_no) {
 			$first = 'player2';
 		}
 	}
+
+	// change health in right order
+	if ($first == 'player1') {
+		if (isset($round['player1']['attack'])) {
+			// do player2 damage here
+			$p2poke['Current HP'] -= $damage2;
+		}
+
+		// next up         if they attacked         if they are alive
+		if (isset($round['player2']['attack']) and $p2poke['Current HP'] > 0) {
+			// do player1 damage here
+			$p1poke['Current HP'] -= $damage1;
+		}
+
+
+	} elseif ($first == 'player2') {
+		if (isset($round['player2']['attack'])) {
+			// do player1 damage here
+			$p1poke['Current HP'] -= $damage1;
+		}
+
+		// next up         if they attacked         if they are alive
+		if (isset($round['player1']['attack']) and $p2poke['Current HP'] > 0) {
+			// do player2 damage here
+			$p2poke['Current HP'] -= $damage2;
+		}
+	}
+
+	// rewrite back to gamestate
+	$gamestate['player1']['pokemon'][$gamestate['player1']['active_pokemon']] = $p1poke;
+	$gamestate['player2']['pokemon'][$gamestate['player2']['active_pokemon']] = $p2poke;
+
+	try {
+		// no negative HP, he just dead
+		if ($p1poke['Current HP'] < 1) {
+			$p1poke['Current HP'] = 0;
+			// switch the active pokemon of this player
+			$gamestate['player1']['active_pokemon'] = getNextLivingPokemon($gamestate, 'player1');
+		}
+	} catch(OutOfRangeException $e) {
+		$round['winner'] = 'player1';
+	}
+	try {
+		// no negative HP, he just dead
+		if ($p2poke['Current HP'] < 1) {
+			$p2poke['Current HP'] = 0;
+			// switch the active pokemon of this player
+			$gamestate['player2']['active_pokemon'] = getNextLivingPokemon($gamestate, 'player2');
+		}
+	} catch(OutOfRangeException $e) {
+		$round['winner'] = 'player2';
+	}
+
+
 	// player1->damage means damage taken for this attack
 	$round['player1']['damage']        = $damage1;
 	$round['player1']['effectiveness'] = $multiplier1;
+//  $round['player1']['new_pokemon']   = $p1poke;
 	$round['player2']['damage']        = $damage2;
 	$round['player2']['effectiveness'] = $multiplier2;
-	$round['first']                    = $first;
-	updateGamestate(["round-$round_no" => $round, "round" => $round_no + 1]);
+//  $round['player2']['new_pokemon']   = $p2poke;
+	$round['first'] = $first;
+
+	writePlayerData('player1', $gamestate['player1']);
+	writePlayerData('player2', $gamestate['player2']);
+
+	updateGamestate([
+		"round-$round_no" => $round,
+		"round"           => $round_no + 1,
+	]);
+
+	send($gamestate);
 
 	return $round;
 }
