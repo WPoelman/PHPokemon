@@ -33,7 +33,7 @@ function sendRoundAction(action, parameter) {
     // e.g.
     // sendRoundAction('attack', 'Thunder shock')
     // sendRoundAction('switch', 'Pikachu')
-    return post('do_action', {"action": action, "parameter": parameter});
+    return post('do_action', { "action": action, "parameter": parameter });
 }
 
 function sendPreGameInfo(username, selected_pokemon) {
@@ -156,7 +156,7 @@ function updateAttackSwitchScreen() {
 
         // Attack screen update
         // for each move in the moveset, show the corresponding info
-        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach (move => {
+        pokemon_data["playerdata"]["pokemon"][active_pokemon]['Moveset'].forEach(move => {
             let attack_element = $('#attack_' + i);
             attack_element.addClass(move["Type"] + '-type');
             attack_element.attr('data-name', move["Name"])
@@ -182,11 +182,25 @@ function updateAttackSwitchScreen() {
             }
 
             // if the pokemon is dead, the button is not clickable
-            if (all_pokemon[pokemon]["Current HP"] <= 0 ) {
+            if (all_pokemon[pokemon]["Current HP"] <= 0) {
                 choice_element.prop("disabled", true);
             }
 
-            // HIER NOG HEALTH BAR INFO TOEVOEGEN
+            let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
+            let health_bar = $('#choice_health_' + i);
+            health_bar.attr("aria-valuenow", current_hp);
+            health_bar.css("width", current_hp + "%");
+
+            // health is high
+            if (current_hp >= 50) {
+                health_bar.addClass("bg-success");
+                // health is medium
+            } else if (25 < current_hp && current_hp < 50) {
+                health_bar.addClass("bg-warning");
+                // health is low
+            } else {
+                health_bar.addClass("bg-danger");
+            }
 
         };
     });
@@ -209,12 +223,12 @@ function updateGameScreenElements(round_data, player_option, status) {
         health_bar.css("width", current_hp + "%");
 
         // health is high
-        if (current_hp >= 50 ) {
+        if (current_hp >= 50) {
             health_bar.addClass("bg-success");
-        // health is medium
+            // health is medium
         } else if (25 < current_hp && current_hp < 50) {
             health_bar.addClass("bg-warning");
-        // health is low
+            // health is low
         } else {
             health_bar.addClass("bg-danger");
         }
@@ -223,7 +237,7 @@ function updateGameScreenElements(round_data, player_option, status) {
 }
 
 // update the game screen based on new round data
-function updateGameScreen (round_data) {
+function updateGameScreen(round_data) {
     let username = $('#username').val();
     let player = "player2";
     let enemy = "player1";
