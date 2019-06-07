@@ -195,11 +195,28 @@ function updateAttackSwitchScreen() {
 // change the sprites based on the user (enemy <> player)
 function updateGameScreenElements(round_data, player_option, status) {
     let i = 1;
-    for (let pokemon in round_data["data"][player_option]["pokemon"]) {
-        if (pokemon['Current HP'] <= 0) {
+    all_pokemon = round_data["data"][player_option]["pokemon"];
+    for (let pokemon in all_pokemon) {
+        if (all_pokemon[pokemon]['Current HP'] <= 0) {
             $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-dead.png");
         } else {
             $('#pokemon-' + i + '-' + status).attr("src", "media/Pokeball-alive.png");
+        }
+
+        let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
+        let health_bar = $('#main_health_' + status);
+        health_bar.attr("aria-valuenow", current_hp);
+        health_bar.css("width", current_hp + "%");
+
+        // health is high
+        if (current_hp >= 50 ) {
+            health_bar.addClass("bg-success");
+        // health is medium
+        } else if (25 < current_hp && current_hp < 50) {
+            health_bar.addClass("bg-warning");
+        // health is low
+        } else {
+            health_bar.addClass("bg-danger");
         }
         i++;
     };

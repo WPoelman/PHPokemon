@@ -19,8 +19,8 @@
                                 moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
                                 lijkt het erop dat hij langzaam minder wordt
                                 -->
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar"
+                                      aria-valuemin="0" aria-valuemax="100" id="main_health_enemy"></div>
                             </div>
                             <p>Pokemon left:</p>
                             <div class="row">
@@ -45,8 +45,8 @@
                         <div class="col-md-3 ">
                             <p>HP:</p>
                             <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%"
-                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar"
+                                     aria-valuemin="0" aria-valuemax="100" id="main_health_ally"></div>
                             </div>
                             <p>Pokemon left:</p>
                             <div class="row">
