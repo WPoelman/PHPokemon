@@ -5,7 +5,10 @@
  * Date: 23-05-2019
  */
 
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
+
 
 /**
  * find (with default so the program doesn't error) key in SESSION
@@ -31,7 +34,12 @@ function getGameInfo($otherplayer = false) {
 		$playernum = 'player1' ? 'player2' : 'player1';
 	}
 
-	$playerdata = getGamestate()[$playernum];
+	$gamestate = getGamestate();
+	if (isset($gamestate[$playernum])) {
+		$playerdata = $gamestate[$playernum];
+	} else {
+		$playerdata = null;
+	}
 
 	return [
 		"username"   => getSessionVar('username'),
