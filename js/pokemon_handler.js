@@ -68,6 +68,8 @@ function sendPreGameInfo(username, selected_pokemon) {
             error(data['error'])
         }
     });
+
+    return reactie;
 }
 
 
@@ -96,25 +98,20 @@ function waitingScreenLaunch() {
     // waiting screen
     $('#pre_game_selection_screen').hide();
     get("get_profile").then(function (data) {
-
+        let pokemon_data = JSON.parse(data);
+        let i = 1;
+        for (let pokemon in pokemon_data["playerdata"]["pokemon"]) {
+            $('#pokemon-choice-' + i).children().attr('id', pokemon).addClass(pokemon_data["playerdata"]["pokemon"][pokemon]["Element"] + '-type');
+            $('#pokemon-choice-' + i + ' p:nth-child(1)').text(pokemon);
+            $('#pokemon-choice-' + i + ' img').attr('src', 'media/PokemonImages/' + pokemon + '.png');
+            i++;
+        }
     });
-    //Select the third choice and then add all the
-    //necessary classes and id's for representation
+    // Select the third choice and then add all the
+    // necessary classes and id's for representation
 
-    //First selected pokemon
-    $('#pokemon-choice-1').children().attr('id', 'Bulbasaur').addClass("fire-type");
-    $('#pokemon-choice-1 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-1 img').attr('src', 'media/PokemonImages/charmander.png');
+    // First selected pokemon
 
-    //Second selected Pokémon
-    $('#pokemon-choice-2').children().attr('id', 'Charmander').addClass("fire-type");
-    $('#pokemon-choice-2 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-2 img').attr('src', 'media/PokemonImages/charmander.png');
-
-    //Third selected Pokémon
-    $('#pokemon-choice-3').children().attr('id', 'Charmander').addClass("fire-type");
-    $('#pokemon-choice-3 p:nth-child(1)').text("Charmander");
-    $('#pokemon-choice-3 img').attr('src', 'media/PokemonImages/charmander.png');
 
     $('#waiting_screen').show();
 }
@@ -286,7 +283,8 @@ function dummy(username) {
     // TODO: remove for prod
     post('reset_player');
     username = username || 'p1';
-    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']);
-    playButtonLaunch();
-    waitingScreenLaunch();
+    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']).then(() => {
+        playButtonLaunch();
+        waitingScreenLaunch();
+    })
 }

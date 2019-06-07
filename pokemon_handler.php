@@ -28,7 +28,7 @@ function do_action($info) {
 		}
 
 		if ($action == 'attack') {
-			$newgamestate = attack($gamestate, $player, $round, $parameter);
+			$newgamestate = attack($gamestate[$player], $round, $parameter);
 			// continue
 		} elseif ($action == 'switch') {
 			$newgamestate = switchTo($gamestate, $player, $round, $parameter);
@@ -37,7 +37,6 @@ function do_action($info) {
 			return error("invalid action");
 		}
 
-
 		// continued if no errors
 		if ($newgamestate) {
 			// if both players have filled in their action, calculate who goes first and how many damage the attacks do
@@ -45,15 +44,7 @@ function do_action($info) {
 				// both players have played
 				// calculate order and damage stuff here
 
-				// example (stub):
-				$newgamestate["round-$round"]['player1']['damage'] = 0;
-				$newgamestate["round-$round"]['player2']['damage'] = 20;
-				$newgamestate["round-$round"]['first']             = 'player1';
-
-
-				// afterwards:
-				$newgamestate['round'] = $newgamestate['round'] + 1;
-				writeGamestate($newgamestate);
+				calculateRoundResults($newgamestate, $round);
 			}
 		}
 
@@ -64,9 +55,8 @@ $routes->newRoute('do_action', 'post');
 
 function start_game($info) {
 	if (!(isset($_SESSION['username']))) {
-		$username = $_POST['username'];
-		$pokemon  = $_POST['pokemon'];
-
+		$username     = $_POST['username'];
+		$pokemon      = $_POST['pokemon'];
 		$added_player = addPlayer($username, $pokemon);
 
 		if (sizeof($pokemon) != 3) {

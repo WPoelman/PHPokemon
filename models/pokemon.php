@@ -30,71 +30,72 @@ function getPokemonInfo($name) {
 
 
 // returns the damage of an attack
-function damage($gamestate) {
-	$move_power    = "pak hiervoor de Power van de gekozen move";
-	$own_attack    = "pak hiervoor de Attack stat van de eigen huidige Pokemon";
-	$rival_defense = "pak hiervoor de Defense stat van de rival Pokemon";
+function damage($move_power, $own_attack, $rival_defense) {
 
 	$damage = ((5 * $move_power * ($own_attack / $rival_defense)) / 50) + 2;
 
-	return round(multipliedDamage($damage));
+	return $damage;
 }
 
-// check if an attack is effective or not and calculates the real damage
-function multipliedDamage($damage) {
-	$move_element          = "pak element van de gekozen move, bijv fire";
-	$rival_pokemon_element = "pak element van de rival Pokemon, bijv water";
+// check if an attack is effective or not and calculates the damage multiplier
+function multipliedDamage($move_element, $rival_pokemon_element, $accuracy) {
+
+	if (rand(0, 100) > $accuracy) {
+		// miss
+		return 0;
+	}
 
 	if ($move_element == 'Fire') {
 		if ($rival_pokemon_element == 'Grass') {
 			// super effective
-			return 2 * $damage;
+			return 2;
 		} elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock') {
 			// not very effective
-			return 0.5 * $damage;
+			return 0.5;
 		}
 	} elseif ($move_element == 'Water') {
 		if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Rock') {
 			// super effective
-			return 2 * $damage;
+			return 2;
 		} elseif ($rival_pokemon_element == 'Grass' or $rival_pokemon_element == 'Electric') {
 			// not very effective
-			return 0.5 * $damage;
+			return 0.5;
 		}
 	} elseif ($move_element == 'Grass') {
 		if ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Rock') {
 			// super effective
-			return 2 * $damage;
+			return 2;
 		} elseif ($rival_pokemon_element == 'Fire') {
 			// not very effective
-			return 0.5 * $damage;
+			return 0.5;
 		}
 	} elseif ($move_element == 'Rock') {
 		if ($rival_pokemon_element == 'Fire' or $rival_pokemon_element == 'Electric') {
 			// super effective
-			return 2 * $damage;
+			return 2;
 		} elseif ($rival_pokemon_element == 'Water' or $rival_pokemon_element == 'Grass') {
 			// not very effective
-			return 0.5 * $damage;
+			return 0.5;
 		}
 	} elseif ($move_element == 'Electric') {
 		if ($rival_pokemon_element == 'Water') {
 			// super effective
-			return 2 * $damage;
+			return 2;
 		} elseif ($rival_pokemon_element == 'Rock') {
 			// not very effective
-			return 0.5 * $damage;
+			return 0.5;
 		}
 	}
 
 	// if it is not 'super effective' or 'not very effective', just return the default damage
-	return $damage;
+	return 1;
 }
 
 // handle the attack a user performs
-function attack($gamestate, $player, $round, $attack_name) {
+function attack($playerinfo, $round, $attack_name) {
+	$player = $playerinfo['playernum'];
 
-	$active_pokemon = getPokemonInfo($gamestate[$player]['active_pokemon']);
+	$active_pokemon = $playerinfo['pokemon'][($playerinfo['active_pokemon'])];
 
 	$active_pokemon_attack = array_filter(
 		$active_pokemon['Moveset'],
@@ -107,11 +108,26 @@ function attack($gamestate, $player, $round, $attack_name) {
 		return error('invalid attack for this pokemon');
 	}
 
+	// its always one attack, so this makes sure it's not a list
+	$attack_index          = array_keys($active_pokemon_attack)[0];
+	$active_pokemon_attack = $active_pokemon_attack[$attack_index];
+
+	if ($active_pokemon_attack['Current PP'] < 1) {
+		return error('this move is out of PP');
+	}
+
+	$active_pokemon_attack['Current PP']--;
+
+	// save to player info
+	$playerinfo['pokemon'][$playerinfo['active_pokemon']]['Moveset'][$attack_index] = $active_pokemon_attack;
+
+
 	$roundinfo = [
 		"attack" => $active_pokemon_attack,
 	];
 
-	// TODO: change PP of attack
+
+	writePlayerData($player, $playerinfo);
 
 
 	return updateGamestate([
@@ -141,4 +157,60 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 	$gamestate["round-$round"][$player] = $roundinfo;
 
 	return writeGamestate($gamestate);
+}
+
+// calculate the results of a rond ,like damage (multiplied) and order
+function calculateRoundResults($gamestate, $round_no) {
+	$p1poke = $gamestate['player1']['pokemon'][$gamestate['player1']['active_pokemon']];
+	$p2poke = $gamestate['player2']['pokemon'][$gamestate['player2']['active_pokemon']];
+
+
+	$round       = $gamestate["round-$round_no"];
+	$first       = null;
+	$damage1     = 0;
+	$damage2     = 0;
+	$multiplier1 = 1;
+	$multiplier2 = 1;
+
+	if (isset($round['player2']['attack'])) {
+		// this is the damage player2 gives player1
+		$p2attack    = $round['player2']['attack'];
+		$damage1     = damage($p2attack['Power'], $p2poke['Attack'], $p1poke['Defense']);
+		$multiplier1 = multipliedDamage($p2attack['Type'], $p1poke['Element'], $p2attack['Accuracy']);
+		$damage1     = round($damage1 * $multiplier1);
+	} else {
+		$first = 'player2';
+	}
+
+	if (isset($round['player1']['attack'])) {
+		// this is the damage player1 gives player2
+		$p1attack    = $round['player1']['attack'];
+		$damage2     = damage($p1attack['Power'], $p1poke['Attack'], $p2poke['Defense']);
+		$multiplier2 = multipliedDamage($p1attack['Type'], $p2poke['Element'], $p1attack['Accuracy']);
+		$damage2     = round($damage2 * $multiplier2);
+	} else {
+		$first = 'player1';
+	}
+
+	// calculate who goes first
+	if (!$first) {
+		$p1speed = $p1poke['Speed'];
+		$p2speed = $p2poke['Speed'];
+		if ($p1speed == $p2speed) {
+			$first = array_rand(['player1' => 1, 'player2' => 2]);
+		} elseif ($p1speed > $p2speed) {
+			$first = 'player1';
+		} else {
+			$first = 'player2';
+		}
+	}
+	// player1->damage means damage taken for this attack
+	$round['player1']['damage']        = $damage1;
+	$round['player1']['effectiveness'] = $multiplier1;
+	$round['player2']['damage']        = $damage2;
+	$round['player2']['effectiveness'] = $multiplier2;
+	$round['first']                    = $first;
+	updateGamestate(["round-$round_no" => $round, "round" => $round_no + 1]);
+
+	return $round;
 }
