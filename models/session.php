@@ -50,14 +50,31 @@ function getGameInfo($otherplayer = false) {
 
 // read the full current gamestate
 function getGamestate() {
-	return json_decode(file_get_contents("data/gamestate.json"), true);
+	//	return json_decode(file_get_contents("data/gamestate.json"), true);
+
+	if (isset($_SESSION['gameid'])) {
+		$id = $_SESSION['gameid'];
+
+		return json_decode(file_get_contents("data/games/$id.json"), true);
+	} else {
+		return []; // error('please register first');
+	}
+
 }
 
 // overwrite the full gamestate
 function writeGamestate($newdata) {
-	file_put_contents("data/gamestate.json", json_encode($newdata));
+	//file_put_contents("data/gamestate.json", json_encode($newdata));
+	if (isset($_SESSION['gameid'])) {
+		$id = $_SESSION['gameid'];
 
-	return $newdata;
+		file_put_contents("data/games/$id.json", json_encode($newdata));
+
+		return $newdata;
+	} else {
+		return []; // error('please register first');
+	}
+
 }
 
 // partly overwrite gamestate with difference
@@ -106,6 +123,8 @@ function isReady($player) {
 
 // save the information of a new player to session and gamestate, including data about their pokemon
 function addPlayer($username, $pokemons) {
+	joinGame(getOpenGame(), $username);
+
 	// $_SESSION['pokemon']  = $pokemons;
 
 	$_SESSION['username']    = $username;
@@ -141,4 +160,104 @@ function addPlayer($username, $pokemons) {
 	}
 }
 
-// todo later: make playble for more than 2 players at the same time
+
+// MULTIPLE PLAYERS:
+
+// get all games
+function getGames() {
+	return json_decode(file_get_contents("data/games.json"), true);
+}
+
+// write to the games collection file
+function writeGames($new) {
+	file_put_contents("data/games.json", json_encode($new));
+
+	return $new;
+}
+
+// like writeGames but merge only a difference with what's already in the file
+function updateGames($change) {
+	$new = array_merge(getGames(), $change);
+	writeGames($new);
+}
+
+
+// write to a game file (gamestate)
+function writeGame($id, $data) {
+	if (!file_exists('data/games')) {
+		mkdir('data/games', 0744);
+	}
+	file_put_contents("data/games/$id.json", json_encode($data));
+}
+
+// create a new open game
+function newGame() {
+	$newid   = uniqid();
+	$newgame = [
+		'open' => $newid,
+		$newid => ['state' => 'open', 'players' => []],
+	];
+	updateGames($newgame);
+	writeGame($newid, ['round' => 0]);
+
+	return $newid;
+}
+
+// get the current open (joinable) game
+function getOpenGame() {
+	$games = getGames();
+	if (isset($games['open']) and $games[$games['open']]['state'] == 'open') {
+		return $games['open'];
+	} else {
+		return newGame();
+	}
+}
+
+// remove a folder (used to purge the games folder)
+function deleteDirectory($dir) {
+	if (!file_exists($dir)) {
+		return true;
+	}
+
+	if (!is_dir($dir)) {
+		return unlink($dir);
+	}
+
+	foreach(scandir($dir) as $item) {
+		if ($item == '.' || $item == '..') {
+			continue;
+		}
+
+		if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+			return false;
+		}
+
+	}
+
+	return rmdir($dir);
+}
+
+// empty the games file and folder
+function clearGames() {
+	writeGames([]);
+	deleteDirectory('data/games');
+}
+
+// let a user join a game
+// todo: make user choose to not make their game public, and give them the join-code
+function joinGame($game, $me) {
+	$games = getGames();
+	if (isset($_SESSION['gameid']) and
+	    isset($games[$_SESSION['gameid']]) and
+	    $games[$_SESSION['gameid']]['state'] != 'closed') {
+		return error('You are still in an active game');
+	}
+
+	$games[$game]['players'][] = $me;
+	if (sizeof($games[$game]['players']) == 2) {
+		$games[$game]['state'] = 'playing';
+	}
+	$_SESSION['gameid'] = $game;
+
+	return writeGames($games);
+}
