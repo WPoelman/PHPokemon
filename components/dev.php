@@ -24,6 +24,9 @@
 			dummy player
 		</button>
 	</div>
+    <pre>
+        <?php print_r($_SESSION); ?>
+    </pre>
 	<br/>
 
 </div>

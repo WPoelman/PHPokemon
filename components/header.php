@@ -4,9 +4,9 @@
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Bootstrap / Google Fonts -->
+    <!-- Bootstrap / Google Fonts -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<figure>
-				<img src="media/PHPokemon.png" alt="" width="900" height="124">
+				<img src="media/PHPokemon.png" alt="PHPokemon" width="60%" height="auto">
 			</figure>
 		</div>
 	</div>

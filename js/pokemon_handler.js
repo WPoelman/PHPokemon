@@ -46,20 +46,17 @@ function sendPreGameInfo(username, selected_pokemon) {
     }
 
     // send the post request with the username and selected pokemon
-    let reactie = post("start_game",
-        {
-            "pokemon": selected_pokemon,
-            "username": username
-        });
-
-    // dit is om te testen !! de reactie komt van pokemon_handler.php/game_start
-    reactie.done(function (data) {
+    return post("start_game", {
+        "pokemon": selected_pokemon,
+        "username": username
+    }).then(function (data) {
         data = JSON.parse(data);
         // if the request was good, go to the next screen
         if (!data['error']) {
             // once the 1st round has started, the attack screen will show
             startEventListener();
             waitingScreenLaunch();
+            return data;
 
             // for dummy
             // readyButtonLaunch()
@@ -68,8 +65,6 @@ function sendPreGameInfo(username, selected_pokemon) {
             error(data['error'])
         }
     });
-
-    return reactie;
 }
 
 
@@ -262,14 +257,12 @@ function startEventListener() {
 // if this is the case, the client stops checking this and gamestateHandler is called to do something with the new data
 function getGameState(interval_id) {
     get('game_info').then(data => {
-        console.log('++');
-        // todo: stop in het geval van error
         if (data) {
             clearInterval(interval_id);  // stop checking after getting data
             data = JSON.parse(data);
             gamestateHandler(data)
         }
-    })
+    }).fail(() => clearInterval(interval_id))
 }
 
 
@@ -371,8 +364,9 @@ $(function () {
 function dummy(username) {
     // so I don't have to click each time I need to test
     username = username || 'p1';
-    sendPreGameInfo(username, ['Pikachu', 'Bulbasaur', 'Geodude']).then(() => {
+    return sendPreGameInfo(username, ['Bulbasaur', 'Pikachu', 'Charmander']).then((data) => {
         playButtonLaunch();
         waitingScreenLaunch();
+        return data;
     })
 }
