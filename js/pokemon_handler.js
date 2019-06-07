@@ -293,8 +293,6 @@ $(function () {
 
 function dummy(username) {
     // so I don't have to click each time I need to test
-    // TODO: remove for prod
-    post('reset_player');
     username = username || 'p1';
     return sendPreGameInfo(username, ['Bulbasaur', 'Pikachu', 'Charmander']).then((data) => {
         playButtonLaunch();
