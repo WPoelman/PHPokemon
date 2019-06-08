@@ -62,7 +62,34 @@
         <div class="col-md-12">
             <h3>How to play</h3>
             <p>
-                Hier ga ik nog mee bezig
+                The game will be played in the following order:
+            </p>
+            <ol>
+                <li>Choosing your Pokemon.</li>
+                <li>
+                    Playing a round:
+                    <ul>
+                        <li>attacking</li>
+                        <li>switching</li>
+                    </ul>
+                </li>
+                <li>Repeating untill someone is out of Pokemon.</li>
+            </ol>
+            <h4 class="extra_space">1. Choosing your Pokemon:</h4>
+            <p>
+                After clicking the play button, you will be directed to the first screen.<br />
+                On this screen you have to fill in your username and select the three Pokemon, that you are going
+                to use to battle your opponent. The first Pokemon that you choose, is the Pokemon with which you will
+                begin the battle. <br />
+                Since each Pokemon has different stats, as well as a different element and different attacks, it is
+                recommended to first study the <b>Pokemon page</b> and the <b>Element table</b> below. This way you
+                will learn the strengths and weaknesses of each Pokemon and use this information to decide how you
+                are going to play. <br />
+            </p>
+            <p>
+                When you have entered a username and selected your three Pokemon, you can press the <i>Ready</i> button
+                and you will be send to the waiting screen. When a second player has picked his team and clicked
+                the <i>Ready</i> button as well, the game will begin automatically.
             </p>
         </div>
     </div>

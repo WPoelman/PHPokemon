@@ -28,6 +28,11 @@ h3 {
     margin: 30px 0 30px 0;
 }
 
+.extra_space {
+    margin-top: 4%;
+}
+
+
 table {
     width: 50%;
     text-align: center;
