@@ -1,10 +1,119 @@
-<?php include 'components/header.php'; ?>
+<!doctype html>
+<html lang="en">
 
-    <!-- Container -->
-    <div class="container">
-        <div class="row wp-row bg-white">
-            <p> Pokemon instructions </p>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap / Google Fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/pokemonlist.js" type="application/javascript"></script>
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="css/instructions.css">
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
+
+    <title><?= $page_title ?></title>
+</head>
+
+<body>
+
+<!-- Menu -->
+<?= $navigation ?>
+
+<!-- Container -->
+<div class="container">
+    <div class="row wp-row">
+        <div class="col-md-12 intro">
+            <h1>Instructions</h1>
+            <p>Below you can read all about the game and how to play it.</p>
         </div>
     </div>
 
-<?php include 'components/footer.php'; ?>
+    <div class="row wp-row">
+        <div class="col-md-12">
+            <h3>About PHPokemon</h3>
+            <p>
+                PHPokemon is a simplied version of the Pokemon battle-system, that you might know from the many handheld
+                Pokemon games like Pokemon Red/Green/Yellow, Silver/Gold, Ruby/Sapphire/Emerald and later Pokemon games.
+            </p>
+            <p>
+                Just as in the normal Pokemon battles, both players have a team of Pokemon and will fight rounds untill
+                one player runs out of Pokemon. <br />
+                Our version has a lot of the elements from the actual Pokemon games, but there are some changes:
+            </p>
+            <ul>
+                <li>There are only 12 Pokemon to choose from.</li>
+                <li>Each player can only choose 3 Pokemon.</li>
+                <li>Players will only have the options to attack or switch.</li>
+                <li>There are only 6 elements in the game. For an overview, see the <i>element table</i> below.</li>
+                <li>Each Pokemon has a moveset of 3 attacks. Status effects are not included.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row wp-row">
+        <div class="col-md-12">
+            <h3>How to play</h3>
+            <p>
+                Hier ga ik nog mee bezig
+            </p>
+        </div>
+    </div>
+
+    <div class="row wp-row">
+        <div class="col-md-12">
+            <h3>Element table</h3>
+            <p>
+                Each Pokemon has a certain element. On top of this, the different attack al have their own element
+                as well. This table shows the six possible elements, as well as their strengths and weaknesses.
+            </p>
+            <table>
+                <tr>
+                    <th>Element</th>
+                    <th>Strong against</th>
+                    <th>Weak against</th>
+                </tr>
+                <tr>
+                    <td>Normal</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td class="fire">Fire</td>
+                    <td>Grass</td>
+                    <td>Water, Rock</td>
+                </tr>
+                <tr>
+                    <td class="water">Water</td>
+                    <td>Grass</td>
+                    <td>Water, Rock</td>
+                </tr>
+                <tr>
+                    <td class="grass">Grass</td>
+                    <td>Water, Rock</td>
+                    <td>Fire</td>
+                </tr>
+                <tr>
+                    <td class="rock">Rock</td>
+                    <td>Fire, Electric</td>
+                    <td>Water, Grass</td>
+                </tr>
+                <tr id="table_end">
+                    <td class="electric">Electric</td>
+                    <td>Water</td>
+                    <td>Rock</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.intro {
+    text-align: center;
+}
+
+.intro h1 {
+    font-size: 350%;
+}
+
+.intro p {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 150%;
+}
+
+h3 {
+    color: crimson;
+    font-weight: bold;
+    border-left: 4px solid #FF91A4;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.wp-row {
+    margin: 30px 0 30px 0;
+}
+
+table {
+    width: 50%;
+    text-align: center;
+    margin: 50px auto 0px auto;
+}
+
+th, #table_end {
+    border-bottom: 2px solid lightpink;
+}
+
+td {
+    border-bottom: 1px solid gray;
+}
+
+.fire, .water, .grass, .rock, .electric {
+    font-weight: bold;
+}
+
+.fire {
+    color: red;
+}
+
+.water {
+    color: blue;
+}
+
+.grass {
+    color: lightgreen;
+}
+
+.rock {
+    color: brown;
+}
+
+.electric {
+    color: sandybrown;
+}
