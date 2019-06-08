@@ -16,6 +16,13 @@ body {
     font-size: 150%;
 }
 
+#page_links {
+    font-size: 120%;
+}
+#page_links a {
+    padding: 0 50px 0 50px;
+}
+
 h3 {
     color: crimson;
     font-weight: bold;

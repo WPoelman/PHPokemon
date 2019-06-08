@@ -33,12 +33,18 @@
         <div class="col-md-12 intro">
             <h1>Instructions</h1>
             <p>Below you can read all about the game and how to play it.</p>
+
+            <p id="page_links">
+                <a href="#about">About PHPokemon</a>
+                <a href="#howtoplay">How to Play</a>
+                <a href="#elementtable">Element table</a>
+            </p>
         </div>
     </div>
 
     <div class="row wp-row">
         <div class="col-md-12">
-            <h3>About PHPokemon</h3>
+            <h3 id="about">About PHPokemon</h3>
             <p>
                 PHPokemon is a simplied version of the Pokemon battle-system, that you might know from the many handheld
                 Pokemon games like Pokemon Red/Green/Yellow, Silver/Gold, Ruby/Sapphire/Emerald and later Pokemon games.
@@ -60,7 +66,7 @@
 
     <div class="row wp-row">
         <div class="col-md-12">
-            <h3>How to play</h3>
+            <h3 id="howtoplay">How to play</h3>
             <p>
                 The game will be played in the following order:
             </p>
@@ -131,7 +137,7 @@
 
     <div class="row wp-row">
         <div class="col-md-12">
-            <h3>Element table</h3>
+            <h3 id="elementtable">Element table</h3>
             <p>
                 Each Pokemon has a certain element. On top of this, the different attack al have their own element
                 as well. This table shows the six possible elements, as well as their strengths and weaknesses.
