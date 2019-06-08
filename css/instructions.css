@@ -32,7 +32,7 @@ h3 {
 }
 
 h4 {
-    font-style: italic;
+    text-decoration: underline;
     font-weight: bold;
 }
 
@@ -46,8 +46,8 @@ h5 {
     margin: 30px 0 30px 0;
 }
 
-.extra_space {
-    margin-top: 4%;
+.extra_space, #about, #howtoplay, #elementtable {
+    margin-top: 5%;
 }
 
 

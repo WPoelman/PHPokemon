@@ -127,11 +127,23 @@
 
             <h5>Switching</h5>
             <p>
-                When you have entered a username and selected your three Pokemon, you can press the <i>Ready</i> button
-                and you will be send to the waiting screen. When a second player has picked his team and clicked
-                the <i>Ready</i> button as well, the game will begin automatically.
+                When clicking the switch button, you can select one of your remaining Pokemon to switch places with
+                your current Pokemon. A switch always goes before the opponent's attack and your new Pokemon
+                won't be able to attack in this round anymore. <br />
+            </p>
+            <p>
+                Switching can be a good strategie if your current Pokemon has an element that is weak against the
+                opponent's Pokemon.
             </p>
             <h4 class="extra_space">3. Repeating:</h4>
+            <p>
+                After the first round is played, the health bars of both Pokemon will be updated. <br >
+                Now the next round begins and both players will get to choose again between attacking or switching.
+                <br/> When a Pokemon has no health left, this Pokemon can't be used anymore and the next
+                Pokemon in line will automatically be selected to continue the battle. <br />
+                This process will go on untill one player is out of Pokemon to battle with. The game is now over and
+                both players will be redirected to the final screen.
+            </p>
         </div>
     </div>
 
