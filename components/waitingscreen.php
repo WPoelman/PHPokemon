@@ -19,14 +19,15 @@
 	                <!-- Info message -->
                     <div class="row wp-row">
                         <div class="col-md-12 intro">
-                            <h1>This is your Pokémon team!</h1>
+                            <h1 id="action_choice_message">This is your Pokémon team!</h1>
+                            <h4 id="waiting_status_message"></h4>
                         </div>
                     </div>
 
 	                <!-- Pokémon choice -->
 	                <!-- Only basic HTML to later add the specific
 					classes, names and id's -->
-                    <div class="row wp-row">
+                    <div class="row wp-row" id="pokemon_list_waiting_screen">
                         <!-- Pokemon 1 -->
                         <div class="col-md-4" id="pokemon-choice-1">
                             <div class="pokemon">

@@ -154,7 +154,7 @@
                         </button>
                     </div>
 
-                    <!--Ready button todo: Id naar class veranderen!-->
+                    <!--Ready button -->
                     <div class="col-md-6 text-center button-div">
                         <button type="button" class="btn btn-danger" id="ReadyAttackChoice">
                             <h2 class="ReadyButton">Ready</h2>

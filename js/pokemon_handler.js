@@ -144,6 +144,20 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
+function roundWaitScreenLaunch (name, action) {
+    if (action == 'attack') {
+        $('#attack').hide();
+    } else {
+        $('#switch_pokemon').hide();
+    }
+
+    // show the round waiting screen with the chosen action this round
+    $('#pokemon_list_waiting_screen').hide();
+    $('#action_choice_message').text("Action this round: " + action + " " + name);
+    $('#waiting_status_message').text("Waiting for your opponent to choose an action...");
+    $('#waiting_screen').show();
+}
+
 // update the attack screen to the currently active pokemon attacks
 function updateAttackSwitchScreen(data) {
     // get the user info
@@ -182,24 +196,10 @@ function updateAttackSwitchScreen(data) {
 
         let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
         let health_bar = $('#choice_health_' + i);
-        health_bar.attr("aria-valuenow", current_hp);
-        health_bar.css("width", current_hp + "%");
-        health_bar.removeClass("bg-success bg-warning bg-danger")
 
-        // health is high
-        if (current_hp >= 50) {
-            health_bar.addClass("bg-success");
-            // health is medium
-        } else if (25 < current_hp && current_hp < 50) {
-            health_bar.addClass("bg-warning");
-            // health is low
-        } else {
-            health_bar.addClass("bg-danger");
-        }
-
+        updateHealthBarElement(current_hp, health_bar);
     }
-    ;
-}
+};
 
 // change the sprites based on the user (enemy <> player)
 function updateGameScreenElements(round_data, player_option, status) {
@@ -216,24 +216,30 @@ function updateGameScreenElements(round_data, player_option, status) {
 
         let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
         let health_bar = $('#main_health_' + status);
-        health_bar.attr("aria-valuenow", current_hp);
-        health_bar.css("width", current_hp + "%");
-        health_bar.removeClass("bg-success bg-warning bg-danger")
 
-        // health is high
-        if (current_hp >= 50) {
-            health_bar.addClass("bg-success");
-            // health is medium
-        } else if (25 < current_hp && current_hp < 50) {
-            health_bar.addClass("bg-warning");
-            // health is low
-        } else {
-            health_bar.addClass("bg-danger");
-        }
+        updateHealthBarElement(current_hp, health_bar);
 
         i++;
     }
 }
+
+function updateHealthBarElement(current_hp, health_bar) {
+    health_bar.attr("aria-valuenow", current_hp);
+    health_bar.css("width", current_hp + "%");
+    health_bar.removeClass("bg-success bg-warning bg-danger")
+
+    // health is high
+    if (current_hp >= 50) {
+        health_bar.addClass("bg-success");
+        // health is medium
+    } else if (25 < current_hp && current_hp < 50) {
+        health_bar.addClass("bg-warning");
+        // health is low
+    } else {
+        health_bar.addClass("bg-danger");
+    }
+
+};
 
 // update the game screen based on new round data
 function updateGameScreen(round_data) {
@@ -246,7 +252,9 @@ function updateGameScreen(round_data) {
         enemy = "player1";
     }
 
-    // HIER NOG HEALTH BAR INFO TOEVOEGEN
+    // hide the waiting element
+    $('#waiting_screen').hide();
+    $('#select_action').show();
 
     // player side updates
     updateGameScreenElements(round_data, player, "ally");
@@ -368,7 +376,7 @@ $(function () {
             error('please choose an attack');
         } else {
             sendRoundAction('attack', attack_name).then(() => {
-                backButtonLaunch();
+                roundWaitScreenLaunch(attack_name, "attack");
                 startEventListener()
             })
         }
@@ -382,7 +390,7 @@ $(function () {
             error('please choose a new pokemon');
         } else {
             sendRoundAction('switch', pokemon_name).then(() => {
-                backButtonLaunch();
+                roundWaitScreenLaunch(pokemon_name, "switch");
                 startEventListener()
             });
         }
