@@ -184,6 +184,7 @@ function updateAttackSwitchScreen(data) {
         let health_bar = $('#choice_health_' + i);
         health_bar.attr("aria-valuenow", current_hp);
         health_bar.css("width", current_hp + "%");
+        health_bar.removeClass("bg-success bg-warning bg-danger")
 
         // health is high
         if (current_hp >= 50) {
@@ -217,6 +218,7 @@ function updateGameScreenElements(round_data, player_option, status) {
         let health_bar = $('#main_health_' + status);
         health_bar.attr("aria-valuenow", current_hp);
         health_bar.css("width", current_hp + "%");
+        health_bar.removeClass("bg-success bg-warning bg-danger")
 
         // health is high
         if (current_hp >= 50) {
