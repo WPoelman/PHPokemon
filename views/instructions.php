@@ -52,7 +52,7 @@
                 <li>There are only 12 Pokemon to choose from.</li>
                 <li>Each player can only choose 3 Pokemon.</li>
                 <li>Players will only have the options to attack or switch.</li>
-                <li>There are only 6 elements in the game. For an overview, see the <i>element table</i> below.</li>
+                <li>There are only 6 elements in the game. For an overview, see the <b>Element table</b> below.</li>
                 <li>Each Pokemon has a moveset of 3 attacks. Status effects are not included.</li>
             </ul>
         </div>
@@ -91,6 +91,41 @@
                 and you will be send to the waiting screen. When a second player has picked his team and clicked
                 the <i>Ready</i> button as well, the game will begin automatically.
             </p>
+            <h4 class="extra_space">2. Playing a round:</h4>
+            <p>
+                Now the game has started, both players will see two options: attack or switch. <br />
+            </p>
+
+            <h5>Attacking</h5>
+            <p>
+                When clicking the attack button, the player will see 3 different attacks. <br />
+                Each attack has it's own statistics:
+            </p>
+            <ul>
+                <li><b>PP:</b> how many times an attack can be used;</li>
+                <li><b>Power:</b> more Power means more damage;</li>
+                <li><b>Accuracy</b>: the chance that an attack wil hit the opponent; and</li>
+                <li><b>Type</b>: the element of the attack, to determine whether is effective or not against
+                    the opponent.</li>
+            </ul>
+            <p>
+                The attacks with more Power often have less Accuracy and also less PP, so they can't be used too many
+                times. <br />
+                Furthermore, the Pokemon with the highest Speed gets to attack first. If two Pokemon have the same
+                Speed, the attacking order will be decided by chance.
+            </p>
+            <p>
+                Reading about the different attacks on the <b>Pokemon page</b> can greatly improve your
+                battling strategies.
+            </p>
+
+            <h5>Switching</h5>
+            <p>
+                When you have entered a username and selected your three Pokemon, you can press the <i>Ready</i> button
+                and you will be send to the waiting screen. When a second player has picked his team and clicked
+                the <i>Ready</i> button as well, the game will begin automatically.
+            </p>
+            <h4 class="extra_space">3. Repeating:</h4>
         </div>
     </div>
 

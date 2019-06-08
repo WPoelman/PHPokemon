@@ -24,6 +24,17 @@ h3 {
     padding-left: 10px;
 }
 
+h4 {
+    font-style: italic;
+    font-weight: bold;
+}
+
+h5 {
+    color: blueviolet;
+    font-weight: bold;
+    margin-top: 3%;
+}
+
 .wp-row {
     margin: 30px 0 30px 0;
 }
