@@ -321,3 +321,19 @@ Dying animation
 { from {top:0px; opacity: 1;}
 	to {top:200px; opacity: 0}
 }
+
+/*
+Switch animation
+ */
+
+@keyframes switch {
+	from   {opacity: 1}
+	25%  {opacity: 0}
+	50%  {opacity: 1}
+	to {opacity: 0}
+}
+
+.switched {
+	animation: switch 1.5s ease-out forwards;
+	animation-iteration-count:1;
+}
