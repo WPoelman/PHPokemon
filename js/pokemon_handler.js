@@ -189,11 +189,6 @@ function updateAttackSwitchScreen(data) {
             i++;
         }
 
-        // if the pokemon is dead, the button is not clickable
-        if (all_pokemon[pokemon]["Current HP"] <= 0) {
-            choice_element.prop("disabled", true);
-        }
-
         let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
         let health_bar = $('#choice_health_' + i);
 
