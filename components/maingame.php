@@ -77,7 +77,7 @@
                     <hr>
                     <br>
                     <div class="col-md-12">
-                        <p class="text-center Middle-Text">Your turn! what do you want to do?</p>
+                        <p class="text-center Middle-Text">Your turn! What do you want to do?</p>
                     </div>
                     <hr>
                 </div>
@@ -175,7 +175,7 @@
                     <hr>
                     <br>
                     <div class="col-md-12">
-                        <p class="text-center Middle-Text">To which pokemon do you want to switch?</p>
+                        <p class="text-center Middle-Text">To which Pokémon do you want to switch?</p>
                     </div>
                     <hr>
                 </div>

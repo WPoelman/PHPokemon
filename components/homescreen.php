@@ -9,7 +9,7 @@
                     <div class="row">
                         <hr>
                         <div class="col-md-12">
-                            <p class="text-center Middle-Text">Welcome to our newest pokemon game!</p>
+                            <p class="text-center Middle-Text">Welcome to our newest Pokémon game!</p>
                         </div>
                         <hr>
                     </div>

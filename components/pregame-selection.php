@@ -9,7 +9,7 @@
                     <div class="row">
                         <hr>
                         <div class="col-md-12">
-                            <p class="text-center Middle-Text">Select a username, choose 3 pokemon and then press Ready!
+                            <p class="text-center Middle-Text">Select a username, choose 3 Pokémon and then press Ready!
                             </p>
                         </div>
                         <hr>
