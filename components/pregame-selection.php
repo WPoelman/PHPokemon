@@ -46,7 +46,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Charmander</p>
-                                            <p class="image"><img src="media/PokemonImages/charmander.png"
+                                            <p class="image"><img src="media/PokemonImages/Charmander.png"
                                                                   class="sprite bouncing"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -85,7 +85,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Vulpix</p>
-                                            <p class="image"><img src="media/PokemonImages/vulpix.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Vulpix.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -128,7 +128,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Squirtle</p>
-                                            <p class="image"><img src="media/PokemonImages/squirtle.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Squirtle.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -166,7 +166,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Staryu</p>
-                                            <p class="image"><img src="media/PokemonImages/staryu.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Staryu.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -209,7 +209,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Bulbasaur</p>
-                                            <p class="image"><img src="media/PokemonImages/bulbasaur.png" class="sprite"
+                                            <p class="image"><img src="media/PokemonImages/Bulbasaur.png" class="sprite"
                                                                   id="bulba"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -248,7 +248,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Oddish</p>
-                                            <p class="image"><img src="media/PokemonImages/oddish.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Oddish.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -291,7 +291,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Pikachu</p>
-                                            <p class="image"><img src="media/PokemonImages/pikachu.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Pikachu.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -330,7 +330,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Magnemite</p>
-                                            <p class="image"><img src="media/PokemonImages/magnemite.png"
+                                            <p class="image"><img src="media/PokemonImages/Magnemite.png"
                                                                   class="sprite"></p>
                                         </div>
                                         <div class="col-md-6">
@@ -374,7 +374,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Rattata</p>
-                                            <p class="image"><img src="media/PokemonImages/rattata.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Rattata.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -413,7 +413,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Eevee</p>
-                                            <p class="image"><img src="media/PokemonImages/eevee.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Eevee.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -457,7 +457,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Geodude</p>
-                                            <p class="image"><img src="media/PokemonImages/geodude.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Geodude.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -496,7 +496,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="name">Omanyte</p>
-                                            <p class="image"><img src="media/PokemonImages/omanyte.png" class="sprite">
+                                            <p class="image"><img src="media/PokemonImages/Omanyte.png" class="sprite">
                                             </p>
                                         </div>
                                         <div class="col-md-6">
