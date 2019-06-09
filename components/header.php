@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<figure>
-				<img src="media/PHPokemon.png" alt="PHPokemon" width="60%" height="auto">
+				<img src="media/PHPokemon.png" alt="PHPokemon" width="auto" height="auto" id="PHPokemon_logo">
 			</figure>
 		</div>
 	</div>
