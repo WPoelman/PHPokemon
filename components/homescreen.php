@@ -5,6 +5,15 @@
             <span class="border border-white">
                 <div class="col-md-12 main-box">
 
+                    <!-- Upper text -->
+                    <div class="row">
+                        <hr>
+                        <div class="col-md-12">
+                            <p class="text-center Middle-Text">Welcome to our newest pokemon game!</p>
+                        </div>
+                        <hr>
+                    </div>
+
                     <!-- Button for playing -->
                     <div class="row justify-content-center">
                         <div class="col-md-4 text-center button-div ">
@@ -36,14 +45,7 @@
                         </div>
                     </div>
 
-	                <!-- Middle text -->
-                    <div class="row">
-                        <hr>
-                        <div class="col-md-12">
-                            <p class="text-center Middle-Text">Welcome to our newest pokemon game!</p>
-                        </div>
-                        <hr>
-                    </div>
+
 
                 </div>
             </span>
