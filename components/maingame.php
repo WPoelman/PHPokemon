@@ -148,14 +148,14 @@
                 <div class="row justify-content-center">
 
                     <!-- Go back to select action screen button -->
-                    <div class="col-md-3 text-center button-div return-button">
+                    <div class="col-md-5 text-center button-div return-button">
                         <button type="button" class="btn btn-light BackButton">
                             <img src="media/Go-back-arrow.png" style=" height: 100%; width: 100%">
                         </button>
                     </div>
 
                     <!--Ready button -->
-                    <div class="col-md-6 text-center button-div">
+                    <div class="col-md-5 text-center button-div">
                         <button type="button" class="btn btn-danger" id="ReadyAttackChoice">
                             <h2 class="ReadyButton">Ready</h2>
                         </button>
@@ -233,14 +233,14 @@
                 <div class="row justify-content-center">
 
                     <!-- Go back to select action screen button -->
-                    <div class="col-md-3 text-center button-div return-button">
+                    <div class="col-md-5 text-center button-div return-button">
                         <button type="button" class="btn btn-light BackButton">
                             <img src="media/Go-back-arrow.png" style=" height: 100%; width: 100%">
                         </button>
                     </div>
 
                     <!--Ready button -->
-                    <div class="col-md-6 text-center button-div">
+                    <div class="col-md-5 text-center button-div">
                         <button type="button" class="btn btn-danger" id="ReadySwitchChoice">
                             <h2 class="ReadyButton">Ready</h2>
                         </button>

@@ -95,11 +95,17 @@ Begin styling pokemon choose page
 
 }
 
+
 #ReadyPokemonChoice, #ReadyAttackChoice, #ReadySwitchChoice {
-	background-color: #FF91A4;
-	height: 80px;
+	background-color: palegreen;
+	height: 120px;
 	width: 250px;
 	border-radius: 12px;
+	border: 1px solid green;
+}
+
+#ReadyPokemonChoice {
+	height: 80px;
 }
 
 .text-center {
@@ -255,11 +261,12 @@ Styling attack page
 	font-size: 40px;
 }
 
-.return-button {
-	height: 160px;
+.BackButton {
+	height: 120px;
 	width: 250px;
 	border-radius: 12px;
 	background-color: white;
+	border: 1px solid crimson;
 }
 
 .top-buffer {
