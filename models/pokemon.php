@@ -109,7 +109,9 @@ function attack($playerinfo, $round, $attack_name) {
 	);
 
 	if (sizeof($active_pokemon_attack) == 0) {
-		return error('invalid attack for this pokemon');
+		$activename = $active_pokemon['Name'];
+
+		return error("invalid attack $attack_name for this pokemon $activename");
 	}
 
 	// its always one attack, so this makes sure it's not a list
