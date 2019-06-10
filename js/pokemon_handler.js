@@ -230,7 +230,7 @@ function updateGameScreenElements(round_data, player_option, status) {
     let all_pokemon = round_data["data"][player_option]["pokemon"];
     let active_pokemon = all_pokemon[round_data["data"][player_option]["active_pokemon"]]['Name'];
     for (let pokemon in all_pokemon) {
-        if (pokemon['Current HP'] <= 0) {
+        if (all_pokemon[pokemon]['Current HP'] <= 0) {
             state = 'dead';
         } else {
             state = 'alive';
