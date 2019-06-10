@@ -165,8 +165,21 @@ function updateAttackSwitchScreen(data) {
     let i = 1;
     player_data["pokemon"][active_pokemon]['Moveset'].forEach(move => {
         let current_element = $('#attack_' + i);
-        current_element.addClass(move["Type"] + '-type');
-        current_element.attr('data-name', move["Name"]);
+        //remove old types
+        current_element
+            .removeClass(function (index, lst) {
+                return lst.split(' ').filter(
+                    // split the classlist on spaces, so we can iterate it
+                    function (cls) {
+                        // select all the classes that end with -type
+                        return cls.endsWith('type')
+                    }
+                )
+            })
+            .addClass(move["Type"] + '-type');
+
+        // data should be edited with data() instead of attr()
+        current_element.data('name', move["Name"]);
         $('#name_' + i).text(move["Name"]);
         $('#pp_' + i).text(move["Current PP"]);
         i++;
@@ -181,8 +194,21 @@ function updateAttackSwitchScreen(data) {
         // show all choosable pokemon (not currently active)
         if (pokemon !== active_pokemon) {
             let choice_element = $('#choice_' + i);
-            choice_element.addClass(all_pokemon[pokemon]["Element"] + "-type");
-            choice_element.attr('data-name', all_pokemon[pokemon]["Name"]);
+
+            // first remove old classes
+
+            choice_element.removeClass(function (index, lst) {
+                return lst.split(' ').filter(
+                    // split the classlist on spaces, so we can iterate it
+                    function (cls) {
+                        // select all the classes that end with -type
+                        return cls.endsWith('type')
+                    }
+                )
+            })
+                .addClass(all_pokemon[pokemon]["Element"] + "-type")
+                .data('name', all_pokemon[pokemon]["Name"]);
+
             $('#choice_' + i + '_img').attr('src', 'media/PokemonImages/' + all_pokemon[pokemon]['Name'] + '.png');
             $('#choice_' + i + '_name').text(all_pokemon[pokemon]["Name"]);
 
@@ -211,6 +237,7 @@ function updateGameScreenElements(round_data, player_option, status) {
         }
         $(`#pokemon-${i}-${status}`).attr("src", `media/Pokeball-${state}.png`);
 
+        i++;
 
         if (active_pokemon !== pokemon) {
             // skip non-active pokemons for this next part
@@ -224,7 +251,6 @@ function updateGameScreenElements(round_data, player_option, status) {
         console.log('updating health for active pokemon', health_bar, current_hp, pokemon, active_pokemon);
         updateHealthBarElement(current_hp, health_bar);
 
-        i++;
     }
 }
 
