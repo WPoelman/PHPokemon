@@ -60,8 +60,7 @@ function sendPreGameInfo(username, selected_pokemon) {
 
             // for dummy
             // readyButtonLaunch()
-        }
-        else {
+        } else {
             error(data['error'])
         }
     });
@@ -144,7 +143,7 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function roundWaitScreenLaunch (name, action) {
+function roundWaitScreenLaunch(name, action) {
     if (action == 'attack') {
         $('#attack').hide();
     } else {
@@ -186,21 +185,24 @@ function updateAttackSwitchScreen(data) {
             choice_element.attr('data-name', all_pokemon[pokemon]["Name"]);
             $('#choice_' + i + '_img').attr('src', 'media/PokemonImages/' + all_pokemon[pokemon]['Name'] + '.png');
             $('#choice_' + i + '_name').text(all_pokemon[pokemon]["Name"]);
+
+            // update switch pokemon
+            let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100);
+            let health_bar = $('#choice_health_' + i);
+            // console.log('updating health bar for switch pokemon', health_bar, current_hp, pokemon, active_pokemon);
+            updateHealthBarElement(current_hp, health_bar);
+
             i++;
         }
-
-        let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
-        let health_bar = $('#choice_health_' + i);
-
-        updateHealthBarElement(current_hp, health_bar);
     }
-};
+}
 
 // change the sprites based on the user (enemy <> player)
 function updateGameScreenElements(round_data, player_option, status) {
     let state;
     let i = 1;
     let all_pokemon = round_data["data"][player_option]["pokemon"];
+    let active_pokemon = all_pokemon[round_data["data"][player_option]["active_pokemon"]]['Name'];
     for (let pokemon in all_pokemon) {
         if (pokemon['Current HP'] <= 0) {
             state = 'dead';
@@ -209,9 +211,17 @@ function updateGameScreenElements(round_data, player_option, status) {
         }
         $(`#pokemon-${i}-${status}`).attr("src", `media/Pokeball-${state}.png`);
 
-        let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100)
+
+        if (active_pokemon !== pokemon) {
+            // skip non-active pokemons for this next part
+            continue
+        }
+
+        // update active pokemon
+        let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100);
         let health_bar = $('#main_health_' + status);
 
+        console.log('updating health for active pokemon', health_bar, current_hp, pokemon, active_pokemon);
         updateHealthBarElement(current_hp, health_bar);
 
         i++;
@@ -221,7 +231,7 @@ function updateGameScreenElements(round_data, player_option, status) {
 function updateHealthBarElement(current_hp, health_bar) {
     health_bar.attr("aria-valuenow", current_hp);
     health_bar.css("width", current_hp + "%");
-    health_bar.removeClass("bg-success bg-warning bg-danger")
+    health_bar.removeClass("bg-success bg-warning bg-danger");
 
     // health is high
     if (current_hp >= 50) {
@@ -234,7 +244,7 @@ function updateHealthBarElement(current_hp, health_bar) {
         health_bar.addClass("bg-danger");
     }
 
-};
+}
 
 // update the game screen based on new round data
 function updateGameScreen(round_data) {
