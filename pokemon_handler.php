@@ -10,6 +10,7 @@ include 'model.php';
 // routes should be with _ instead of camelCase, because they are transformed to URL's
 
 function do_action($info) {
+	// let the server know which action the client takes and with what parameters
 	$newgamestate = null;
 	if (!isset($_POST['action']) or !isset($_POST['parameter'])) {
 		return error("invalid action");
@@ -18,6 +19,12 @@ function do_action($info) {
 		$parameter = $_POST['parameter'];
 		$gamestate = getGamestate();
 		$round     = $gamestate['round'];
+
+		if (isset($gamestate['winner'])) {
+			$winner = $gamestate['winner'];
+
+			return error("There is already a winner: $winner");
+		}
 		if ($round < 1) {
 			return error('you cannot choose an action yet');
 		}
@@ -54,9 +61,7 @@ function do_action($info) {
 $routes->newRoute('do_action', 'post');
 
 function start_game($info) {
-	// todo: er is een super rare bug waardoor als je twee keer sendPreGameInfo() uitvoert, de game begint en je ineens
-	// player 2 bent. Voor eindgebruikers niet erg als ze de UI gebruiken maar wel heel raar dat het kan, ondanks deze check.
-	// blijkbaar wordt de session af en toe willekeurig weggegooid oid...
+	// let the server know that the client has selected a name and some pokemon
 	if (!getSessionVar('gameid')) {
 		$username     = $_POST['username'];
 		$pokemon      = $_POST['pokemon'];
@@ -71,7 +76,7 @@ function start_game($info) {
 		}
 
 		if (!$added_player) {
-			// game is full
+			// game is full, should not happen but should still be checked (to prevent over-full sessions)
 			session_destroy();
 			unset($_SESSION);
 
@@ -106,6 +111,16 @@ function stop_game($info) {
 // note: this should not be a public route on production, of course!
 $routes->newRoute('stop_game', 'post');
 
+function resume_game($info) {
+	$gamestate = getGamestate();
+	send([
+		'function' => 'roundchange',
+		'data'     => $gamestate,
+		'me'       => getSessionVar("playernum"),
+	]);
+}
+
+$routes->newRoute('resume_game', 'get');
 
 function game_info($info) {
 	$gamestate = getGamestate();
@@ -114,11 +129,24 @@ function game_info($info) {
 	$round = $_SESSION['round'] = $gamestate['round'];
 
 	if ($round > $prevround) {
-		send([
-			'function' => 'roundchange',
-			'data'     => $gamestate,
-			'me'       => getSessionVar("playernum"),
-		]);
+
+		if (isset($gamestate['winner'])) {
+			send([
+				'function' => 'winner',
+				'data'     => $gamestate,
+				'me'       => getSessionVar("playernum"),
+				'winner'   => $gamestate['winner'],
+			]);
+			reset_player();
+		} else {
+			send([
+				'function' => 'roundchange',
+				'data'     => $gamestate,
+				'me'       => getSessionVar("playernum"),
+			]);
+		}
+
+
 	}
 }
 
