@@ -258,15 +258,18 @@ function calculateRoundResults($gamestate, $round_no) {
 	$gamestate['player1']['pokemon'][$gamestate['player1']['active_pokemon']] = $p1poke;
 	$gamestate['player2']['pokemon'][$gamestate['player2']['active_pokemon']] = $p2poke;
 
+	$round['winner'] = null;
+
 	try {
 		// no negative HP, he just dead
 		if ($p1poke['Current HP'] < 1) {
 			$p1poke['Current HP'] = 0;
 			// switch the active pokemon of this player
 			$gamestate['player1']['active_pokemon'] = getNextLivingPokemon($gamestate, 'player1');
+
 		}
 	} catch(OutOfRangeException $e) {
-		$round['winner'] = 'player1';
+		$round['winner'] = $gamestate['player1']['username'];
 	}
 	try {
 		// no negative HP, he just dead
@@ -276,7 +279,7 @@ function calculateRoundResults($gamestate, $round_no) {
 			$gamestate['player2']['active_pokemon'] = getNextLivingPokemon($gamestate, 'player2');
 		}
 	} catch(OutOfRangeException $e) {
-		$round['winner'] = 'player2';
+		$round['winner'] = $gamestate['player2']['username'];
 	}
 
 
@@ -295,9 +298,8 @@ function calculateRoundResults($gamestate, $round_no) {
 	updateGamestate([
 		"round-$round_no" => $round,
 		"round"           => $round_no + 1,
+		"winner"          => $round['winner'],
 	]);
-
-	send($gamestate);
 
 	return $round;
 }
