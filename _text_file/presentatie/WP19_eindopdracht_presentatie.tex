@@ -192,7 +192,7 @@
 			Frank & {\tiny Interface, Animaties, Feedback messages, Pokémon lijst pagina, Damage berekenen}\\
 			Robin & {\tiny Routing, Gamestate handling back-end, Errors, Players, Sessions}\\
 			Victor & {\tiny Interface, Animaties, Sprites, Styling, Components}\\
-			Wessel & {\tiny Gamestate handling front-end, Components, Errors}\\
+			Wessel & {\tiny Gamestate handling front-end, Components, Errors, Presentatie}\\
 			\midrule
 			& \textbf{En elkaar helpen natuurlijk!} \\
 			\bottomrule
@@ -212,7 +212,52 @@
 %------------------------------------------------
 
 \begin{frame}[focus]
-	\textbf{Demo}
+	\textbf{{\huge Demo}} \\
+	\bigskip
+	\includegraphics[scale=0.4]{Images/PHPokemon.png}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Discussie: verbeterpunten game}
+	\begin{itemize}
+		\item Performance kan waarschijnlijk verbeterd worden: 
+			\begin{itemize}
+				\item Components echt laden \& verwijderen i.p.v. 1 groot HTML bestand en show / hide op elementen
+				\item Sommige checks worden vaker gedaan dan strikt nodig: dode Pokémon (pokéballs) worden elke ronde gecheckt, als iemand attackt dan hoeven de overige Pokémon niet gecheckt te worden, bij attack blijven de attacks ook hetzelfde -> alleen PP aanpassen in dat geval
+			\end{itemize}
+		\item Interface kan fancier
+		\item Meer Pokémon (eventueel eigen Pokémon maken / inladen), verschillende generaties
+		\item Animaties voor specifieke aanvallen
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Discussie: verbeterpunten proces}
+	\begin{itemize}
+		\item Werkwijzen waren wat verschillend (zie commits)
+		\item Soms waren er (te) veel manieren waarop iets gedaan kon worden
+		\item Taken verdelen was wat lastig: veel overlap, uitvinden wie waar goed in is, andermans code interpreteren
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Discussie: goede punten}
+	\begin{itemize}
+		\item Alle doelen die we hadden zijn bereikt
+		\item De game werkt goed
+		\item Extra features waren goed te implementeren (meerdere games, routing, animaties)
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[focus]
+	\includegraphics[scale=0.4]{Images/Game-over-screen.png} \\
+	\textbf{Uitproberen:} \texttt{phpokemon.ga} \\
+	{\small Zijn er vragen?}
 \end{frame}
 
 \end{document}
