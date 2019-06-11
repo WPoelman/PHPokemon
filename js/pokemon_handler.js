@@ -1,8 +1,6 @@
 //
 // Helper functions
 //
-
-
 function error(msg) {
     let err_modal = $('#errormodal');
     err_modal.find('.modal-body').text(msg);
@@ -33,15 +31,17 @@ function sendRoundAction(action, parameter) {
     // e.g.
     // sendRoundAction('attack', 'Thunder shock')
     // sendRoundAction('switch', 'Pikachu')
-    return post('do_action', {"action": action, "parameter": parameter});
+    return post('do_action', { "action": action, "parameter": parameter });
 }
 
 function sendPreGameInfo(username, selected_pokemon) {
 
     // Check if the user has selected three pokemon and
-    // has entered his username
-    if ((selected_pokemon.length !== 3) || (!username)) {
-        error("Please select three pokemon and enter your username!");
+    // has entered his username, max 30 characters
+    if ((selected_pokemon.length !== 3) ||
+        (!username) ||
+        (username.length > 30)) {
+        error("Please select three pokemon and enter your username (max 30 characters)!");
         return;
     }
 
@@ -298,6 +298,19 @@ function updateGameScreen(round_data) {
     $('#enemyPokemonImage').attr('src', `media/PokemonImages/${theirpoke}.png`);
 }
 
+function updateUsernameElement(data) {
+    // show the username above the health bar, only needs to run once (so only round 1)
+    let player, enemy;
+    player = data['me'];
+    if (player === 'player1') {
+        enemy = "player2";
+    } else {
+        enemy = "player1";
+    }
+    $('#ally_username').text(data["data"][player]['username']);
+    $('#enemy_username').text(data["data"][enemy]['username']);
+}
+
 // to be filled in, use new data about the round in the user interface
 function gamestateHandler(data) {
 
@@ -307,6 +320,7 @@ function gamestateHandler(data) {
         if (data['data']['round'] === 1) {
             // first round -> show initial screen
             readyButtonLaunch();
+            updateUsernameElement(data);
         }
         updateGameScreen(data);
         updateAttackSwitchScreen(data);

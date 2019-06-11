@@ -242,6 +242,11 @@ Styling attack page
 	width: 25px;
 }
 
+#enemy_username, #ally_username {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
 #alliedPokemonImage {
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);

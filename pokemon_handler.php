@@ -63,7 +63,11 @@ function start_game($info) {
 		$added_player = addPlayer($username, $pokemon);
 
 		if (sizeof($pokemon) != 3) {
-			return error('invalid amount of pokemon chosen');
+			return error('Invalid amount of pokemon chosen!');
+		}
+
+		if (strlen($username > 30)) {
+			return error('Username is too long, max 30 characters!');
 		}
 
 		if (!$added_player) {

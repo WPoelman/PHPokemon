@@ -8,6 +8,7 @@
             <!-- Enemy side -->
             <div class="row enemy flex-row-reverse">
                 <div class="col-md-3">
+                    <p id="enemy_username"></p>
                     <p>HP:</p>
                     <div class="progress">
                         <!--Om de kleur aan te passen kan je de class veranderen naar:
@@ -43,6 +44,7 @@
             <!-- Allied side -->
             <div class="row allied top-buffer">
                 <div class="col-md-3 ">
+                    <p id="ally_username"></p>
                     <p>HP:</p>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"

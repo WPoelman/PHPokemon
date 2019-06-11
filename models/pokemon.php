@@ -98,7 +98,7 @@ function attack($playerinfo, $round, $attack_name) {
 	$active_pokemon = $playerinfo['pokemon'][($playerinfo['active_pokemon'])];
 
 	if ($active_pokemon['Current HP'] < 1) {
-		return error('this pokemon has no HP left');
+		return error('This pokemon has no HP left.');
 	}
 
 	$active_pokemon_attack = array_filter(
@@ -119,7 +119,7 @@ function attack($playerinfo, $round, $attack_name) {
 	$active_pokemon_attack = $active_pokemon_attack[$attack_index];
 
 	if ($active_pokemon_attack['Current PP'] < 1) {
-		return error('this move is out of PP');
+		return error('This move is out of PP.');
 	}
 
 	$active_pokemon_attack['Current PP']--;
@@ -147,16 +147,16 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 	if (isset($gamestate[$player]['pokemon'][$pokemon])) {
 		// the pokemon is in the chosen pokemon(s), so it's all good
 		if ($gamestate[$player]['pokemon'][$pokemon]['Current HP'] < 1) {
-			return error('this pokemon has no HP left');
+			return error('This pokemon has no HP left.');
 		}
 
 		if ($gamestate[$player]['active_pokemon'] == $pokemon) {
-			return error('this is the pokemon you already selected');
+			return error('This is the pokemon you already selected.');
 		}
 
 		$gamestate[$player]['active_pokemon'] = $pokemon;
 	} else {
-		return error('You do not have this pokemon');
+		return error('You do not have this pokemon.');
 	}
 
 	$roundinfo = [
