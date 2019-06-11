@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{De game}{2}{0}{1}
+\beamer@sectionintoc {2}{Methode}{5}{0}{2}

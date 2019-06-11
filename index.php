@@ -13,10 +13,6 @@ function index($info, $nav) {
 	$page_title = 'Homepage';
 	$navigation = getNavigation($nav, $info['url']);
 
-	/* Page content */
-	$page_subtitle = "subtitle";
-	$page_content  = "content";
-
 	/* Choose Template */
 	include useTemplate('main');
 }
@@ -28,10 +24,6 @@ function instructions($info, $nav) {
 	/* Page info */
 	$page_title = 'Pokemon instructions page';
 	$navigation = getNavigation($nav, 'instructions');
-
-	/* Page content */
-	$page_subtitle = 'very cool subtitle';
-	$page_content  = 'epic content';
 
 	/* Choose Template */
 	include useTemplate('instructions');
@@ -45,11 +37,7 @@ function pokemon($info, $nav) {
 	/* Page info */
 	$page_title = "Pokemon list page";
 	$navigation = getNavigation($nav, 'pokemon');
-
-	/* Page content */
-	$page_subtitle = 'subtitle';
-	$page_content  = 'pokmon list';
-
+	
 	/* Choose Template */
 	include useTemplate('pokemon');
 }
