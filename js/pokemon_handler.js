@@ -31,7 +31,7 @@ function sendRoundAction(action, parameter) {
     // e.g.
     // sendRoundAction('attack', 'Thunder shock')
     // sendRoundAction('switch', 'Pikachu')
-    return post('do_action', { "action": action, "parameter": parameter });
+    return post('do_action', {"action": action, "parameter": parameter});
 }
 
 function sendPreGameInfo(username, selected_pokemon) {
@@ -113,6 +113,20 @@ function waitingScreenLaunch(pokemon_data) {
     $('#waiting_screen').show();
 }
 
+function resumeGame() {
+    // try to resume game based on 'old' session data on the server
+    get('resume_game').then(function (data) {
+        data = JSON.parse(data);
+        if (data['me']) {
+            playButtonLaunch();
+            waitingScreenLaunch({'playerdata': data});
+            updateGameScreen(data);
+            updateAttackSwitchScreen(data);
+            readyButtonLaunch();
+        }
+    })
+}
+
 function switchButtonLaunch() {
     // change from the selection screen to the
     // switch pokemon screen
@@ -143,8 +157,13 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
+function winnerScreenLaunch(data) {
+    // TODO: launch screen
+    error(` ${data['winner']} won!`)
+}
+
 function roundWaitScreenLaunch(name, action) {
-    if (action == 'attack') {
+    if (action === 'attack') {
         $('#attack').hide();
     } else {
         $('#switch_pokemon').hide();
@@ -215,7 +234,6 @@ function updateAttackSwitchScreen(data) {
             // update switch pokemon
             let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100);
             let health_bar = $('#choice_health_' + i);
-            // console.log('updating health bar for switch pokemon', health_bar, current_hp, pokemon, active_pokemon);
             updateHealthBarElement(current_hp, health_bar);
 
             i++;
@@ -248,7 +266,6 @@ function updateGameScreenElements(round_data, player_option, status) {
         let current_hp = Math.round((all_pokemon[pokemon]["Current HP"] / all_pokemon[pokemon]["HP"]) * 100);
         let health_bar = $('#main_health_' + status);
 
-        console.log('updating health for active pokemon', health_bar, current_hp, pokemon, active_pokemon);
         updateHealthBarElement(current_hp, health_bar);
 
     }
@@ -311,7 +328,7 @@ function updateUsernameElement(data) {
     $('#enemy_username').text(data["data"][enemy]['username']);
 }
 
-// to be filled in, use new data about the round in the user interface
+// use new data about the round in the user interface
 function gamestateHandler(data) {
 
     if (data['function'] === 'roundchange') {
@@ -322,6 +339,11 @@ function gamestateHandler(data) {
             readyButtonLaunch();
             updateUsernameElement(data);
         }
+        updateGameScreen(data);
+        updateAttackSwitchScreen(data);
+    } else if (data['function'] === 'winner') {
+        // somebody won, game is over
+        winnerScreenLaunch(data);
         updateGameScreen(data);
         updateAttackSwitchScreen(data);
     }
@@ -391,7 +413,12 @@ $(function () {
     });
 
     // play game button is clicked
-    $('#PlayButton').click(playButtonLaunch);
+    $('#PlayButton').click(function () {
+        // first try resuming old game:
+        playButtonLaunch();
+        resumeGame();
+
+    });
 
     // switch pokemon button is clicked
     $('#SwitchButton').click(switchButtonLaunch);
