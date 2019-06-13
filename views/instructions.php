@@ -35,7 +35,7 @@
             <p>Below you can read all about the game and how to play it.</p>
 
             <p id="page_links">
-                <a href="#about">About PHPokemon</a>
+                <a href="#about">About PHPokémon</a>
                 <a href="#howtoplay">How to Play</a>
                 <a href="#elementtable">Element table</a>
             </p>
@@ -44,9 +44,9 @@
 
     <div class="row wp-row">
         <div class="col-md-12">
-            <h3 id="about">About PHPokemon</h3>
+            <h3 id="about">About PHPokémon</h3>
             <p>
-                PHPokemon is a simplified version of the Pokémon battle-system, that you might know from the many handheld
+                PHPokémon is a simplified version of the Pokémon battle-system, that you might know from the many handheld
                 Pokémon games like Pokémon Red/Green/Yellow, Silver/Gold, Ruby/Sapphire/Emerald and later Pokémon games.
             </p>
             <p>
@@ -88,7 +88,7 @@
                 to use to battle your opponent. The first Pokémon that you choose, is the Pokémon with which you will
                 begin the battle. <br />
                 Since each Pokémon has different stats, as well as a different element and different attacks, it is
-                recommended to first study the <b>Pokemon page</b> and the <b>Element table</b> below. This way you
+                recommended to first study the <b>Pokémon page</b> and the <b>Element table</b> below. This way you
                 will learn the strengths and weaknesses of each Pokémon and use this information to decide how you
                 are going to play. <br />
             </p>
@@ -121,7 +121,7 @@
                 Speed, the attacking order will be decided by chance.
             </p>
             <p>
-                Reading about the different attacks on the <b>Pokemon page</b> can greatly improve your
+                Reading about the different attacks on the <b>Pokémon page</b> can greatly improve your
                 battling strategies.
             </p>
 
