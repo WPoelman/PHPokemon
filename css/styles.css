@@ -41,9 +41,8 @@ hr {
 	width: 100%;
 }
 
-/*
-Styling index page:
- */
+/* Styling of the index page:  */
+
 .ButtonText {
 	color: black;
 	font-size: 64px;
@@ -88,9 +87,7 @@ button {
 	font-size: 230%;
 }
 
-/*
-Begin styling pokemon choose page
- */
+/* Pokemon choose page  */
 
 #smallerinfo {
 	font-size: 100%;
@@ -102,7 +99,6 @@ Begin styling pokemon choose page
 	color: black;
 
 }
-
 
 #ReadyPokemonChoice, #ReadyAttackChoice, #ReadySwitchChoice {
 	background-color: palegreen;
@@ -121,7 +117,6 @@ Begin styling pokemon choose page
 	align-content: center;
 }
 
-/* hieronder is Frank zijn css*/
 
 .wp-row {
 	margin: 30px 0 30px 0;
@@ -234,9 +229,7 @@ table {
 	font-size: 150%;
 }
 
-/*
-Styling attack page
- */
+/* Styling of the attack page */
 .pokeball {
 	height: 25px;
 	width: 25px;
@@ -290,9 +283,7 @@ Styling attack page
 	border-radius: 12px;
 }
 
-/*
-Attack and being attacked animations
- */
+/* Attack and being attacked animations */
 
 @keyframes attack {
 	0%, 100% {
@@ -328,9 +319,8 @@ Attack and being attacked animations
 	display: none;
 }
 
-/*
-Dying animation
- */
+/* Dying animation */
+
 .dying {
 	position:relative;
 	animation:mymove 3s ease-out forwards;
@@ -342,9 +332,7 @@ Dying animation
 	to {top:200px; opacity: 0}
 }
 
-/*
-Switch animation
- */
+/* Switch animation */
 
 @keyframes switch {
 	from   {opacity: 1}

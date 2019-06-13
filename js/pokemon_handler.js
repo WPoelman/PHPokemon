@@ -348,7 +348,7 @@ function gamestateHandler(data) {
         updateAttackSwitchScreen(data);
     }
 
-    // hier updateAttackSwitchScreen() & updateGameScreen() gebruiken na ronde
+    // Use updateAttackSwitchScreen() & updateGameScreen() after a round
     console.log(data);
 }
 

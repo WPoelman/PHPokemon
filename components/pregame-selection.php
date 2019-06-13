@@ -159,6 +159,7 @@
                                 </div>
                             </div>
                         </div>
+
 	                    <!-- Pokemon 4 -->
                         <div class="col-md-6 pokemon_choice">
                             <div id="Staryu" class="pokemon Water-type">
