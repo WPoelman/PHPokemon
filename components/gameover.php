@@ -17,7 +17,7 @@
                     <div class="row">
                         <hr>
                         <div class="col-md-12">
-                            <p class="text-center Middle-Text">{insert player name} won! Congratulations!/Too bad!</p>
+                            <p class="text-center Middle-Text" id="winning-text"></p>
                         </div>
                         <hr>
                     </div>

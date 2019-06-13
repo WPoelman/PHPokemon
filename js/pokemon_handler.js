@@ -107,9 +107,6 @@ function waitingScreenLaunch(pokemon_data) {
     // Select the third choice and then add all the
     // necessary classes and id's for representation
 
-    // First selected pokemon
-
-
     $('#waiting_screen').show();
 }
 
@@ -158,8 +155,12 @@ function attackButtonLaunch() {
 }
 
 function winnerScreenLaunch(data) {
-    // TODO: launch screen
-    error(` ${data['winner']} won!`)
+    // Change from the main game screen to the
+    // game over screen and shows the winner.
+    $('#main_game_screen').hide();
+    $('#select_action').hide();
+    $('#winning-text').text(data['winner']+ " won! \n Want to try again?");
+    $('#game_over_screen').show();
 }
 
 function roundWaitScreenLaunch(name, action) {
