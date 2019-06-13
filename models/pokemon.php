@@ -87,7 +87,7 @@ function multipliedDamage($move_element, $rival_pokemon_element, $accuracy) {
 		}
 	}
 
-	// if it is not 'super effective' or 'not very effective', just return the default damage
+	// if it is not 'super effective' or 'not very effective' or a miss, just return the default damage
 	return 1;
 }
 

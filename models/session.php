@@ -132,7 +132,7 @@ function addPlayer($username, $pokemons) {
 	$player_info['username'] = $username;
 	$player_info['pokemon']  = [];
 
-	// yes I know the plural of pokemon is pokemon but that makes these variables very difficult to name
+	// the plural of pokemon is not actually pokemons, but this way the naming is easier
 	foreach($pokemons as $pokemon) {
 		$player_info['pokemon'][$pokemon] = resetPokemonVariables(getPokemonInfo($pokemon));
 	}
