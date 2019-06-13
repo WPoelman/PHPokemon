@@ -167,6 +167,22 @@
 
             </div>
 
+            <!--             -->
+            <!-- Action text -->
+            <!--             -->
+            <div class="col-md-12 main-box component" id="action_text">
+
+                <!-- Middle text -->
+                <div class="row">
+                    <hr>
+                    <br>
+                    <div class="col-md-12">
+                        <p class="text-center Middle-Text" id="actual_action_text"></p>
+                        <p class="text-center Middle-Text" id="description_action_text"></p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
             <!--                -->
             <!-- Switch Pokemon -->
             <!--                -->
