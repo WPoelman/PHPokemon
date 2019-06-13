@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-	                <!-- How to play & pokemon buttons -->
+	                <!-- How to play & Pokemon buttons -->
                     <div class="row justify-content-center">
 
                         <!-- Button for how to play -->
@@ -35,7 +35,7 @@
                             </a>
                         </div>
 
-	                    <!-- Button for more pokemon info -->
+	                    <!-- Button for more Pokemon info -->
                         <div class="col-md-4 text-center button-div">
                             <a href="pokemon">
                                 <button type="button" class="btn btn-primary" id="PokemonInfoButton">

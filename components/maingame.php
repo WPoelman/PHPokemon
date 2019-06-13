@@ -11,14 +11,14 @@
                     <p id="enemy_username"></p>
                     <p>HP:</p>
                     <div class="progress">
-                        <!--Om de kleur aan te passen kan je de class veranderen naar:
-                                Groen: "progress-bar bg-success" (bij 50-100%)
-                                Oranje: "progress-bar bg-warning" (bij 25-50%)
-                                Rood: "progress-bar bg-danger"  (bij 1-25%)
+                        <!--To change the color, you can change the class to:
+                                Green: "progress-bar bg-success" (at 50-100%)
+                                Orange: "progress-bar bg-warning" (at 25-50%)
+                                Red: "progress-bar bg-danger"  (at 1-25%)
 
-                                Om de bar aan te passen kan je in style de width veranderen, volgens mij
-                                moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
-                                lijkt het erop dat hij langzaam minder wordt
+                                To change the health bar, you can change the width. But it seems you also have to
+                                change the aria-valuenow. If you make this gradually change, it will seem
+                                to decrease slowly.
                                 -->
                         <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
                             id="main_health_enemy"></div>
@@ -192,15 +192,15 @@
                             <img id="choice_1_img">
                             <h5>HP:</h5>
                             <div class="progress">
-                                <!--Om de kleur aan te passen kan je de class veranderen naar:
-                                        Groen: "progress-bar bg-success" (bij 50-100%)
-                                        Oranje: "progress-bar bg-warning" (bij 25-50%)
-                                        Rood: "progress-bar bg-danger"  (bij 1-25%)
+                                <!--To change the color, you can change the class to:
+                                Green: "progress-bar bg-success" (at 50-100%)
+                                Orange: "progress-bar bg-warning" (at 25-50%)
+                                Red: "progress-bar bg-danger"  (at 1-25%)
 
-                                        Om de bar aan te passen kan je in style de width veranderen, volgens mij
-                                        moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
-                                        lijkt het erop dat hij langzaam minder wordt
-                                         -->
+                                To change the health bar, you can change the width. But it seems you also have to
+                                change the aria-valuenow. If you make this gradually change, it will seem
+                                to decrease slowly.
+                                -->
                                 <div id="choice_health_1" class="progress-bar" role="progressbar" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
@@ -214,15 +214,15 @@
                             <img id="choice_2_img">
                             <h5>HP:</h5>
                             <div class="progress">
-                                <!--Om de kleur aan te passen kan je de class veranderen naar:
-                                        Groen: "progress-bar bg-success" (bij 50-100%)
-                                        Oranje: "progress-bar bg-warning" (bij 25-50%)
-                                        Rood: "progress-bar bg-danger"  (bij 1-25%)
+                                <!--To change the color, you can change the class to:
+                                Green: "progress-bar bg-success" (at 50-100%)
+                                Orange: "progress-bar bg-warning" (at 25-50%)
+                                Red: "progress-bar bg-danger"  (at 1-25%)
 
-                                        Om de bar aan te passen kan je in style de width veranderen, volgens mij
-                                        moet je ook de aria-valuenow aanpassen. Als je dit geleidelijk laat veranderen
-                                        lijkt het erop dat hij langzaam minder wordt
-                                        -->
+                                To change the health bar, you can change the width. But it seems you also have to
+                                change the aria-valuenow. If you make this gradually change, it will seem
+                                to decrease slowly.
+                                -->
                                 <div id="choice_health_2" class="progress-bar " role="progressbar" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>

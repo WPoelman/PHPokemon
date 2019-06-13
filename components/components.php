@@ -7,7 +7,7 @@
 
                     <div class="row justify-content-center">
 
-                        <!-- image for Game over screen -->
+                        <!-- image for Game Over screen -->
                         <div class="col-md-6 text-center button-div">
                         <img src="media/Game-over-screen.png">
                     </div>
