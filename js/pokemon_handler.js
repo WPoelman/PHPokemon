@@ -331,16 +331,16 @@ function actionText(data) {
         //If player1 is first, first show what player1 has done
         if ('attack' in action_player_1) {
             //if the player attacks then show which attack
-            $('#actual_action_text').text(player1 + " went first! he used " + action_player_1['attack']['Name']);
+            $('#actual_action_text').text(player1 + " went first! He used " + action_player_1['attack']['Name']);
             if (action_player_1['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text').text("Wowie! it was super effective!");
+                $('#description_action_text').text("Wow! It was super effective!");
             } else if (action_player_1['effectiveness'] == 1) {
                 //if it is effective show that
-                $('#description_action_text').text("that attack was okay!");
+                $('#description_action_text').text("A clean hit!");
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is not effective show that
-                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
+                $('#description_action_text').text("It was not very effective! Maybe try another move?");
             } else if (action_player_1['effectiveness'] == 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
@@ -353,8 +353,8 @@ function actionText(data) {
 
         } else {
             //if not then show to which he switched
-            $('#actual_action_text').text(player1 + " went first! he switched to " + action_player_1['switch']);
-            $('#description_action_text').text("What a surprise! he switched!");
+            $('#actual_action_text').text(player1 + " went first! He switched to " + action_player_1['switch']);
+            $('#description_action_text').text("What a surprise!");
         }
         $('#action_text').show();
         setTimeout(function () {
@@ -362,16 +362,16 @@ function actionText(data) {
             $('#action_text2').show();
         }, 2500);
         if ('attack' in action_player_2) {
-            $('#actual_action_text2').text(player2 + " went second! he used " + action_player_2['attack']['Name']);
+            $('#actual_action_text2').text(player2 + " went second! He used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Wowie! it was super effective!");
+                $('#description_action_text2').text("Wow! It was super effective!");
             } else if (action_player_2['effectiveness'] == 1) {
                 //if it is super effective show that
-                $('#description_action_text2').text("that attack was okay!");
+                $('#description_action_text2').text("A clean hit!");
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?");
+                $('#description_action_text2').text("It was not very effective! Maybe try another move?");
             } else if (action_player_2['effectiveness'] == 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
@@ -387,8 +387,8 @@ function actionText(data) {
             },4000);
 
         } else {
-            $('#actual_action_text2').text(player2 + " went second! he switched to " + action_player_2['switch']);
-            $('#description_action_text2').text("What a surprise! he switched!");
+            $('#actual_action_text2').text(player2 + " went second! He switched to " + action_player_2['switch']);
+            $('#description_action_text2').text("What a surprise!");
             setTimeout(function () {
                 $('#action_text2').hide();
                 $('#select_action').show()
@@ -399,16 +399,16 @@ function actionText(data) {
         //if player2 is first then first show what player2 has done
         if ('attack' in action_player_2) {
             //if the player attacks then show which attack
-            $('#actual_action_text').text(player2 + " went first! he used " + action_player_2['attack']['Name']);
+            $('#actual_action_text').text(player2 + " went first! He used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text').text("Wowie! it was super effective!");
+                $('#description_action_text').text("Wow! It was super effective!");
             } else if (action_player_2['effectiveness'] == 1) {
                 //if it is effective show that
-                $('#description_action_text').text("that attack was okay!");
+                $('#description_action_text').text("A clean hit!");
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is not effective show that
-                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
+                $('#description_action_text').text("It was not very effective! Maybe try another move?");
             } else if (action_player_2['effectiveness'] == 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
@@ -425,8 +425,8 @@ function actionText(data) {
 
         } else {
             //if not then show to which he switched
-            $('#actual_action_text').text(player2 + " went first! he switched to " + action_player_2['switch']);
-            $('#description_action_text').text("What a surprise! he switched!");
+            $('#actual_action_text').text(player2 + " went first! He switched to " + action_player_2['switch']);
+            $('#description_action_text').text("What a surprise!");
         }
         $('#action_text').show();
         setTimeout(function () {
@@ -434,16 +434,16 @@ function actionText(data) {
             $('#action_text2').show();
         }, 2500);
         if ('attack' in action_player_1) {
-            $('#actual_action_text2').text(player1 + " went second! he used " + action_player_1['attack']['Name']);
+            $('#actual_action_text2').text(player1 + " went second! He used " + action_player_1['attack']['Name']);
             if (action_player_1['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Wowie! it was super effective!")
+                $('#description_action_text2').text("Wow! It was super effective!")
             } else if (action_player_1['effectiveness'] == 1) {
                 //if it is super effective show that
-                $('#description_action_text2').text("that attack was okay!")
+                $('#description_action_text2').text("A clean hit!")
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?")
+                $('#description_action_text2').text("It was not very effective! Maybe try another move?")
             } else if (action_player_1['effectiveness'] == 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
@@ -454,8 +454,8 @@ function actionText(data) {
                 $('#alliedPokemonImage').removeClass('attacking-ally');
                 $('#enemyPokemonImage').removeClass('attacked-enemy');},2000);
         } else {
-            $('#actual_action_text2').text(player1 + " went first! he switched to " + action_player_1['switch']);
-            $('#description_action_text2').text("What a surprise! he switched!");
+            $('#actual_action_text2').text(player1 + " went first! He switched to " + action_player_1['switch']);
+            $('#description_action_text2').text("What a surprise!");
         }
     }
     setTimeout(function () {
