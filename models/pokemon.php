@@ -130,6 +130,7 @@ function attack($playerinfo, $round, $attack_name) {
 
 	$roundinfo = [
 		"attack" => $active_pokemon_attack,
+		"time" => time(),
 	];
 
 
@@ -161,6 +162,7 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 
 	$roundinfo = [
 		"switch" => $pokemon,
+		"time" => time(),
 	];
 
 	$gamestate["round-$round"][$player] = $roundinfo;
@@ -269,7 +271,7 @@ function calculateRoundResults($gamestate, $round_no) {
 
 		}
 	} catch(OutOfRangeException $e) {
-		$round['winner'] = $gamestate['player1']['username'];
+		$round['winner'] = $gamestate['player2']['username'];
 	}
 	try {
 		// no negative HP, he just dead
@@ -279,7 +281,7 @@ function calculateRoundResults($gamestate, $round_no) {
 			$gamestate['player2']['active_pokemon'] = getNextLivingPokemon($gamestate, 'player2');
 		}
 	} catch(OutOfRangeException $e) {
-		$round['winner'] = $gamestate['player2']['username'];
+		$round['winner'] = $gamestate['player1']['username'];
 	}
 
 
