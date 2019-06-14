@@ -287,10 +287,10 @@ function calculateRoundResults($gamestate, $round_no) {
 
 	// player1->damage means damage taken for this attack
 	$round['player1']['damage']        = $damage1;
-	$round['player1']['effectiveness'] = $multiplier1;
+	$round['player1']['effectiveness'] = $multiplier2;
 //  $round['player1']['new_pokemon']   = $p1poke;
 	$round['player2']['damage']        = $damage2;
-	$round['player2']['effectiveness'] = $multiplier2;
+	$round['player2']['effectiveness'] = $multiplier1;
 //  $round['player2']['new_pokemon']   = $p2poke;
 	$round['first'] = $first;
 
