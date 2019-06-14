@@ -341,6 +341,9 @@ function actionText(data) {
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
+            } else if (action_player_1['effectiveness'] == 0) {
+                //if it missed, show that
+                $('#description_action_text').text("Unfortunately, it missed.");
             }
             $('#alliedPokemonImage').attr('class', 'attacking-ally');
             $('#enemyPokemonImage').attr('class', 'attacked-enemy');
@@ -369,6 +372,9 @@ function actionText(data) {
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?");
+            } else if (action_player_2['effectiveness'] == 0) {
+                //if it missed, show that
+                $('#description_action_text').text("Unfortunately, it missed.");
             }
             setTimeout(function(){
                 $('#alliedPokemonImage').attr('class', 'attacked-ally');
@@ -403,6 +409,9 @@ function actionText(data) {
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
+            } else if (action_player_2['effectiveness'] == 0) {
+                //if it missed, show that
+                $('#description_action_text').text("Unfortunately, it missed.");
             }
             setTimeout(function(){
                 $('#alliedPokemonImage').attr('class', 'attacked-ally');
@@ -435,6 +444,9 @@ function actionText(data) {
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?")
+            } else if (action_player_1['effectiveness'] == 0) {
+                //if it missed, show that
+                $('#description_action_text').text("Unfortunately, it missed.");
             }
             $('#alliedPokemonImage').attr('class', 'attacking-ally');
             $('#enemyPokemonImage').attr('class', 'attacked-enemy');
