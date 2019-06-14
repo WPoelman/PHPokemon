@@ -255,7 +255,6 @@ function clearGames() {
 }
 
 // let a user join a game
-// todo: make user choose to not make their game public, and give them the join-code
 function joinGame($game, $me) {
 	$games = getGames();
 	if (isset($_SESSION['gameid']) and

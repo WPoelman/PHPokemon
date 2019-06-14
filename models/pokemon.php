@@ -175,7 +175,6 @@ function getNextLivingPokemon($gamestate, $player) {
 		return $pokemon['Current HP'] > 0;
 	});
 	if (!$options) {
-		// todo: all pokemon for this player are dead -> someone should win
 		throw new OutOfRangeException('Out of pokemon');
 	} else {
 		// give back the first pokemon
