@@ -341,6 +341,20 @@ function gamestateHandler(data) {
         }
         updateGameScreen(data);
         updateAttackSwitchScreen(data);
+
+        let timeout = setTimeout(function () {
+            console.error('you timed out and lose')
+            post('reset_player');
+        }, 10000)
+
+
+        $('#ReadySwitchChoice, #ReadyAttackChoice')
+            .unbind('click.timeout') // reset event for old round
+            .bind('click.timeout', function () {
+                // bind a named event to the ready buttons, so we can reset them easily
+                clearInterval(timeout);
+            })
+
     } else if (data['function'] === 'winner') {
         // somebody won, game is over
         winnerScreenLaunch(data);
@@ -349,7 +363,6 @@ function gamestateHandler(data) {
     }
 
     // Use updateAttackSwitchScreen() & updateGameScreen() after a round
-    console.log(data);
 }
 
 // every second, the getGameState function is called (to see if the other player has played yet)
