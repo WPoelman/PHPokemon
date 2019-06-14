@@ -291,7 +291,7 @@ table {
 		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
 	50% {
-		transform: translateY(-30%) translateX(+290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
+		transform: translateY(-200%) translateX(+290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
 	}
 }
 
@@ -309,7 +309,7 @@ table {
 		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
 	50% {
-		transform: translateY(+30%) translateX(-290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
+		transform: translateY(+200%) translateX(-290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
 	}
 }
 
