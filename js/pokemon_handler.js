@@ -286,7 +286,6 @@ function updateHealthBarElement(current_hp, health_bar) {
     } else {
         health_bar.addClass("bg-danger");
     }
-
 }
 
 // update the game screen based on new round data
@@ -315,7 +314,6 @@ function updateGameScreen(round_data) {
     if (round_data['data']['round'] != 1) {
         actionText(round_data);
     }
-
 }
 
 function actionText(data) {
@@ -331,7 +329,6 @@ function actionText(data) {
 
     if (first_player == 'player1') {
         //If player1 is first, first show what player1 has done
-        console.log('hoi');
         if ('attack' in action_player_1) {
             //if the player attacks then show which attack
             $('#actual_action_text').text(player1 + " went first! he used " + action_player_1['attack']['Name']);
@@ -339,29 +336,22 @@ function actionText(data) {
                 //if it is super effective show that
                 $('#description_action_text').text("Wowie! it was super effective!")
             } else if (action_player_1['effectiveness'] == 1) {
-                //if it was effective show that
+                //if it is effective show that
                 $('#description_action_text').text("that attack was okay!")
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("Oof! that was not so effective! maybe try another move?")
             }
-            $('#action_text').show();
-            $('#alliedPokemonImage').attr('class', 'attacking');
-            $('#enemyPokemonImage').attr('class', 'attacked');
         } else {
             //if not then show to which he switched
             $('#actual_action_text').text(player1 + " went first! he switched to " + action_player_1['switch']);
             $('#description_action_text').text("What a surprise! he switched!");
         }
         $('#action_text').show();
-
-
         setTimeout(function () {
-            $('#action_text').hide()
-            $('#action_text2').show()
-        }, 5000);
-        $('#action_text').hide();
-        console.log("Doet ie dit nog?");
+            $('#action_text').hide();
+            $('#action_text2').show();
+        }, 4000);
         if ('attack' in action_player_2) {
             $('#actual_action_text2').text(player2 + " went second! he used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
@@ -380,15 +370,17 @@ function actionText(data) {
         } else {
             $('#actual_action_text2').text(player2 + " went second! he switched to " + action_player_2['switch']);
             $('#description_action_text2').text("What a surprise! he switched!");
-
+            setTimeout(function () {
+                $('#action_text2').hide();
+                $('#select_action').show()
+            }, 8000);
         }
-        $('#action_text2').show();
 
     } else {
         //if player2 is first then first show what player2 has done
         if ('attack' in action_player_2) {
             //if the player attacks then show which attack
-            $('#actual_action_text').text(player2 + " went first woah! he used " + action_player_2['attack']['Name']);
+            $('#actual_action_text').text(player2 + " went first! he used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
                 //if it is super effective show that
                 $('#description_action_text').text("Wowie! it was super effective!")
@@ -399,9 +391,6 @@ function actionText(data) {
                 //if it is not effective show that
                 $('#description_action_text').text("Oof! that was not so effective! maybe try another move?")
             }
-            $('#action_text').show();
-            $('#alliedPokemonImage').attr('class', 'attacked');
-            $('#enemyPokemonImage').attr('class', 'attacking');
         } else {
             //if not then show to which he switched
             $('#actual_action_text').text(player2 + " went first! he switched to " + action_player_2['switch']);
@@ -409,11 +398,11 @@ function actionText(data) {
         }
         $('#action_text').show();
         setTimeout(function () {
-            $('#action_text').hide()
-            $('#action_text2').show()
-        }, 5000);
+            $('#action_text').hide();
+            $('#action_text2').show();
+        }, 4000);
         if ('attack' in action_player_1) {
-            $('#actual_action_text2').text(player1 + " went second wat gaat hier mis?! he used " + action_player_1['attack']['Name']);
+            $('#actual_action_text2').text(player1 + " went second! he used " + action_player_1['attack']['Name']);
             if (action_player_1['effectiveness'] == 2) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Wowie! it was super effective!")
@@ -430,11 +419,11 @@ function actionText(data) {
             $('#actual_action_text2').text(player1 + " went first! he switched to " + action_player_1['switch']);
             $('#description_action_text2').text("What a surprise! he switched!");
         }
+        setTimeout(function () {
+            $('#action_text2').hide();
+            $('#select_action').show()
+        }, 8000);
     }
-    setTimeout(function () {
-        $('#action_text2').hide();
-        $('#select_action').show()
-    }, 10000);
 }
 
 function updateUsernameElement(data) {
