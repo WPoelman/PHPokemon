@@ -345,13 +345,19 @@ function actionText(data) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            $('#alliedPokemonImage').attr('class', 'attacking-ally');
-            $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            //attack animations
+            if (data['me'] === 'player1') {
+                $('#alliedPokemonImage').attr('class', 'attacking-ally');
+                $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            }
+            else{
+                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                $('#alliedPokemonImage').attr('class', 'attacked-ally');
+            }
             setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacking-ally');
                 $('#enemyPokemonImage').removeClass('attacked-enemy');
             }, 2000);
-
         } else {
             //if not then show to which he switched
             $('#actual_action_text').text(player1 + " went first! He switched to " + action_player_1['switch']);
@@ -377,10 +383,19 @@ function actionText(data) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            setTimeout(function () {
-                $('#alliedPokemonImage').attr('class', 'attacked-ally');
-                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
-            }, 2500);
+            //attack animations
+            if (data['me'] === 'player1') {
+                setTimeout(function () {
+                    $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                    $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                }, 2500);
+            }
+            else{
+                setTimeout(function () {
+                    $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+                    $('#alliedPokemonImage').attr('class', 'attacking-ally');
+                }, 2500);
+            }
 
             setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacked-ally');
@@ -414,10 +429,18 @@ function actionText(data) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            setTimeout(function () {
-                $('#alliedPokemonImage').attr('class', 'attacked-ally');
-                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
-            }, 2500);
+            if (data['me'] === 'player1') {
+                setTimeout(function () {
+                    $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                    $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                }, 2500);
+            }
+            else{
+                setTimeout(function () {
+                    $('#alliedPokemonImage').attr('class', 'attacking-ally');
+                    $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+                }, 2500);
+            }
 
             setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacked-ally');
@@ -449,8 +472,14 @@ function actionText(data) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            $('#alliedPokemonImage').attr('class', 'attacking-ally');
-            $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            if (data['me'] === 'player1') {
+                $('#alliedPokemonImage').attr('class', 'attacking-ally');
+                $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            }
+            else{
+                $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+            }
             setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacking-ally');
                 $('#enemyPokemonImage').removeClass('attacked-enemy');
