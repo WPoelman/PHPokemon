@@ -160,6 +160,17 @@ function addPlayer($username, $pokemons) {
 	}
 }
 
+// send winner info to client and reset
+function sendWinner($gamestate){
+	send([
+		'function' => 'winner',
+		'data'     => $gamestate,
+		'me'       => getSessionVar("playernum"),
+		'winner'   => $gamestate['winner'],
+	]);
+	reset_player();
+}
+
 
 // MULTIPLE PLAYERS:
 
