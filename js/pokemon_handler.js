@@ -403,16 +403,17 @@ function actionText(data) {
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
-                setTimeout(function(){
-                    $('#alliedPokemonImage').attr('class', 'attacked-ally');
-                    $('#enemyPokemonImage').attr('class', 'attacking-enemy');
-                    }, 2500);
+            }
+            setTimeout(function(){
+                $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                }, 2500);
 
-                setTimeout(function(){
+            setTimeout(function(){
                 $('#alliedPokemonImage').removeClass('attacked-ally');
                 $('#enemyPokemonImage').removeClass('attacking-enemy');
                 },4000);
-            }
+
         } else {
             //if not then show to which he switched
             $('#actual_action_text').text(player2 + " went first! he switched to " + action_player_2['switch']);
