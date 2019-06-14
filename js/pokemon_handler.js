@@ -154,12 +154,12 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function winnerScreenLaunch(data) {
+function winnerScreenLaunch(winner) {
     // Change from the main game screen to the
     // game over screen and shows the winner.
     $('#main_game_screen').hide();
     $('#select_action').hide();
-    $('#winning-text').text(data['winner'] + " won! \n Want to try again?");
+    $('#winning-text').html(`${winner} won! <br /> Want to try again?`);
     $('#game_over_screen').show();
 }
 
@@ -455,7 +455,6 @@ function gamestateHandler(data) {
 
     if (data['function'] === 'roundchange') {
         // next round
-        console.log('data', data['data']);
         if (data['data']['round'] === 1) {
             // first round -> show initial screen
             readyButtonLaunch();
@@ -465,9 +464,12 @@ function gamestateHandler(data) {
         updateAttackSwitchScreen(data);
 
         let timeout = setTimeout(function () {
-            console.error('you timed out and lose')
+            error('You have been kicked for inactivity.')
             post('reset_player');
-        }, 10000)
+            // let 'not-me' win
+            winner = (data['me'] == 'player1') ? 'player2' : 'player1'
+            winnerScreenLaunch(data['data'][winner]['username']);
+        }, 70000) // = 60 sec + animation time
 
 
         $('#ReadySwitchChoice, #ReadyAttackChoice')
@@ -479,7 +481,7 @@ function gamestateHandler(data) {
 
     } else if (data['function'] === 'winner') {
         // somebody won, game is over
-        winnerScreenLaunch(data);
+        winnerScreenLaunch(data['winner']);
         updateGameScreen(data);
         updateAttackSwitchScreen(data);
     }
