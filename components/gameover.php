@@ -31,7 +31,7 @@
 
                         <div class="col-md-4 text-center button-div ">
                             <button type="button" class="btn btn-warning" id="return-home">
-                                <h2 class="ButtonText">Return <br> to home!</h2>
+                                <h2 class="ButtonText">Home</h2>
                             </button>
                         </div>
                     </div>
