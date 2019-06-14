@@ -311,7 +311,7 @@ function updateGameScreen(round_data) {
     updateGameScreenElements(round_data, enemy, "enemy");
     let theirpoke = round_data["data"][enemy]["active_pokemon"];
     $('#enemyPokemonImage').attr('src', `media/PokemonImages/${theirpoke}.png`);
-    if (round_data['data']['round'] != 1) {
+    if (round_data['data']['round'] !== 1) {
         actionText(round_data);
     }
 }
@@ -327,29 +327,30 @@ function actionText(data) {
     let action_player_1 = data['data'][current_round]['player1'];
     let action_player_2 = data['data'][current_round]['player2'];
 
-    if (first_player == 'player1') {
+    if (first_player === 'player1') {
         //If player1 is first, first show what player1 has done
         if ('attack' in action_player_1) {
             //if the player attacks then show which attack
             $('#actual_action_text').text(player1 + " went first! He used " + action_player_1['attack']['Name']);
-            if (action_player_1['effectiveness'] == 2) {
+            if (action_player_1['effectiveness'] === 2) {
                 //if it is super effective show that
                 $('#description_action_text').text("Wow! It was super effective!");
-            } else if (action_player_1['effectiveness'] == 1) {
+            } else if (action_player_1['effectiveness'] === 1) {
                 //if it is effective show that
                 $('#description_action_text').text("A clean hit!");
-            } else if (action_player_1['effectiveness'] == 0.5) {
+            } else if (action_player_1['effectiveness'] === 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("It was not very effective! Maybe try another move?");
-            } else if (action_player_1['effectiveness'] == 0) {
+            } else if (action_player_1['effectiveness'] === 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
             $('#alliedPokemonImage').attr('class', 'attacking-ally');
             $('#enemyPokemonImage').attr('class', 'attacked-enemy');
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacking-ally');
-                $('#enemyPokemonImage').removeClass('attacked-enemy');},2000);
+                $('#enemyPokemonImage').removeClass('attacked-enemy');
+            }, 2000);
 
         } else {
             //if not then show to which he switched
@@ -363,28 +364,28 @@ function actionText(data) {
         }, 2500);
         if ('attack' in action_player_2) {
             $('#actual_action_text2').text(player2 + " went second! He used " + action_player_2['attack']['Name']);
-            if (action_player_2['effectiveness'] == 2) {
+            if (action_player_2['effectiveness'] === 2) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Wow! It was super effective!");
-            } else if (action_player_2['effectiveness'] == 1) {
+            } else if (action_player_2['effectiveness'] === 1) {
                 //if it is super effective show that
                 $('#description_action_text2').text("A clean hit!");
-            } else if (action_player_2['effectiveness'] == 0.5) {
+            } else if (action_player_2['effectiveness'] === 0.5) {
                 //if it is super effective show that
                 $('#description_action_text2').text("It was not very effective! Maybe try another move?");
-            } else if (action_player_2['effectiveness'] == 0) {
+            } else if (action_player_2['effectiveness'] === 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').attr('class', 'attacked-ally');
                 $('#enemyPokemonImage').attr('class', 'attacking-enemy');
-                }, 2500);
+            }, 2500);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacked-ally');
                 $('#enemyPokemonImage').removeClass('attacking-enemy');
-            },4000);
+            }, 4000);
 
         } else {
             $('#actual_action_text2').text(player2 + " went second! He switched to " + action_player_2['switch']);
@@ -400,28 +401,28 @@ function actionText(data) {
         if ('attack' in action_player_2) {
             //if the player attacks then show which attack
             $('#actual_action_text').text(player2 + " went first! He used " + action_player_2['attack']['Name']);
-            if (action_player_2['effectiveness'] == 2) {
+            if (action_player_2['effectiveness'] === 2) {
                 //if it is super effective show that
                 $('#description_action_text').text("Wow! It was super effective!");
-            } else if (action_player_2['effectiveness'] == 1) {
+            } else if (action_player_2['effectiveness'] === 1) {
                 //if it is effective show that
                 $('#description_action_text').text("A clean hit!");
-            } else if (action_player_2['effectiveness'] == 0.5) {
+            } else if (action_player_2['effectiveness'] === 0.5) {
                 //if it is not effective show that
                 $('#description_action_text').text("It was not very effective! Maybe try another move?");
-            } else if (action_player_2['effectiveness'] == 0) {
+            } else if (action_player_2['effectiveness'] === 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').attr('class', 'attacked-ally');
                 $('#enemyPokemonImage').attr('class', 'attacking-enemy');
-                }, 2500);
+            }, 2500);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacked-ally');
                 $('#enemyPokemonImage').removeClass('attacking-enemy');
-                },4000);
+            }, 4000);
 
         } else {
             //if not then show to which he switched
@@ -435,24 +436,25 @@ function actionText(data) {
         }, 2500);
         if ('attack' in action_player_1) {
             $('#actual_action_text2').text(player1 + " went second! He used " + action_player_1['attack']['Name']);
-            if (action_player_1['effectiveness'] == 2) {
+            if (action_player_1['effectiveness'] === 2) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Wow! It was super effective!")
-            } else if (action_player_1['effectiveness'] == 1) {
+            } else if (action_player_1['effectiveness'] === 1) {
                 //if it is super effective show that
                 $('#description_action_text2').text("A clean hit!")
-            } else if (action_player_1['effectiveness'] == 0.5) {
+            } else if (action_player_1['effectiveness'] === 0.5) {
                 //if it is super effective show that
                 $('#description_action_text2').text("It was not very effective! Maybe try another move?")
-            } else if (action_player_1['effectiveness'] == 0) {
+            } else if (action_player_1['effectiveness'] === 0) {
                 //if it missed, show that
                 $('#description_action_text').text("Unfortunately, it missed.");
             }
             $('#alliedPokemonImage').attr('class', 'attacking-ally');
             $('#enemyPokemonImage').attr('class', 'attacked-enemy');
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#alliedPokemonImage').removeClass('attacking-ally');
-                $('#enemyPokemonImage').removeClass('attacked-enemy');},2000);
+                $('#enemyPokemonImage').removeClass('attacked-enemy');
+            }, 2000);
         } else {
             $('#actual_action_text2').text(player1 + " went first! He switched to " + action_player_1['switch']);
             $('#description_action_text2').text("What a surprise!");
