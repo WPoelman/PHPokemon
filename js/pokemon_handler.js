@@ -154,12 +154,12 @@ function attackButtonLaunch() {
     $('#attack').show();
 }
 
-function winnerScreenLaunch(data) {
+function winnerScreenLaunch(winner) {
     // Change from the main game screen to the
     // game over screen and shows the winner.
     $('#main_game_screen').hide();
     $('#select_action').hide();
-    $('#winning-text').text(data['winner'] + " won! \n Want to try again?");
+    $('#winning-text').html(`${winner} won! <br /> Want to try again?`);
     $('#game_over_screen').show();
 }
 
@@ -444,7 +444,6 @@ function gamestateHandler(data) {
 
     if (data['function'] === 'roundchange') {
         // next round
-        console.log('data', data['data']);
         if (data['data']['round'] === 1) {
             // first round -> show initial screen
             readyButtonLaunch();
@@ -452,15 +451,31 @@ function gamestateHandler(data) {
         }
         updateGameScreen(data);
         updateAttackSwitchScreen(data);
+
+        let timeout = setTimeout(function () {
+            error('You have been kicked for inactivity.')
+            post('reset_player');
+            // let 'not-me' win
+            winner = (data['me'] == 'player1') ? 'player2' : 'player1'
+            winnerScreenLaunch(data['data'][winner]['username']);
+        }, 70000) // = 60 sec + animation time
+
+
+        $('#ReadySwitchChoice, #ReadyAttackChoice')
+            .unbind('click.timeout') // reset event for old round
+            .bind('click.timeout', function () {
+                // bind a named event to the ready buttons, so we can reset them easily
+                clearInterval(timeout);
+            })
+
     } else if (data['function'] === 'winner') {
         // somebody won, game is over
-        winnerScreenLaunch(data);
+        winnerScreenLaunch(data['winner']);
         updateGameScreen(data);
         updateAttackSwitchScreen(data);
     }
 
     // Use updateAttackSwitchScreen() & updateGameScreen() after a round
-    console.log(data);
 }
 
 // every second, the getGameState function is called (to see if the other player has played yet)

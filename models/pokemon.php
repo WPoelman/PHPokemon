@@ -130,6 +130,7 @@ function attack($playerinfo, $round, $attack_name) {
 
 	$roundinfo = [
 		"attack" => $active_pokemon_attack,
+		"time" => time(),
 	];
 
 
@@ -161,6 +162,7 @@ function switchTo($gamestate, $player, $round, $pokemon) {
 
 	$roundinfo = [
 		"switch" => $pokemon,
+		"time" => time(),
 	];
 
 	$gamestate["round-$round"][$player] = $roundinfo;

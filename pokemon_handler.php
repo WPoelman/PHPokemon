@@ -131,13 +131,7 @@ function game_info($info) {
 	if ($round > $prevround) {
 
 		if (isset($gamestate['winner'])) {
-			send([
-				'function' => 'winner',
-				'data'     => $gamestate,
-				'me'       => getSessionVar("playernum"),
-				'winner'   => $gamestate['winner'],
-			]);
-			reset_player();
+			sendWinner($gamestate);
 		} else {
 			send([
 				'function' => 'roundchange',
@@ -146,8 +140,24 @@ function game_info($info) {
 			]);
 		}
 
-
 	}
+	else {
+		if(isset($gamestate["round-$round"])){
+			// if there even is a round yet
+			
+			// no new round -> check if it has been too long
+			$lastplayed = time() - reset($gamestate["round-$round"])['time'];
+			$playing_user = key($gamestate["round-$round"]);
+			if($lastplayed > 60){
+				// if only one player does something, they automatically win
+
+				$gamestate['winner'] = $gamestate[$playing_user]['username'];
+
+				sendWinner($gamestate);
+			}
+		}
+	}
+
 }
 
 $routes->newRoute('game_info', 'get');
