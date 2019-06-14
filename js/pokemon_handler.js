@@ -351,7 +351,7 @@ function actionText(data) {
         setTimeout(function () {
             $('#action_text').hide();
             $('#action_text2').show();
-        }, 4000);
+        }, 2500);
         if ('attack' in action_player_2) {
             $('#actual_action_text2').text(player2 + " went second! he used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
@@ -373,7 +373,7 @@ function actionText(data) {
             setTimeout(function () {
                 $('#action_text2').hide();
                 $('#select_action').show()
-            }, 8000);
+            }, 5000);
         }
 
     } else {
@@ -400,7 +400,7 @@ function actionText(data) {
         setTimeout(function () {
             $('#action_text').hide();
             $('#action_text2').show();
-        }, 4000);
+        }, 2500);
         if ('attack' in action_player_1) {
             $('#actual_action_text2').text(player1 + " went second! he used " + action_player_1['attack']['Name']);
             if (action_player_1['effectiveness'] == 2) {
@@ -419,11 +419,11 @@ function actionText(data) {
             $('#actual_action_text2').text(player1 + " went first! he switched to " + action_player_1['switch']);
             $('#description_action_text2').text("What a surprise! he switched!");
         }
-        setTimeout(function () {
-            $('#action_text2').hide();
-            $('#select_action').show()
-        }, 8000);
     }
+    setTimeout(function () {
+        $('#action_text2').hide();
+        $('#select_action').show()
+    }, 5000);
 }
 
 function updateUsernameElement(data) {
