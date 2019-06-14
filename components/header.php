@@ -21,7 +21,6 @@
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/dev.css">
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 
     <title><?=$page_title?></title>

@@ -143,8 +143,3 @@ function error($data, $code = 400) {
 	die();
 	return false;
 }
-
-function debug($where, $dump){
-	$data = [$where => $dump];
-	file_put_contents("debug.log", json_encode($data) . PHP_EOL, FILE_APPEND);
-}

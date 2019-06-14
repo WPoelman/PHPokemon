@@ -45,12 +45,6 @@ function pokemon($info, $nav) {
 $routes->newRoute('pokemon', 'get', 'Pokemon');
 
 
-function post_handler($info){
-	// test handler
-	print_r($info);
-	send('POSTED');
-}
-$routes->newRoute('post_handler', 'post');
 
 
 

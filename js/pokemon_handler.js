@@ -57,9 +57,6 @@ function sendPreGameInfo(username, selected_pokemon) {
             startEventListener();
             waitingScreenLaunch(data);
             return data;
-
-            // for dummy
-            // readyButtonLaunch()
         } else {
             error(data['error'])
         }
@@ -667,13 +664,3 @@ $(function () {
     $('#errormodal .modal-close').click(() => $('#errormodal').modal('hide'));
 
 });
-
-function dummy(username) {
-    // so I don't have to click each time I need to test
-    username = username || 'p1';
-    return sendPreGameInfo(username, ['Bulbasaur', 'Pikachu', 'Charmander']).then((data) => {
-        playButtonLaunch();
-        waitingScreenLaunch(data);
-        return data;
-    })
-}

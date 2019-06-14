@@ -93,7 +93,7 @@ function start_game($info) {
 
 $routes->newRoute('start_game', 'post');
 
-
+// used at the end of a game, when the old data can be removed
 function reset_player() {
 	session_destroy();
 	unset($_SESSION);
@@ -101,16 +101,8 @@ function reset_player() {
 
 $routes->newRoute('reset_player', 'post');
 
-function stop_game($info) {
-//	resetRound();
-	clearGames();
-	session_destroy();
-	unset($_SESSION);
-}
 
-// note: this should not be a public route on production, of course!
-$routes->newRoute('stop_game', 'post');
-
+// used when a player leaves the window and comes back
 function resume_game($info) {
 	$gamestate = getGamestate();
 	send([
@@ -122,6 +114,8 @@ function resume_game($info) {
 
 $routes->newRoute('resume_game', 'get');
 
+
+// this is to check if the other player has done an action in a round
 function game_info($info) {
 	$gamestate = getGamestate();
 

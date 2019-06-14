@@ -10,7 +10,6 @@ include 'components/waitingscreen.php';
 include 'components/gameover.php';
 
 include 'components/modal.php';
-include 'components/dev.php';
 
 include 'components/footer.php';
 ?>
