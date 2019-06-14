@@ -334,14 +334,20 @@ function actionText(data) {
             $('#actual_action_text').text(player1 + " went first! he used " + action_player_1['attack']['Name']);
             if (action_player_1['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text').text("Wowie! it was super effective!")
+                $('#description_action_text').text("Wowie! it was super effective!");
             } else if (action_player_1['effectiveness'] == 1) {
                 //if it is effective show that
-                $('#description_action_text').text("that attack was okay!")
+                $('#description_action_text').text("that attack was okay!");
             } else if (action_player_1['effectiveness'] == 0.5) {
                 //if it is not effective show that
-                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?")
+                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
             }
+            $('#alliedPokemonImage').attr('class', 'attacking-ally');
+            $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            setTimeout(function(){
+                $('#alliedPokemonImage').removeClass('attacking-ally');
+                $('#enemyPokemonImage').removeClass('attacked-enemy');},2000);
+
         } else {
             //if not then show to which he switched
             $('#actual_action_text').text(player1 + " went first! he switched to " + action_player_1['switch']);
@@ -356,17 +362,24 @@ function actionText(data) {
             $('#actual_action_text2').text(player2 + " went second! he used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Wowie! it was super effective!")
+                $('#description_action_text2').text("Wowie! it was super effective!");
             } else if (action_player_2['effectiveness'] == 1) {
                 //if it is super effective show that
-                $('#description_action_text2').text("that attack was okay!")
+                $('#description_action_text2').text("that attack was okay!");
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is super effective show that
-                $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?")
+                $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?");
             }
+            setTimeout(function(){
+                $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                }, 2500);
 
-            $('#alliedPokemonImage').attr('class', 'attacked');
-            $('#enemyPokemonImage').attr('class', 'attacking');
+            setTimeout(function(){
+                $('#alliedPokemonImage').removeClass('attacked-ally');
+                $('#enemyPokemonImage').removeClass('attacking-enemy');
+            },4000);
+
         } else {
             $('#actual_action_text2').text(player2 + " went second! he switched to " + action_player_2['switch']);
             $('#description_action_text2').text("What a surprise! he switched!");
@@ -383,13 +396,22 @@ function actionText(data) {
             $('#actual_action_text').text(player2 + " went first! he used " + action_player_2['attack']['Name']);
             if (action_player_2['effectiveness'] == 2) {
                 //if it is super effective show that
-                $('#description_action_text').text("Wowie! it was super effective!")
+                $('#description_action_text').text("Wowie! it was super effective!");
             } else if (action_player_2['effectiveness'] == 1) {
                 //if it is effective show that
-                $('#description_action_text').text("that attack was okay!")
+                $('#description_action_text').text("that attack was okay!");
             } else if (action_player_2['effectiveness'] == 0.5) {
                 //if it is not effective show that
-                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?")
+                $('#description_action_text').text("Oof! that was not so effective! maybe try another move?");
+                setTimeout(function(){
+                    $('#alliedPokemonImage').attr('class', 'attacked-ally');
+                    $('#enemyPokemonImage').attr('class', 'attacking-enemy');
+                    }, 2500);
+
+                setTimeout(function(){
+                $('#alliedPokemonImage').removeClass('attacked-ally');
+                $('#enemyPokemonImage').removeClass('attacking-enemy');
+                },4000);
             }
         } else {
             //if not then show to which he switched
@@ -413,8 +435,11 @@ function actionText(data) {
                 //if it is super effective show that
                 $('#description_action_text2').text("Oof! that was not so effective! maybe try another move?")
             }
-            $('#alliedPokemonImage').attr('class', 'attacking');
-            $('#enemyPokemonImage').attr('class', 'attacked');
+            $('#alliedPokemonImage').attr('class', 'attacking-ally');
+            $('#enemyPokemonImage').attr('class', 'attacked-enemy');
+            setTimeout(function(){
+                $('#alliedPokemonImage').removeClass('attacking-ally');
+                $('#enemyPokemonImage').removeClass('attacked-enemy');},2000);
         } else {
             $('#actual_action_text2').text(player1 + " went first! he switched to " + action_player_1['switch']);
             $('#description_action_text2').text("What a surprise! he switched!");

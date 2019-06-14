@@ -286,7 +286,7 @@ table {
 
 /* Attack and being attacked animations */
 
-@keyframes attack {
+@keyframes attack-ally {
 	0%, 100% {
 		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
@@ -295,7 +295,25 @@ table {
 	}
 }
 
-@keyframes attacked {
+@keyframes attacked-ally {
+	0%, 100% {
+		transform: translateY(-0%) translateX(-0%) scaleX(0) scaleY(0);
+	}
+	50% {
+		transform: translateY(0%) translateX(+30%) scaleX(0.98) scaleY(1.03) rotate(10deg);
+	}
+}
+
+@keyframes attack-enemy {
+	0%, 100% {
+		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
+	}
+	50% {
+		transform: translateY(+30%) translateX(-290%) scaleX(0.98) scaleY(1.03) rotate(30deg);
+	}
+}
+
+@keyframes attacked-enemy {
 	0%, 100% {
 		transform: translateY(-0%) translateX(-0%) scaleX(1) scaleY(1);
 	}
@@ -304,14 +322,25 @@ table {
 	}
 }
 
-.attacking {
-	animation: attack 0.8s ease 1;
+.attacking-ally {
+	animation: attack-ally 0.8s ease 1;
 	animation-duration: 1.5s;
 	animation-fill-mode: backwards;
 }
 
-.attacked {
-	animation: attacked 0.8s ease 1;
+.attacked-ally {
+	animation: attacked-ally 0.8s ease 1;
+	animation-duration: 1s;
+	animation-delay: 0.75s;
+}
+.attacking-enemy {
+	animation: attack-enemy 0.8s ease 1;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
+}
+
+.attacked-enemy {
+	animation: attacked-enemy 0.8s ease 1;
 	animation-duration: 1s;
 	animation-delay: 0.75s;
 }
