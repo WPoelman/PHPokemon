@@ -478,12 +478,12 @@ function gamestateHandler(data) {
         updateAttackSwitchScreen(data);
 
         let timeout = setTimeout(function () {
-            error('You have been kicked for inactivity.')
+            error('You have been kicked for inactivity.');
             post('reset_player');
             // let 'not-me' win
-            winner = (data['me'] == 'player1') ? 'player2' : 'player1'
+            let winner = (data['me'] === 'player1') ? 'player2' : 'player1';
             winnerScreenLaunch(data['data'][winner]['username']);
-        }, 70000) // = 60 sec + animation time
+        }, 70000); // = 60 sec + animation time
 
 
         $('#ReadySwitchChoice, #ReadyAttackChoice')
